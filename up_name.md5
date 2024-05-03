@@ -33,12 +33,12 @@ e21a40de0df0c718dfa22c4940df9b29  ./script/Sh26_upd2pro.sh
 7c96e3aaa51260e96c65c94cf0e747bd  ./script/Sh43_huaweidns.sh
 bee6a473898f197439955d4793dee76b  ./script/sh_upscript.sh
 a95a758e034c6214f8a8a7a1eff15a02  ./script/Sh17_meow.sh
-2a6dc49e2166707cb5a6c74a96288615  ./script/Sh01_mountopt.sh
+4411eef330f68f43ef783aeeea062e65  ./script/Sh01_mountopt.sh
 478a1017d0d451c0866d210615b5cc41  ./script/Sh45_server_chan.sh
 673087f75ecfcdee56f905ce8369170b  ./script/Sh88_ddns_go.sh
 d28333b2e511d25e6992b4208d1767f5  ./script/Sh51_xun_lei.sh
 06ab8406ccd47b0cdb2a2b5377b69c01  ./script/Sh52_sync_thing.sh
-8da3a2c028f77e568507f0dfef8ea389  ./script/Sh09_chinadns_ng.sh
+67ea1a0e1908c17129ffea4ca56e6982  ./script/Sh09_chinadns_ng.sh
 9e376428796b95aa986e96fc114f10c3  ./script/Sh33_ngrok.sh
 46281cd7a54cf6812c26379091eaf41e  ./script/Sh42_aliddns.sh
 014dc6ec79a6333085e07ab36ec1b580  ./script/Sh18_v2ray.sh
@@ -49,7 +49,7 @@ d28333b2e511d25e6992b4208d1767f5  ./script/Sh51_xun_lei.sh
 f89890047e41b39cf38adda1ed6adc88  ./script/Sh86_go_tify.sh
 9408f0880e88185355bd1fb271301566  ./script/Sh91_AdGuard_Home.sh
 32d569e7d080624b0a9dbb94361541a4  ./script/Sh13_kool_proxy.sh
-e50920beb79dac271aa38ad35732df38  ./script/Sh10_clash.sh
+b1d853a8b5daf99f9003125259406103  ./script/Sh10_clash.sh
 eff23051287152bd11d95f41e6e695c5  ./script/Sh59_trans_late.sh
 2264ec507aa215711ddb320452e9b607  ./script/Sh44_cloudflare.sh
 2af26d75b70672f5e3dfa1131f1f843d  ./script/Sh04_mento_hust.sh
