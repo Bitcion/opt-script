@@ -40,12 +40,12 @@ d28333b2e511d25e6992b4208d1767f5  ./script/Sh51_xun_lei.sh
 06ab8406ccd47b0cdb2a2b5377b69c01  ./script/Sh52_sync_thing.sh
 67ea1a0e1908c17129ffea4ca56e6982  ./script/Sh09_chinadns_ng.sh
 9e376428796b95aa986e96fc114f10c3  ./script/Sh33_ngrok.sh
-46281cd7a54cf6812c263791eaf41e  ./script/Sh42_aliddns.sh
+46281cd7a54cf6812c26379091eaf41e  ./script/Sh42_aliddns.sh
 014dc6ec79a6333085e07ab36ec1b580  ./script/Sh18_v2ray.sh
 19fe956b26162825345119ff5fd6d46c  ./script/Sh02_kms.sh
-2ecca2d862925e8e5c66575648de32  ./script/Sh30_np_s.sh
+2ecca209d862925e8e5c66575648de32  ./script/Sh30_np_s.sh
 0e935ab3f914ae8581279e60ba7ca847  ./script/Sh41_dnspod.sh
-7dc5e52ff9448a4b42c6e94bd69e16  ./script/Sh16_cow.sh
+7dc5e52ff940948a4b42c6e94bd69e16  ./script/Sh16_cow.sh
 f89890047e41b39cf38adda1ed6adc88  ./script/Sh86_go_tify.sh
 9408f0880e88185355bd1fb271301566  ./script/Sh91_AdGuard_Home.sh
 32d569e7d080624b0a9dbb94361541a4  ./script/Sh13_kool_proxy.sh
