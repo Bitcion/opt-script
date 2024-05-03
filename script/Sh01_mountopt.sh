@@ -33,7 +33,7 @@ opt_force_enable=`nvram get opt_force_enable`
 opt_force_file=`nvram get opt_force_file`
 [ -z $opt_force_file ] && opt_force_file="https://opt.cn2qq.com/opt-file" && nvram set opt_force_file="$opt_force_file"
 opt_force_script=`nvram get opt_force_script`
-[ -z $opt_force_script ] && opt_force_script="https://bitcion.github.io/zaixiantuoguan/opt-script" && nvram set opt_force_script="$opt_force_script"
+[ -z $opt_force_script ] && opt_force_script="https://bitcion.github.io/opt-script" && nvram set opt_force_script="$opt_force_script"
 if [ -z "$(cat /sbin/wgetcurl.sh | grep "/tmp/script/wgetcurl.sh")" ] ; then
 opt_force_www=`nvram get opt_force_www`
 [ -z $opt_force_www ] && opt_force_www="https://opt.cn2qq.com" && nvram set opt_force_www="$opt_force_www"
@@ -53,9 +53,9 @@ else
 	sed -Ei '/^hiboyfile=/d' /etc/storage/script/init.sh
 	sed -Ei '/^hiboyscript=/d' /etc/storage/script/init.sh
 	echo 'hiboyfile="https://opt.cn2qq.com/opt-file"' >> /etc/storage/script/init.sh
-	echo 'hiboyscript="https://bitcion.github.io/zaixiantuoguan/opt-script"' >> /etc/storage/script/init.sh
+	echo 'hiboyscript="https://bitcion.github.io/opt-script"' >> /etc/storage/script/init.sh
 	hiboyfile="https://opt.cn2qq.com/opt-file"
-	hiboyscript="https://bitcion.github.io/zaixiantuoguan/opt-script"
+	hiboyscript="https://bitcion.github.io/opt-script"
 fi
 
 # 部署离线 opt 环境下载地址
@@ -79,7 +79,7 @@ if [ "$opt_download_enable" != "0" ] ; then
 else
 	if [ "$opt_force_file" == "$opt_force_file_tmp" ] ; then
 		opt_force_file="https://opt.cn2qq.com/opt-file"
-		opt_force_script="https://bitcion.github.io/zaixiantuoguan/opt-script"
+		opt_force_script="https://bitcion.github.io/opt-script"
 		nvram set opt_force_file="$opt_force_file"
 		nvram set opt_force_script="$opt_force_script"
 		sed -Ei '/^hiboyfile=/d' /etc/storage/script/init.sh
@@ -119,7 +119,7 @@ else
 		opt_download_enable="0" && nvram set opt_download_enable="$opt_download_enable"
 	fi
 	opt_force_file="https://gcore.jsdelivr.net/gh/HiboyHiboy/opt-file" && nvram set opt_force_file="$opt_force_file"
-	opt_force_script="https://bitcion.github.io/zaixiantuoguan/opt-script" && nvram set opt_force_script="$opt_force_script"
+	opt_force_script="https://bitcion.github.io/opt-script" && nvram set opt_force_script="$opt_force_script"
 	logger -t "【script】" "下载地址失效 https://opt.cn2qq.com"
 	logger -t "【script】" "变更使用免费CDN https://gcore.jsdelivr.net/gh/HiboyHiboy/opt-file"
 	opt_force
@@ -411,13 +411,13 @@ if [ -d $cn2qq_name ] ; then
 logger -t "【opt】" "opt-script 开始匹配： $cn2qq_name"
 cd $cn2qq_name
 #md5sum `/usr/bin/find ./ -type f | grep -v .git | grep -v md5.md5 | grep -v up_name.md5 | grep -v up_name.txt` > ./md5.md5
-wgetcurl_checkmd5 "$cn2qq_name/up_name.md5" "https://bitcion.github.io/zaixiantuoguan/opt-script/md5.md5" "https://bitcion.github.io/zaixiantuoguan/opt-script/md5.md5"
+wgetcurl_checkmd5 "$cn2qq_name/up_name.md5" "https://bitcion.github.io/opt-script/md5.md5" "https://bitcion.github.io/opt-script/md5.md5"
 if [ -s $cn2qq_name/up_name.md5 ] ; then
 # 生成不匹配文件名
 cd $cn2qq_name
 md5sum -c $cn2qq_name/up_name.md5 | grep ": FAILED" | awk -F ':' '{print($1)}' | sed -e 's@^./@/@g' > $cn2qq_name/up_name.txt
 # 下载不匹配文件
-cat $cn2qq_name/up_name.txt | grep -v '^$' | while read update_addr; do [ ! -z "$update_addr" ] &&  wgetcurl_checkmd5 "$cn2qq_name$update_addr" "https://bitcion.github.io/zaixiantuoguan/opt-script$update_addr" "https://bitcion.github.io/zaixiantuoguan/opt-script$update_addr" Y; done
+cat $cn2qq_name/up_name.txt | grep -v '^$' | while read update_addr; do [ ! -z "$update_addr" ] &&  wgetcurl_checkmd5 "$cn2qq_name$update_addr" "https://bitcion.github.io/opt-script$update_addr" "https://bitcion.github.io/opt-script$update_addr" Y; done
 rm -f $cn2qq_name/up_name.txt
 logger -t "【opt】" "opt-script 匹配完成： $cn2qq_name"
 else
@@ -461,10 +461,10 @@ if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] || [ ! -d /tmp/AiDisk_00/cn2qq/opt-f
 [ ! -d /tmp/AiDisk_00/cn2qq/opt-file ] && logger -t "【opt】" "部署离线 opt-file 环境到 USB/cn2qq/opt-file"
 mkdir -p /tmp/AiDisk_00/cn2qq
 if [[ "$(unzip -h 2>&1 | wc -l)" -gt 2 ]] ; then
-	opt_download_script="https://bitcion.github.io/zaixiantuoguan/opt-script/archive/master.zip"
+	opt_download_script="https://github.com/Bitcion/opt-script/archive/master.zip"
 	opt_download_file="https://github.com/hiboyhiboy/opt-file/archive/master.zip"
 else
-	opt_download_script="https://bitcion.github.io/zaixiantuoguan/opt-script/opt-script.tgz"
+	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
 	opt_download_file="https://opt.cn2qq.com/opt-file.tgz"
 fi
 
