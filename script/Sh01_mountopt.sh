@@ -464,7 +464,7 @@ if [[ "$(unzip -h 2>&1 | wc -l)" -gt 2 ]] ; then
 	opt_download_script="https://github.com/Bitcion/opt-script/archive/master.zip"
 	opt_download_file="https://github.com/hiboyhiboy/opt-file/archive/master.zip"
 else
-	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
+	opt_download_script="https://github.com/Bitcion/opt-script/archive/master.tar.gz"
 	opt_download_file="https://opt.cn2qq.com/opt-file.tgz"
 fi
 
@@ -472,28 +472,28 @@ fi
 if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] ; then
 	rm -rf /tmp/AiDisk_00/cn2qq/opt-script
 	rm -rf /tmp/AiDisk_00/cn2qq/opt-script-master
-if [ ! -f /tmp/AiDisk_00/cn2qq/opt-script.tgz ]  ; then
-	rm -f /tmp/AiDisk_00/cn2qq/opt-script.tgz
+if [ ! -f /tmp/AiDisk_00/cn2qq/master.tar.gz ]  ; then
+	rm -f /tmp/AiDisk_00/cn2qq/master.tar.gz
 	logger -t "【opt】" "/tmp/AiDisk_00/cn2qq 可用空间：$(df -m | grep '% /tmp/AiDisk_00/cn2qq' | awk 'NR==1' | awk -F' ' '{print $4}')M"
 	logger -t "【opt】" "下载: $opt_download_script"
-	logger -t "【opt】" "下载到 USB/cn2qq/opt-script.tgz"
-	wgetcurl.sh '/tmp/AiDisk_00/cn2qq/opt-script.tgz' "$opt_download_script" "$opt_download_script"
-	logger -t "【opt】" "/tmp/AiDisk_00/cn2qq/opt-script.tgz 下载完成，开始解压"
+	logger -t "【opt】" "下载到 USB/cn2qq/master.tar.gz"
+	wgetcurl.sh '/tmp/AiDisk_00/cn2qq/master.tar.gz' "$opt_download_script" "$opt_download_script"
+	logger -t "【opt】" "/tmp/AiDisk_00/cn2qq/master.tar.gz 下载完成，开始解压"
 else
-	logger -t "【opt】" "/tmp/AiDisk_00/cn2qq/opt-script.tgz 已经存在，开始解压"
+	logger -t "【opt】" "/tmp/AiDisk_00/cn2qq/master.tar.gz 已经存在，开始解压"
 fi
 if [[ "$(unzip -h 2>&1 | wc -l)" -gt 2 ]] ; then
-	unzip -o /tmp/AiDisk_00/cn2qq/opt-script.tgz -d /tmp/AiDisk_00/cn2qq/
+	unzip -o /tmp/AiDisk_00/cn2qq/master.tar.gz -d /tmp/AiDisk_00/cn2qq/
 	[ -d /tmp/AiDisk_00/cn2qq/opt-script-master ] && { rm -rf /tmp/AiDisk_00/cn2qq/opt-script; ln -sf /tmp/AiDisk_00/cn2qq/opt-script-master /tmp/AiDisk_00/cn2qq/opt-script; }
 else
-	tar -xz -C /tmp/AiDisk_00/cn2qq/ -f /tmp/AiDisk_00/cn2qq/opt-script.tgz
+	tar -xz -C /tmp/AiDisk_00/cn2qq/ -f /tmp/AiDisk_00/cn2qq/master.tar.gz
 fi
 if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] ; then
-	tar -xz -C /tmp/AiDisk_00/cn2qq/ -f /tmp/AiDisk_00/cn2qq/opt-script.tgz
-	unzip -o /tmp/AiDisk_00/cn2qq/opt-script.tgz -d /tmp/AiDisk_00/cn2qq/
+	tar -xz -C /tmp/AiDisk_00/cn2qq/ -f /tmp/AiDisk_00/cn2qq/master.tar.gz
+	unzip -o /tmp/AiDisk_00/cn2qq/master.tar.gz -d /tmp/AiDisk_00/cn2qq/
 	[ -d /tmp/AiDisk_00/cn2qq/opt-script-master ] && { rm -rf /tmp/AiDisk_00/cn2qq/opt-script; ln -sf /tmp/AiDisk_00/cn2qq/opt-script-master /tmp/AiDisk_00/cn2qq/opt-script; }
 fi
-logger -t "【opt】" "$upanPath/cn2qq/opt-script.tgz 解压完成！"
+logger -t "【opt】" "$upanPath/cn2qq/master.tar.gz 解压完成！"
 if [ -f /tmp/AiDisk_00/cn2qq/opt-file/osub ] ; then
 wgetcurl.sh '/tmp/osub_tmp' "https://opt.cn2qq.com/opt-file/osub" "https://raw.githubusercontent.com/hiboyhiboy/opt-file/master/osub"
 if [ -s /tmp/osub_tmp ] ; then
@@ -1175,7 +1175,7 @@ opt_download)
 opt_download_script)
 	[ -d /tmp/AiDisk_00/cn2qq/opt-script ] && rm -rf /tmp/AiDisk_00/cn2qq/opt-script
 	[ -d /tmp/AiDisk_00/cn2qq/opt-script-master ] && rm -rf /tmp/AiDisk_00/cn2qq/opt-script-master
-	[ -f /tmp/AiDisk_00/cn2qq/opt-script.tgz ] && rm -f /tmp/AiDisk_00/cn2qq/opt-script.tgz
+	[ -f /tmp/AiDisk_00/cn2qq/master.tar.gz ] && rm -f /tmp/AiDisk_00/cn2qq/master.tar.gz
 	opt_download_enable=1
 	opt_download &
 	;;
