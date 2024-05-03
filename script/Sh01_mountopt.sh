@@ -36,7 +36,7 @@ opt_force_script=`nvram get opt_force_script`
 [ -z $opt_force_script ] && opt_force_script="https://bitcion.github.io/opt-script" && nvram set opt_force_script="$opt_force_script"
 if [ -z "$(cat /sbin/wgetcurl.sh | grep "/tmp/script/wgetcurl.sh")" ] ; then
 opt_force_www=`nvram get opt_force_www`
-[ -z $opt_force_www ] && opt_force_www="https://opt.cn2qq.com" && nvram set opt_force_www="$opt_force_www"
+[ -z $opt_force_www ] && opt_force_www="http://bitcion.github.io" && nvram set opt_force_www="$opt_force_www"
 opt_force_file="$opt_force_www/opt-script"
 opt_force_script="$opt_force_www/opt-script"
 fi
