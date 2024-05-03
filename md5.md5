@@ -22,7 +22,7 @@ d53867bfa001fbb3639e3d24c24eb331  ./script/Sh54_file_manager.sh
 d90fcf5fe55febe0bd5f83d0ed578acd  ./script/Sh08_hysteria.sh
 7e041301c34c5e46493054f2f13ad9ff  ./script/Sh27_speedup.sh
 14089c1f748b1fb498329b5a508eb851  ./script/Sh48_Fast_Dick.sh
-ec441f4d0f3f8def866af815e2d68420  ./script/init.sh
+eb95eb2637f82fa26cbd466e7bf5e9ad  ./script/init.sh
 cba05b0be2acac44665999b8f255682b  ./script/Sh05_go_cryptfs.sh
 5bf0910d2639a16ed8ea7591c682cdae  ./script/Sh49_qcloud.sh
 10a64ba727e393fd69225ac27f9120bd  ./script/Sh20_fakeincn.sh
