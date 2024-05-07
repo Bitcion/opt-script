@@ -389,7 +389,7 @@ server-name smartdns
 #  IPV6:
 #    bind [::]:53
 #    bind-tcp [::]:53
-bind 0.0.0.0:8051 -group china
+bind 0.0.0.0:8051 -group china  -no-speed-check -no-cache
 bind 0.0.0.0:8052 -group office
 
 # china 服务器
@@ -401,39 +401,20 @@ server 1.2.4.8 -group china
 #server 240c::6644 -group china
 
 # office 服务器 https://kb.adguard.com/en/general/dns-providers
+server 192.168.123.1:8054 -group office
 # Google DNS
 server 8.8.8.8 -group office
-#server 2001:4860:4860::8888 -group office
 server-https https://dns.google/dns-query -group office
-server-tcp 8.8.8.8 -group office
 server-tls 8.8.8.8 -group office
 # Cloudflare DNS
-server 1.0.0.1 -group office
-#server 2606:4700:4700::1111 -group office
 server-https https://dns.cloudflare.com/dns-query -group office
 server-tls 1.0.0.1 -group office
 # adguard
-#server 176.103.130.130 -group office
-#server 2a00:5a60::ad1:0ff -group office
 #server-https https://dns.adguard.com/dns-query -group office
 # OpenDNS
-server 208.67.222.222 -group office
-server-tcp 208.67.222.222:443 -group office
+server-https https://208.67.222.222/dns-query -group office
+server-tls 208.67.222.222:443 -group office
 #server 2620:119:35::35 -group office
-# Yandex
-#server 77.88.8.8 -group office
-#server 2a02:6b8::feed:0ff -group office
-# Neustar Recursive
-#server 156.154.70.1 -group office
-#server 2610:a1:1018::1 -group office
-# verisign
-#server 64.6.64.6 -group office
-#server 2620:74:1b::1:1 -group office
-# Quad101
-#server 101.101.101.101 -group office
-#server 2001:de4::101 -group office
-# safedns
-#server 195.46.39.39 -group office
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
@@ -442,7 +423,7 @@ server-tcp 208.67.222.222:443 -group office
 # 域名结果缓存个数
 # cache-size [number]
 #   0: for no cache
-cache-size 512
+#cache-size 512
 
 # 域名预先获取功能
 # prefetch-domain [yes|no]
@@ -465,7 +446,7 @@ prefetch-domain yes
 # example:
 #   speed-check-mode ping,tcp:80
 #   speed-check-mode tcp:443,ping
-#   speed-check-mode none
+    speed-check-mode none
 
 # 强制AAAA地址返回SOA
 # force-AAAA-SOA [yes|no]
@@ -473,7 +454,7 @@ prefetch-domain yes
 # 启用IPV4，IPV6双栈IP优化选择策略
 # dualstack-ip-selection-threshold [num] (0~1000)
 # dualstack-ip-selection [yes|no]
-# dualstack-ip-selection yes
+  dualstack-ip-selection no
 
 # edns客户端子网
 # edns-client-subnet [ip/subnet]
@@ -486,7 +467,7 @@ prefetch-domain yes
 # rr-ttl-max: 资源记录的最大ttl
 # example:
 # rr-ttl 300
-rr-ttl-min 300
+# rr-ttl-min 300
 # rr-ttl-max 86400
 
 # 设置日志级别
@@ -554,6 +535,9 @@ nameserver /opt.cn2qq.com/office
 # address /www.example.com/1.2.3.4, return ip 1.2.3.4 to client
 # address /www.example.com/-, ignore address, query from upstream, suffix 4, for ipv4, 6 for ipv6, none for all
 # address /www.example.com/#, return SOA to client, suffix 4, for ipv4, 6 for ipv6, none for all
+address /bing.com/204.79.197.200
+address /chat.openai.com/172.64.150.28
+address /chatgpt.com/104.18.32.115
 
 # 设置IPSET超时功能启用
 # ipset-timeout yes
