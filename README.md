@@ -12,3 +12,7 @@
 为了解决这个问题，有两个方案：
 1、使用meta内核，开启sniffer还原。
 2、把CLASH DNS监听端口强制改了8054，然后把“server 192.168.123.1:8054 -group office”加入smartdns配置中。这样所有DNS请求会通过并行查询office 组，对于公共DNS能顺利获取ipv6查询，对于发送到“server 192.168.123.1:8054 -group office”的查询则可以让clash还原出域名然后进行规则分流
+
+
+ipv6使用提示：
+对于很多需要必须进行代理（比如Netflix）以及很多网站无法自动跳回ipv4透明代理的资源，则需要在smartdns指定他们域名屏蔽掉ipv6查询，具体使用方法参照smartdns配置
