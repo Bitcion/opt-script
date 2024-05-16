@@ -11,4 +11,4 @@
 如果要实现这个需求，必须开启smartdns来实现所有请求都会获取到ipv6查询结果。但是开启smartdns的问题是clash所有的代理都会变成纯IP访问，无法进行代理规则的分流。
 为了解决这个问题，有两个方案：
 1、使用meta内核，开启sniffer还原。
-2、则是本脚本目的：把CLASH DNS监听端口强制改了8054，然后把“server 192.168.123.1:8054 -group office”加入smartdns配置中。这样所有DNS请求会通过并行查询office 组，对于公共DNS能顺利获取ipv6查询，对于发送到“server 192.168.123.1:8054 -group office”的查询则可以让clash还原出域名然后进行规则分流
+2、把CLASH DNS监听端口强制改了8054，然后把“server 192.168.123.1:8054 -group office”加入smartdns配置中。这样所有DNS请求会通过并行查询office 组，对于公共DNS能顺利获取ipv6查询，对于发送到“server 192.168.123.1:8054 -group office”的查询则可以让clash还原出域名然后进行规则分流
