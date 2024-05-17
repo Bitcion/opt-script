@@ -28,4 +28,4 @@ OFFICE组只保留clash dns与AdGuardHome本地DNS。
 
 如果追求极致DNS访问，可以把clash dns中的  nameserver与  fallback，都改为“    - 127.0.0.1:5353”，只查询AdGuardHome DNS。
 
-这样做的好处是可以在AdGuardHome中更好的控制ipv6请求屏蔽，可以订阅我自用的AdGuard规则（必须屏蔽的ipv6）：https://bitcion.github.io/zaixiantuoguan/AdGuard%E8%A7%84%E5%88%99.txt 。更多需求可以参考里面的规则写法
+这样做的好处是可以在AdGuardHome中更好的控制ipv6请求屏蔽，可以订阅我自用AdGuardIPv6黑名单（必须屏蔽的ipv6）：https://bitcion.github.io/zaixiantuoguan/AdGuard%E8%A7%84%E5%88%99.txt 。更多需求可以参考里面的规则写法
