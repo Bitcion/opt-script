@@ -19,10 +19,10 @@ ipv6使用提示：
 
 
 # 高阶方案，256内存以上的机型，128内存不要尝试
-开启一次“AdGuardHome 开关”，等待AdGuardHome启动后，关闭AdGuardHome，无需配置。在“ss_tproxy启动前运行脚本”中添加“    /opt/AdGuardHome/AdGuardHome”，然后再进入192.168.123.1：3000,配置AdGuardHome。完成配置后在smartdns的配置中，
+开启一次“AdGuardHome 开关”，等待AdGuardHome启动后，关闭AdGuardHome，无需配置。在“ss_tproxy启动前运行脚本”中添加“    /opt/AdGuardHome/AdGuardHome”，然后再进入192.168.123.1：3000,配置AdGuardHome。完成配置后在smartdns的配置中加入：
 
-server 0.0.0.0:5353 -group office
-server 192.168.123.1:8054 -group office
+“server 0.0.0.0:5353 -group office
+server 192.168.123.1:8054 -group office”
 
 OFFICE组只保留clash dns与AdGuardHome本地DNS。
 
