@@ -16,3 +16,16 @@
 
 ipv6使用提示：
 对于很多需要必须进行代理（比如Netflix）以及很多网站无法自动跳回ipv4透明代理的资源，则需要在smartdns指定他们域名屏蔽掉ipv6查询，具体使用方法参照smartdns配置
+
+
+# 高阶方案，256内存以上的机型，128内存不要尝试
+开启一次“AdGuardHome 开关”，等待AdGuardHome启动后，关闭AdGuardHome，无需配置。在“ss_tproxy启动前运行脚本”中添加“    /opt/AdGuardHome/AdGuardHome”，然后再进入192.168.123.1：3000,配置AdGuardHome。完成配置后在smartdns的配置中，
+# office 服务器
+server 0.0.0.0:5353 -group office
+server 192.168.123.1:8054 -group office
+
+OFFICE组只保留clash dns与AdGuardHome本地DNS。
+
+如果追求极致DNS访问，可以把clash dns中的  nameserver与  fallback，都改为“    - 127.0.0.1:5353”，只查询AdGuardHome DNS。
+
+这样做的好处是可以在AdGuardHome中更好的控制ipv6请求屏蔽，可以订阅我自用的AdGuard规则（必须屏蔽的ipv6）：https://bitcion.github.io/zaixiantuoguan/AdGuard%E8%A7%84%E5%88%99.txt 。更多需求可以参考里面的规则写法
