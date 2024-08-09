@@ -899,7 +899,7 @@ sed -Ei '/^$/d' $config_dns_yml
 fi
 fi
 if [ "$ss_ip46" = "0" ] || [ "$ss_ip46" = "2" ] ; then
-yq w -i $config_dns_yml dns.ipv6 false
+yq w -i $config_dns_yml dns.ipv6 true
 else
 yq w -i $config_dns_yml dns.ipv6 true
 fi
