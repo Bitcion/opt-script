@@ -885,10 +885,10 @@ echo '- command: delete
   path: dns.fallback(.==https://1.0.0.1/dns-query)
 - command: update 
   path: dns.fallback[+]
-  value: https://dns.google/dns-query
+  value: https://[2001:4860:4860::8888]/dns-query#h3=true
 - command: update 
   path: dns.fallback[+]
-  value: https://1.0.0.1/dns-query
+  value: https://[2001:4860:4860::8844]/dns-query#h3=true
 ' | yq w -i -s - $config_dns_yml
 config_dns_yml_txt=`yq r $config_dns_yml --stripComments`
 echo "$config_dns_yml_txt"  >  $config_dns_yml
