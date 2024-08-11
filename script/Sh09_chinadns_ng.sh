@@ -389,7 +389,7 @@ server-name smartdns
 #  IPV6:
 #    bind [::]:53
 #    bind-tcp [::]:53
-bind 0.0.0.0:8051 -group china  -no-speed-check -no-cache
+bind 0.0.0.0:8051 -group china -no-cache
 bind 0.0.0.0:8052 -group office
 
 # china 服务器
@@ -401,20 +401,20 @@ server 1.2.4.8 -group china
 #server 240c::6644 -group china
 
 # office 服务器 https://kb.adguard.com/en/general/dns-providers
-server 192.168.123.1:8054 -group office
+#server 192.168.123.1:8054 -group office
 # Google DNS
-server 8.8.8.8 -group office
+#server 8.8.8.8 -group office
 server-https https://dns.google/dns-query -group office
-server-tls 8.8.8.8 -group office
+server-tls dns.google -group office
 # Cloudflare DNS
+server-tcp 1.1.1.1 -group office
 server-https https://dns.cloudflare.com/dns-query -group office
-server-tls 1.0.0.1 -group office
-# adguard
-#server-https https://dns.adguard.com/dns-query -group office
+server-tls 1.1.1.1 -group office
 # OpenDNS
-server-https https://208.67.222.222/dns-query -group office
-server-tls 208.67.222.222:443 -group office
-#server 2620:119:35::35 -group office
+server-https https://doh.opendns.com/dns-query -group office
+server-tls dns.opendns.com -group office
+server-https https://[2620:119:fc::2]/dns-query -group office
+server-https https://kr-sel.doh.sb/dns-query -group office
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
@@ -424,7 +424,7 @@ server-tls 208.67.222.222:443 -group office
 # cache-size [number]
 #   0: for no cache
 #cache-size 512
-
+serve-expired yes
 # 域名预先获取功能
 # prefetch-domain [yes|no]
 prefetch-domain yes
@@ -536,8 +536,6 @@ nameserver /opt.cn2qq.com/office
 # address /www.example.com/-, ignore address, query from upstream, suffix 4, for ipv4, 6 for ipv6, none for all
 # address /www.example.com/#, return SOA to client, suffix 4, for ipv4, 6 for ipv6, none for all
 address /bing.com/204.79.197.200
-address /chat.openai.com/172.64.150.28
-address /chatgpt.com/104.18.32.115
 
 # 设置IPSET超时功能启用
 # ipset-timeout yes
