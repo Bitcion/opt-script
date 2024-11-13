@@ -856,12 +856,6 @@ echo '- command: delete
   path: dns.fallback(.==https://1.1.1.1/dns-query)
 - command: delete
   path: dns.fallback(.==https://1.0.0.1/dns-query)
-- command: update 
-  path: dns.fallback[+]
-  value: https://dns.google/dns-query
-- command: update 
-  path: dns.fallback[+]
-  value: https://1.0.0.1/dns-query
 ' | yq w -i -s - $config_dns_yml
 config_dns_yml_txt=`yq r $config_dns_yml --stripComments`
 echo "$config_dns_yml_txt"  >  $config_dns_yml
@@ -883,7 +877,7 @@ rm_temp
 dns_start_dnsproxy='0' # 0:自动开启第三方 DNS 程序(dnsproxy) ;
 else
 logger -t "【clash】" "变更 clash dns 端口 listen 0.0.0.0:8053 跳过自动开启第三方 DNS 程序但是继续把DNS绑定到 8053 端口的程序"
-yq w -i $config_dns_yml dns.listen 0.0.0.0:8053
+yq w -i $config_dns_yml dns.listen 0.0.0.0:8054
 rm_temp
 dns_start_dnsproxy='1' # 1:跳过自动开启第三方 DNS 程序但是继续把DNS绑定到 8053 端口的程序
 fi
