@@ -667,7 +667,7 @@ if [ ! -f "$app_21" ] || [ ! -s "$app_21" ] ; then
 	cat > "$app_21" <<-\EEE
 dns:
   enable: true
-  ipv6: false
+  ipv6: true
   listen: 0.0.0.0:8053
   default-nameserver :
     - 8.8.8.8
@@ -688,43 +688,7 @@ dns:
   #   - localhost.ptlogin2.qq.com
 
   nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-    - 119.29.29.29
-    # - tls://dns.rubyfish.cn:853
-    # - https://dns.rubyfish.cn/dns-query
-    # - https://dns.alidns.com/dns-query
 
-  fallback:
-    # 与 nameserver 内的服务器列表同时发起请求，当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。
-    - https://dns.google/dns-query
-    - https://1.0.0.1/dns-query
-    - tcp://8.8.8.8:53
-    - tcp://8.8.4.4:53
-    - tcp://208.67.222.222:443
-    - tcp://208.67.220.220:443
-    # - tls://1.0.0.1:853
-    # - tls://dns.google:853
-    # - tls://dns.google
-    # - https://dns.rubyfish.cn/dns-query
-    # - https://cloudflare-dns.com/dns-query
-
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.google.com'
-      - '+.googleapis.com'
-      - '+.youtube.com'
-      - '+.appspot.com'
-      - '+.telegram.com'
-      - '+.facebook.com'
-      - '+.twitter.com'
-      - '+.blogger.com'
-      - '+.gmail.com'
-      - '+.gvt1.com'
 
 EEE
 	chmod 755 "$app_21"
@@ -739,11 +703,7 @@ sniffer:
   sniff:
     http: { ports: [80, 8080] }
     tls: { ports: [443, 8443] }
-  skip-domain:
-    #Apple
-    - 'courier.push.apple.com'
-    #mi
-    - 'Mijia Cloud'
+
 
 EEE
 	chmod 755 "$app_21"
