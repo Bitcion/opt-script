@@ -670,7 +670,7 @@ dns:
   ipv6: true
   listen: 0.0.0.0:8053
   default-nameserver :
-    - 8.8.8.8
+    - 223.5.5.5
   enhanced-mode: fake-ip
   # enhanced-mode: redir-host # 或 fake-ip
   # # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改
@@ -688,7 +688,13 @@ dns:
   #   - localhost.ptlogin2.qq.com
 
   nameserver:
-
+  
+tun:
+  enable: true
+  stack: system 
+  auto-route: false
+  dns-hijack:
+    - 'any:53'
 
 EEE
 	chmod 755 "$app_21"
@@ -699,7 +705,7 @@ if [ -z "$(cat $app_21 | grep sniffer)" ] ; then
 	cat >> "$app_21" <<-\EEE
 sniffer:
   enable: true
-  override-destination: true
+  override-destination: false
   sniff:
     http: { ports: [80, 8080] }
     tls: { ports: [443, 8443] }
