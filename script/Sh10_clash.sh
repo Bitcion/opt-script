@@ -668,7 +668,7 @@ dns:
   listen: 0.0.0.0:8054
   default-nameserver :
     - 223.5.5.5
-  enhanced-mode: fake-ip
+  enhanced-mode: redir-host
   # enhanced-mode: redir-host # 或 fake-ip
   # # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改
   # # 实验性功能 hosts, 支持通配符 (例如 *.clash.dev 甚至 *.foo.*.example.com)
