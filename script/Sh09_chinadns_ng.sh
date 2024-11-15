@@ -389,36 +389,29 @@ server-name smartdns
 #  IPV6:
 #    bind [::]:53
 #    bind-tcp [::]:53
-bind 0.0.0.0:8051 -group china -no-cache
-bind 0.0.0.0:8052 -group office
+bind [::]:8051 -group china -no-cache
+bind-tcp [::]:8051 -group china
+bind [::]:8052 -group office
+bind-tcp [::]:8052 -group office -force-aaaa-soa -force-https-soa
 
 # china 服务器
-server 119.29.29.29 -group china
-server 114.114.114.114 -group china
-server 223.5.5.5 -group china
-server 1.2.4.8 -group china
-#server 240c::6666 -group china
-#server 240c::6644 -group china
+server 218.201.96.130 -group china  
+server 2409:803C:2000:2::27 -group china
+server-https https://doh.pub/dns-query -group china
+server-https https://dns.alidns.com/dns-query -group china
 
-# office 服务器 https://kb.adguard.com/en/general/dns-providers
-#server 192.168.123.1:8054 -group office
-# Google DNS
-#server 8.8.8.8 -group office
-server-https https://dns.google/dns-query -group office
-server-tls dns.google -group office
-# Cloudflare DNS
+# office 服务器
 server-tcp 1.1.1.1 -group office
-server-https https://dns.cloudflare.com/dns-query -group office
-server-tls 1.1.1.1 -group office
-# OpenDNS
-server-https https://doh.opendns.com/dns-query -group office
-server-tls dns.opendns.com -group office
+server-tls dns.google -group office
 server-https https://[2620:119:fc::2]/dns-query -group office
-server-https https://kr-sel.doh.sb/dns-query -group office
+#server-https https://kr-sel.doh.sb/dns-query -group office
+#server-https https://hk-hkg.doh.sb/dns-query -group office
+#server-https https://sg-sin.doh.sb/dns-query -group office
+#server-https https://jp-nrt.doh.sb/dns-query -group office
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
-#tcp-idle-time 120
+  tcp-idle-time 120
 
 # 域名结果缓存个数
 # cache-size [number]
@@ -528,7 +521,6 @@ prefetch-domain yes
 # nameserver /domain/[group|-]
 # nameserver /www.example.com/office, Set the domain name to use the appropriate server group.
 # nameserver /www.example.com/-, ignore this domain
-nameserver /opt.cn2qq.com/office
 
 # 指定域名IP地址
 # address /domain/[ip|-|-4|-6|#|#4|#6]
