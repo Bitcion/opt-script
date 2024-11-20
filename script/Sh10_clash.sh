@@ -685,6 +685,9 @@ dns:
   #   - localhost.ptlogin2.qq.com
 
   nameserver:
+    - https://[2620:119:fc::2]/dns-query
+    - https://[2001:4860:4860::8888]/dns-query#h3=true
+    - https://[2001:4860:4860::8844]/dns-query#h3=true
     # - tls://dns.rubyfish.cn:853
     # - https://dns.rubyfish.cn/dns-query
     # - https://dns.alidns.com/dns-query
