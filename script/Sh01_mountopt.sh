@@ -462,7 +462,7 @@ if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] || [ ! -d /tmp/AiDisk_00/cn2qq/opt-f
 mkdir -p /tmp/AiDisk_00/cn2qq
 if [[ "$(unzip -h 2>&1 | wc -l)" -gt 2 ]] ; then
 	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
-	opt_download_file="https://opt.cn2qq.com/opt-file.tgz"
+	opt_download_file="https://github.com/hiboyhiboy/opt-file/archive/master.zip"
 else
 	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
 	opt_download_file="https://opt.cn2qq.com/opt-file.tgz"
