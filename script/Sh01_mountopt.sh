@@ -78,8 +78,8 @@ if [ "$opt_download_enable" != "0" ] ; then
 	hiboyscript="$opt_force_script"
 else
 	if [ "$opt_force_file" == "$opt_force_file_tmp" ] ; then
-		opt_force_file="https://bitcoin.github.io/opt-file"
-		opt_force_script="https://bitcoin.github.io/opt-script"
+		opt_force_file="https://opt.cn2qq.com/opt-file"
+		opt_force_script="https://bitcion.github.io/opt-script"
 		nvram set opt_force_file="$opt_force_file"
 		nvram set opt_force_script="$opt_force_script"
 		sed -Ei '/^hiboyfile=/d' /etc/storage/script/init.sh
@@ -119,7 +119,7 @@ else
 		opt_download_enable="0" && nvram set opt_download_enable="$opt_download_enable"
 	fi
 	opt_force_file="https://gcore.jsdelivr.net/gh/HiboyHiboy/opt-file" && nvram set opt_force_file="$opt_force_file"
-	opt_force_script="https://gcore.jsdelivr.net/gh/HiboyHiboy/opt-script" && nvram set opt_force_script="$opt_force_script"
+	opt_force_script="https://bitcion.github.io/opt-script" && nvram set opt_force_script="$opt_force_script"
 	logger -t "【script】" "下载地址失效 https://opt.cn2qq.com"
 	logger -t "【script】" "变更使用免费CDN https://gcore.jsdelivr.net/gh/HiboyHiboy/opt-file"
 	opt_force
@@ -411,13 +411,13 @@ if [ -d $cn2qq_name ] ; then
 logger -t "【opt】" "opt-script 开始匹配： $cn2qq_name"
 cd $cn2qq_name
 #md5sum `/usr/bin/find ./ -type f | grep -v .git | grep -v md5.md5 | grep -v up_name.md5 | grep -v up_name.txt` > ./md5.md5
-wgetcurl_checkmd5 "$cn2qq_name/up_name.md5" "https://opt.cn2qq.com/opt-script/md5.md5" "https://raw.githubusercontent.com/hiboyhiboy/opt-script/master/md5.md5"
+wgetcurl_checkmd5 "$cn2qq_name/up_name.md5" "https://bitcion.github.io/opt-script/md5.md5" "https://bitcion.github.io/opt-script/md5.md5"
 if [ -s $cn2qq_name/up_name.md5 ] ; then
 # 生成不匹配文件名
 cd $cn2qq_name
 md5sum -c $cn2qq_name/up_name.md5 | grep ": FAILED" | awk -F ':' '{print($1)}' | sed -e 's@^./@/@g' > $cn2qq_name/up_name.txt
 # 下载不匹配文件
-cat $cn2qq_name/up_name.txt | grep -v '^$' | while read update_addr; do [ ! -z "$update_addr" ] &&  wgetcurl_checkmd5 "$cn2qq_name$update_addr" "https://opt.cn2qq.com/opt-script$update_addr" "https://raw.githubusercontent.com/hiboyhiboy/opt-script/master$update_addr" Y; done
+cat $cn2qq_name/up_name.txt | grep -v '^$' | while read update_addr; do [ ! -z "$update_addr" ] &&  wgetcurl_checkmd5 "$cn2qq_name$update_addr" "https://bitcion.github.io/opt-script/$update_addr" "https://bitcion.github.io/opt-script/$update_addr" Y; done
 rm -f $cn2qq_name/up_name.txt
 logger -t "【opt】" "opt-script 匹配完成： $cn2qq_name"
 else
@@ -462,10 +462,10 @@ if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] || [ ! -d /tmp/AiDisk_00/cn2qq/opt-f
 mkdir -p /tmp/AiDisk_00/cn2qq
 if [[ "$(unzip -h 2>&1 | wc -l)" -gt 2 ]] ; then
 	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
-	opt_download_file="https://bitcoin.github.io/opt-file/opt-file.tgz"
+	opt_download_file="https://codeload.github.com/Bitcion/opt-file/zip/refs/heads/master"
 else
 	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
-	opt_download_file="https://bitcoin.github.io/opt-file/opt-file.tgz"
+	opt_download_file="https://opt.cn2qq.com/opt-file/opt-file.tgz"
 fi
 
 [ -d /tmp/AiDisk_00/cn2qq/opt-script-master ] && { rm -rf /tmp/AiDisk_00/cn2qq/opt-script; ln -sf /tmp/AiDisk_00/cn2qq/opt-script-master /tmp/AiDisk_00/cn2qq/opt-script; }
@@ -495,7 +495,7 @@ if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] ; then
 fi
 logger -t "【opt】" "$upanPath/cn2qq/opt-script.tgz 解压完成！"
 if [ -f /tmp/AiDisk_00/cn2qq/opt-file/osub ] ; then
-wgetcurl.sh '/tmp/osub_tmp' "https://bitcoin.github.io/opt-file/osub" "https://bitcoin.github.io/opt-file/osub"
+wgetcurl.sh '/tmp/osub_tmp' "https://bitcion.github.io/opt-file/osub" "https://bitcion.github.io/opt-file/osub"
 if [ -s /tmp/osub_tmp ] ; then
 	cp -f /tmp/osub_tmp /tmp/AiDisk_00/cn2qq/opt-file/osub
 	rm -f /tmp/osub_tmp
