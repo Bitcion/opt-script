@@ -3,7 +3,7 @@ name: Run Package Script
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   run-package-script:
