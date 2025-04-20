@@ -461,11 +461,11 @@ if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] || [ ! -d /tmp/AiDisk_00/cn2qq/opt-f
 [ ! -d /tmp/AiDisk_00/cn2qq/opt-file ] && logger -t "【opt】" "部署离线 opt-file 环境到 USB/cn2qq/opt-file"
 mkdir -p /tmp/AiDisk_00/cn2qq
 if [[ "$(unzip -h 2>&1 | wc -l)" -gt 2 ]] ; then
-	opt_download_script="https://github.com/hiboyhiboy/opt-script/archive/master.zip"
-	opt_download_file="https://github.com/hiboyhiboy/opt-file/archive/master.zip"
+	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
+	opt_download_file="https://bitcoin.github.io/opt-file/opt-file.tgz"
 else
-	opt_download_script="https://opt.cn2qq.com/opt-script.tgz"
-	opt_download_file="https://opt.cn2qq.com/opt-file.tgz"
+	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
+	opt_download_file="https://bitcoin.github.io/opt-file/opt-file.tgz"
 fi
 
 [ -d /tmp/AiDisk_00/cn2qq/opt-script-master ] && { rm -rf /tmp/AiDisk_00/cn2qq/opt-script; ln -sf /tmp/AiDisk_00/cn2qq/opt-script-master /tmp/AiDisk_00/cn2qq/opt-script; }
@@ -495,7 +495,7 @@ if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] ; then
 fi
 logger -t "【opt】" "$upanPath/cn2qq/opt-script.tgz 解压完成！"
 if [ -f /tmp/AiDisk_00/cn2qq/opt-file/osub ] ; then
-wgetcurl.sh '/tmp/osub_tmp' "https://opt.cn2qq.com/opt-file/osub" "https://raw.githubusercontent.com/hiboyhiboy/opt-file/master/osub"
+wgetcurl.sh '/tmp/osub_tmp' "https://bitcoin.github.io/opt-file/osub" "https://bitcoin.github.io/opt-file/osub"
 if [ -s /tmp/osub_tmp ] ; then
 	cp -f /tmp/osub_tmp /tmp/AiDisk_00/cn2qq/opt-file/osub
 	rm -f /tmp/osub_tmp
