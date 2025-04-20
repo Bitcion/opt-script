@@ -20,5 +20,5 @@ ipv6使用提示：
   nameserver-policy:
        "geosite:bing,openai,yahoo,netflix": 
              - 0.0.0.0:8052
-这些网站的dns请求会在clash dns分流到SmartDNS的bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa 过滤ipv6 查询，实现 only ipv4透明
+这些网站的dns请求会在clash dns分流到SmartDNS的bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa 过滤ipv6 查询，实现 only ipv4透明代理
 
