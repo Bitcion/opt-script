@@ -1,6 +1,7 @@
 #!/bin/bash
 #copyright by hiboy
 source /etc/storage/script/init.sh
+#nvramshow=`nvram showall | grep '=' | grep opt | awk '{print gensub(/'"'"'/,"'"'"'\"'"'"'\"'"'"'","g",$0);}'| awk '{print gensub(/=/,"='\''",1,$0)"'\'';";}'` && eval $nvramshow
 optinstall=`nvram get optinstall`
 ss_opt_x=`nvram get ss_opt_x`
 upopt_enable=`nvram get upopt_enable`
@@ -18,7 +19,7 @@ size_media_enable=`nvram get size_media_enable`
 
 [ -z $ss_opt_x ] && ss_opt_x=1 && nvram set ss_opt_x="$ss_opt_x"
 
-if [ ! -z "$(echo $scriptfilepath | grep -v "/tmp/script/" | grep mountopt)" ] && [ ! -s /tmp/script/_mountopt ] ; then
+if [ ! -z "$(echo $scriptfilepath | grep -v "/tmp/script/" | grep mountopt)" ]  && [ ! -s /tmp/script/_mountopt ]; then
 	mkdir -p /tmp/script
 	{ echo '#!/bin/bash' ; echo $scriptfilepath '"$@"' ; } > /tmp/script/_mountopt
 	chmod 777 /tmp/script/_mountopt
@@ -77,8 +78,8 @@ if [ "$opt_download_enable" != "0" ] ; then
 	hiboyscript="$opt_force_script"
 else
 	if [ "$opt_force_file" == "$opt_force_file_tmp" ] ; then
-		opt_force_file="https://opt.cn2qq.com/opt-file"
-		opt_force_script="https://opt.cn2qq.com/opt-script"
+		opt_force_file="https://bitcoin.github.io/opt-file"
+		opt_force_script="https://bitcoin.github.io/opt-script"
 		nvram set opt_force_file="$opt_force_file"
 		nvram set opt_force_script="$opt_force_script"
 		sed -Ei '/^hiboyfile=/d' /etc/storage/script/init.sh
@@ -137,21 +138,7 @@ fi
 # 5 >>安装到 指定目录
 # 6 >>安装到 远程共享
 # 不是ext4磁盘时用镜像生成opt
-
-func_stop_apps()
-{
-	stop_rstats
-}
-
-func_start_apps()
-{
-	start_rstats &
-	run_c="$(ps -w | grep "/usr/sbin/httpd"| head -n1 | grep -v grep | awk -F " " '{for(i=5;i<=NF;++i) sum=sum" "$i}END{print sum}' )"
-	if [ ! -z "$run_c" ] ; then
-		killall httpd
-		eval "$run_c" & 
-	fi
-}
+#set -x
 
 mount_check_lock () {
 
@@ -162,7 +149,6 @@ if [ ! -z "$dev_mount" ] && [ ! -z "$dev_full" ] ; then
 if mountpoint -q "$dev_mount" ; then
 	logger -t "【opt】" "发现挂载异常设备，尝试移除： $dev_full   $dev_mount"
 	/tmp/re_upan_storage.sh 0
-	func_stop_apps
 	mountres2=`losetup -a | grep $dev_mount | grep o_p_t.img | awk -F ':' '{print $1}'`
 	[ ! -z "$mountres2" ] && /usr/bin/opt-umount.sh $dev_full   $dev_mount
 	mountres2=`losetup -a | grep $dev_mount | grep o_p_t.img | awk -F ':' '{print $1}'`
@@ -191,7 +177,6 @@ if mountpoint -q "$dev_mount" ; then
 	if mountpoint -q "$dev_mount" ; then
 		logger -t "【opt】" "挂载异常设备，尝试移除失败"
 	fi
-	func_start_apps
 fi
 fi
 ss_opt_x=`nvram get ss_opt_x`
@@ -203,13 +188,11 @@ if [ "$mountp" = "0" ] ; then
 	[ -z "$optPath" ] && optPath=$(grep ' /opt ' /proc/mounts | grep -v "^//" | awk '{print $1}' | grep -E "$(echo $(/usr/bin/find /dev/ -name '*') | sed -e 's@/dev/ /dev/@/dev/@g' | sed -e 's@ @|@g')")
 	[ -z "$optPath" ] && optPath="$(grep ' /opt ' /proc/mounts | grep " cifs "| awk '{print $1}')"
 	if [ -z "$optPath" ] ; then
-		func_stop_apps
 		logger -t "【opt】" "opt 选项[$ss_opt_x] 挂载异常，重新挂载：umount -l /opt"
 		/usr/bin/opt-umount.sh $(grep ' /opt ' /proc/mounts | awk '{print $1}')    $(df -m | grep "$(df -m | grep '% /opt' | awk 'NR==1' | awk '{print $1}')" | grep "/media"| awk '{print $NF}' | awk 'NR==1' )
 		mountpoint -q /opt && umount /opt
 		mountpoint -q /opt && umount -l /opt
 		mountpoint -q /opt && { fuser -m -k /opt 2>/dev/null ; umount -l /opt ; }
-		func_start_apps
 		mount_opt
 	else
 		logger -t "【opt】" "opt 挂载正常：$optPath"
@@ -377,17 +360,12 @@ if [ "$ss_opt_x" = "5" ] ; then
 	fi
 fi
 if [ ! -z "$upanPath" ] ; then
-	func_stop_apps
 	mkdir -p /tmp/AiDisk_opt
 	mountpoint -q /tmp/AiDisk_opt && umount /tmp/AiDisk_opt
 	mount -o bind "$upanPath" /tmp/AiDisk_opt
 	[ "$(cat  /proc/mounts | grep " /tmp/AiDisk_opt " | awk '{print $3}')" = "ext4" ] && ext4_check=1 || ext4_check=0
-	if [ "$ext4_check" = "0" ] ; then
-        [ "$(cat  /proc/mounts | grep " /tmp/AiDisk_opt " | awk '{print $3}')" = "ubifs" ] && ext4_check=1
-	fi
 	mountpoint -q /tmp/AiDisk_opt && umount /tmp/AiDisk_opt
 	[ -z "$(ls -l /tmp/AiDisk_opt)" ] && rm -rf /tmp/AiDisk_opt
-	[ "$ext4_check" = "1" ] && [ -f "$upanPath/opt/o_p_t.img" ] && ext4_check=0
 	if [ "$(losetup -h 2>&1 | wc -l)" -gt 2 ] && [ "$ext4_check" = "0" ] ; then
 		# 不是ext4磁盘时用镜像生成opt
 		mkoptimg "$upanPath"
@@ -401,7 +379,6 @@ if [ ! -z "$upanPath" ] ; then
 	[ -d /tmp/AiDisk_00 ] || rm -rf /tmp/AiDisk_00
 	ln -sf "$upanPath" /tmp/AiDisk_00
 	sync
-	func_start_apps
 	# prepare ssh authorized_keys
 	prepare_authorized_keys
 	# 部署离线 opt 环境下载地址
@@ -495,7 +472,7 @@ fi
 if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] ; then
 	rm -rf /tmp/AiDisk_00/cn2qq/opt-script
 	rm -rf /tmp/AiDisk_00/cn2qq/opt-script-master
-if [ ! -f /tmp/AiDisk_00/cn2qq/opt-script.tgz ] ; then
+if [ ! -f /tmp/AiDisk_00/cn2qq/opt-script.tgz ]  ; then
 	rm -f /tmp/AiDisk_00/cn2qq/opt-script.tgz
 	logger -t "【opt】" "/tmp/AiDisk_00/cn2qq 可用空间：$(df -m | grep '% /tmp/AiDisk_00/cn2qq' | awk 'NR==1' | awk -F' ' '{print $4}')M"
 	logger -t "【opt】" "下载: $opt_download_script"
@@ -532,7 +509,7 @@ fi
 if [ ! -d /tmp/AiDisk_00/cn2qq/opt-file ] ; then
 	rm -rf /tmp/AiDisk_00/cn2qq/opt-file
 	rm -rf /tmp/AiDisk_00/cn2qq/opt-file-master
-if [ ! -f /tmp/AiDisk_00/cn2qq/opt-file.tgz ] ; then
+if [ ! -f /tmp/AiDisk_00/cn2qq/opt-file.tgz ]  ; then
 	rm -f /tmp/AiDisk_00/cn2qq/opt-file.tgz
 	logger -t "【opt】" "/tmp/AiDisk_00/cn2qq 可用空间：$(df -m | grep '% /tmp/AiDisk_00/cn2qq' | awk 'NR==1' | awk -F' ' '{print $4}')M"
 	logger -t "【opt】" "下载: $opt_download_file"
@@ -580,8 +557,8 @@ if [ ! -s "$upanPath/opt/o_p_t.img" ] && [ ! -z "$(which mkfs.ext4)" ] ; then
 	logger -t "【opt】" "创建$upanPath/opt/o_p_t.img镜像(ext4)文件，$opt_cifs_block M"
 	rm -f $upanPath/opt/o_p_t.img
 	dd if=/dev/zero of=$upanPath/opt/o_p_t.img bs=1M seek=$opt_cifs_block count=0
-	sleep 1
-	[ ! -f $upanPath/opt/o_p_t.img ] && { rm -f $upanPath/opt/o_p_t.img; dd if=/dev/zero of=$upanPath/opt/o_p_t.img bs=1M seek=$opt_cifs_block count=1 ; sleep 1 ; }
+	sleep 5
+	[ ! -f $upanPath/opt/o_p_t.img ] && { rm -f $upanPath/opt/o_p_t.img; dd if=/dev/zero of=$upanPath/opt/o_p_t.img bs=1M seek=$opt_cifs_block count=1 ; sleep 5 ; }
 	losetup `losetup -f` $upanPath/opt/o_p_t.img
 	mkfs.ext4 -i 16384 `losetup -a | grep o_p_t.img | awk -F ':' '{print $1}'`
 fi
@@ -640,7 +617,7 @@ if [ ! -s "/etc/ssl/certs/ca-certificates.crt" ] ; then
 	mkdir -p /tmp/ssl/certs
 	rm -f /etc/ssl/certs
 	ln -sf /tmp/ssl/certs  /etc/ssl/certs
-	if [ ! -s "/etc/ssl/certs/ca-certificates.crt" ] && [ -s /etc_ro/certs.tgz ] ; then
+	if [ ! -s "/etc/ssl/certs/ca-certificates.crt" ] && [ -s /etc_ro/certs.tgz ]; then
 		tar -xzvf /etc_ro/certs.tgz -C /tmp/ssl/ ; cd /opt
 	fi
 	if [ ! -s "/etc/ssl/certs/ca-certificates.crt" ] ; then
@@ -676,7 +653,7 @@ if [ "$mountp" = "0" ] && [ ! -s "/etc/ssl/certs/ca-certificates.crt" ] ; then
 	mkdir -p /opt/etc/ssl/certs
 	rm -f /etc/ssl/certs
 	ln -sf /opt/etc/ssl/certs  /etc/ssl/certs
-	if [ ! -s "/etc/ssl/certs/ca-certificates.crt" ] && [ -s /etc_ro/certs.tgz ] ; then
+	if [ ! -s "/etc/ssl/certs/ca-certificates.crt" ] && [ -s /etc_ro/certs.tgz ]; then
 		tar -xzvf /etc_ro/certs.tgz -C /opt/etc/ssl/ ; cd /opt
 	fi
 	if [ ! -s "/etc/ssl/certs/ca-certificates.crt" ] ; then
@@ -789,7 +766,7 @@ logger -t "【opt】" "以上两个数据如出现占用100%时，则 opt 数据
 opt_file () {
 opt_mini=$1
 logger -t "【opt】" "opt $opt_mini 下载/opt/opt.tgz"
-if [ ! -f /opt/opt.tgz ] ; then
+if [ ! -f /opt/opt.tgz ]  ; then
 	rm -f /opt/opt.tgz*
 	logger -t "【opt】" "/opt 可用空间：$(df -m | grep '% /opt' | awk 'NR==1' | awk -F' ' '{print $4}')M"
 	optPath="`grep ' /opt ' /proc/mounts | grep tmpfs`"
@@ -811,7 +788,7 @@ if [ ! -f /opt/opt.tgz ] ; then
 		done
 		logger -t "【opt】" "合并文件: /opt/opt.tgz"
 		cat /opt/opt.tgz.* > /opt/opt.tgz
-		if [ "$optupanfile_md5" != "$(md5sum /opt/opt.tgz | awk '{print $1;}')" ] ; then
+		if [ "$optupanfile_md5" != "$(md5sum /opt/opt.tgz | awk '{print $1;}')" ]  ; then
 			logger -t "【opt】" "/opt/opt.tgz md5不匹配！"
 			rm -f /opt/opt.tgz*
 		else
@@ -823,7 +800,7 @@ if [ ! -f /opt/opt.tgz ] ; then
 else
 	logger -t "【opt】" "/opt/opt.tgz 已经存在，开始解压，需 5-15 分钟时间，解压时可能会出现程序不能运行的情况"
 fi
-if [ -f /opt/opt.tgz ] ; then
+if [ -f /opt/opt.tgz ]  ; then
 tar -xzvf /opt/opt.tgz -C /opt ; cd /opt
 optPath="`grep ' /opt ' /proc/mounts | grep tmpfs`"
 [ ! -z "$optPath" ] && rm -f /opt/opt.tgz
@@ -892,11 +869,26 @@ fi
 nvram set optt="`cat /tmp/opti.txt`"
 else
 rm -rf /tmp/opti.txt
+upopt2 &
 fi
 [[ "$(cat /opt/opti.txt | wc -c)" -gt 11 ]] && echo "" > /opt/opti.txt
 [ ! -z "$(cat /opt/opti.txt | grep '<' | grep '>')" ] && echo "" > /opt/opti.txt
-sed -Ei "s@[^0-9\\-]@@g" /opt/opti.txt
 nvram set opto="`cat /opt/opti.txt`"
+}
+
+upopt2 () {
+wgetcurl.sh "/tmp/opti.txt" "$opt_txt_file1" "$opt_txt_file2"
+if [ ! -s /tmp/opti.txt ] ; then
+	re_ca_tmp
+	wgetcurl.sh "/tmp/opti.txt" "$opt_txt_file1" "$opt_txt_file2"
+fi
+if [ ! -s /tmp/opti.txt ] ; then
+	opt_cdn_force
+	wgetcurl.sh "/tmp/opti.txt" "$opt_txt_file1" "$opt_txt_file2"
+fi
+[[ "$(cat /tmp/opti.txt | wc -c)" -gt 11 ]] && echo "" > /tmp/opti.txt
+[ ! -z "$(cat /tmp/opti.txt | grep '<' | grep '>')" ] && echo "" > /tmp/opti.txt
+nvram set optt="`cat /tmp/opti.txt`"
 }
 
 libmd5_mk () {
@@ -952,8 +944,6 @@ done < /tmp/md5/libmd5f_opt_backup
 logger -t "【libmd5_恢复】" "/opt/lib|bin|sbin ，md5 对比完成！"
 # flush buffers
 sync;echo 3 > /proc/sys/vm/drop_caches
-func_stop_apps
-func_start_apps
 
 }
 
@@ -1048,84 +1038,46 @@ re_upan_storage () {
 initconfig () {
 
 cat > "/tmp/re_upan_storage.sh" <<-\EEE
-#!/bin/sh
-
-func_stop_apps()
-{
-	stop_rstats
-}
-
-func_start_apps()
-{
-	start_rstats &
-	run_c="$(ps -w | grep "/usr/sbin/httpd"| head -n1 | grep -v grep | awk -F " " '{for(i=5;i<=NF;++i) sum=sum" "$i}END{print sum}' )"
-	if [ ! -z "$run_c" ] ; then
-		killall httpd
-		eval "$run_c" & 
-	fi
-	
-}
-
-if [ ! -f /tmp/upan_storage_enable.lock ] ; then
-touch /tmp/upan_storage_enable.lock
+#!/bin/bash
+#set -x
 upan_storage_enable=`nvram get upan_storage_enable`
 if [ "$upan_storage_enable" = "1" ] && [ "$1" != "0" ] ; then
-	if [ ! -s /etc/storage/start_script.sh ] ; then
-		func_stop_apps
-		sync
-		umount /etc/storage
-		sleep 1
-		umount -l /etc/storage
-		sleep 1
-		{ fuser -m -k /etc/storage 2>/dev/null ; umount -l /etc/storage ; }
-		sleep 1
-		mtd_storage.sh fill
-		sw_mode=`nvram get sw_mode`
-		[ "$sw_mode" != "3" ] && restart_firewall
-		[ "$sw_mode" == "3" ] && /etc/storage/crontabs_script.sh &
-		func_start_apps
-		rm -f /tmp/upan_storage_enable.lock
-		exit
-	fi
-	if ! mountpoint -q /etc/storage ; then
-		if [ ! -f /opt/storage/start_script.sh ] && [ -f /etc/storage/start_script.sh ] ; then
-			mkdir -p -m 755 /opt/storage
-			cp -af /etc/storage/* /opt/storage
-		else
-			#[ -f /opt/storage/start_script.sh ] && cp -af /opt/storage/* /etc/storage
-			[ -d /opt/storage/https ] && { mkdir -p -m 700 /opt/storage/https ; cp -af /opt/storage/https/* /etc/storage/https ; }
-			[ -d /opt/storage/openvpn ] && { mkdir -p /opt/storage/openvpn ; cp -af /opt/storage/openvpn/* /etc/storage/openvpn ; }
-			[ -d /opt/storage/inadyn ] && { mkdir -p /opt/storage/inadyn ; cp -af /opt/storage/inadyn/* /etc/storage/inadyn ; }
-			[ -d /opt/storage/dnsmasq ] && { mkdir -p /opt/storage/dnsmasq ; cp -af /opt/storage/dnsmasq/* /etc/storage/dnsmasq ; }
-		fi
-		logger -t "【外部存储storage】" "/etc/storage -> /opt/storage"
-		func_stop_apps
-		mount --bind /opt/storage /etc/storage
-		sync
-		mtd_storage.sh fill
-		func_start_apps
-	else
-		func_stop_apps
-		func_start_apps
-	fi
+if [ ! -s /etc/storage/start_script.sh ] ; then
+	umount /etc/storage
+	umount -l /etc/storage
+	{ fuser -m -k /etc/storage 2>/dev/null ; umount -l /etc/storage ; }
+	sleep 1
+	mtd_storage.sh fill
+	sw_mode=`nvram get sw_mode`
+	[ "$sw_mode" != "3" ] && restart_firewall
+	[ "$sw_mode" == "3" ] && /etc/storage/crontabs_script.sh &
+	exit
+fi
+if ! mountpoint -q /etc/storage ; then
+if [ ! -f /opt/storage/start_script.sh ] && [ -f /etc/storage/start_script.sh ]  ; then
+	mkdir -p -m 755 /opt/storage
+	cp -af /etc/storage/* /opt/storage
 else
-	func_stop_apps
-	sync
+	#[ -f /opt/storage/start_script.sh ] && cp -af /opt/storage/* /etc/storage
+	[ -d /opt/storage/https ] && { mkdir -p -m 700 /opt/storage/https ; cp -af /opt/storage/https/* /etc/storage/https ; }
+	[ -d /opt/storage/openvpn ] && { mkdir -p /opt/storage/openvpn ; cp -af /opt/storage/openvpn/* /etc/storage/openvpn ; }
+	[ -d /opt/storage/inadyn ] && { mkdir -p /opt/storage/inadyn ; cp -af /opt/storage/inadyn/* /etc/storage/inadyn ; }
+	[ -d /opt/storage/dnsmasq ] && { mkdir -p /opt/storage/dnsmasq ; cp -af /opt/storage/dnsmasq/* /etc/storage/dnsmasq ; }
+fi
+	logger -t "【外部存储storage】" "/etc/storage -> /opt/storage"
+	mount --bind /opt/storage /etc/storage
+	mtd_storage.sh fill
+fi
+else
 	mountpoint -q /etc/storage && logger -t "【外部存储storage】" "停止外部存储storage！ umount /etc/storage"
 	mountpoint -q /etc/storage && umount /etc/storage
-	sleep 1
 	mountpoint -q /etc/storage && umount -l /etc/storage
-	sleep 1
 	mountpoint -q /etc/storage && { fuser -m -k /etc/storage 2>/dev/null ; umount -l /etc/storage ; }
 	sleep 1
 	mtd_storage.sh fill
-	func_start_apps
 fi
-rm -f /tmp/upan_storage_enable.lock
-fi
-
 EEE
-chmod 777 "/tmp/re_upan_storage.sh"
+chmod 755 "/tmp/re_upan_storage.sh"
 
 cifs_script="/etc/storage/cifs_script.sh"
 if [ ! -f "$cifs_script" ] || [ ! -s "$cifs_script" ] ; then
@@ -1176,6 +1128,9 @@ check)
 	mount_check
 	[ "$optinstall" = "1" ] && opt_wget "mini"
 	[ "$optinstall" = "2" ] && opt_wget "full"
+	;;
+check_opt)
+	mount_check
 	;;
 optwget)
 	mount_check
@@ -1232,11 +1187,12 @@ opt_download_file)
 	opt_download &
 	;;
 re_upan_storage)
-	func_stop_apps
 	mount_check
+	killall -q rstats
+	[ $? -eq 0 ] && sleep 1
 	rm -rf /opt/storage/*
 	mtd_storage.sh resetsh
-	func_start_apps
+	/sbin/rstats &
 	;;
 opt_force)
 	opt_force

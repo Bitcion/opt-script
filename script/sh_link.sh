@@ -226,9 +226,6 @@ vless_link_key_url="$(echo -n "$vless_link_specific" | grep -Eo "key=[^&]*"  | c
 vless_link_serviceName="$(echo -n "$vless_link_specific" | grep -Eo "service[Nn]ame=[^&]*"  | cut -d '=' -f2 | sed -n '1p')"
 [ ! -z "$vless_link_serviceName" ] && vless_link_serviceName="$(printf $(echo -n $vless_link_serviceName | sed 's/\\/\\\\/g;s/\(%\)\([0-9a-fA-F][0-9a-fA-F]\)/\\x\2/g'))"
 
-vless_link_authority="$(echo -n "$vless_link_specific" | grep -Eo "authority=[^&]*"  | cut -d '=' -f2 | sed -n '1p')"
-[ ! -z "$vless_link_authority" ] && vless_link_authority="$(printf $(echo -n $vless_link_authority | sed 's/\\/\\\\/g;s/\(%\)\([0-9a-fA-F][0-9a-fA-F]\)/\\x\2/g'))"
-
 vless_link_mode="$(echo -n "$vless_link_specific" | grep -Eo "mode=[^&]*"  | cut -d '=' -f2 | sed -n '1p')"
 [ -z "$vless_link_mode" ] && vless_link_mode="gun"
 
@@ -328,7 +325,7 @@ vless_link_verify_cert="$(echo "$link" | jq -r .verify_cert)"
 
 vless_link_v="$(echo "$link" | jq -r .v)"
 [ "$vless_link_v" == "null" ] && vless_link_v="0"
-if [ "$vless_link_v" == "2" ] ; then
+if [ "$vless_link_v" == "2" ]; then
 # host: 伪装的域名
 vless_link_host="$(echo "$link" | jq -r .host)"
 case $vless_link_type in
@@ -461,7 +458,6 @@ vless_link_seed=""
 vless_link_quicSecurity=""
 vless_link_key=""
 vless_link_serviceName=""
-vless_link_authority=""
 vless_link_mode=""
 vless_link_sni=""
 vless_link_alpn=""
