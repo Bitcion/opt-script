@@ -1,5 +1,5 @@
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
-9444cf6fae2387dd0347cc7ffc25f0f3  ./scriptsh.txt
+3d84b8c301c83071cf2c41590fee08b4  ./scriptsh.txt
 323875a693139c887e3cd3a1d188fe48  ./README.md
 243d62c6f80d2fc9f44083d1c60e3f73  ./nps.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
@@ -65,7 +65,7 @@ c0db8baf3ff5d383cf850e9ce3db9761  ./script/Sh03_jbls.sh
 13008e68414dc08ba44057abb09a4ded  ./script/Sh63_t_mall.sh
 5bf0910d2639a16ed8ea7591c682cdae  ./script/Sh49_qcloud.sh
 860fc85d6deb620d419a4601deba7629  ./script/Sh12_ad_m.sh
-d937d19065f2bfd23f41803e8beb4552  ./script/Sh09_chinadns_ng.sh
+a7a96b2c973ac54bd90557cb0bdc7c34  ./script/Sh09_chinadns_ng.sh
 fc0c06b06b6d1526fcbf5bbca793049c  ./script/Sh61_lnmp.sh
 fef007d65a6106283fbfab7afd5c0c20  ./script/Sh99_ss_tproxy.sh
 3959da42c9da709a04e23110422b01b9  ./script/sh_emi.sh
