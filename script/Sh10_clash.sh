@@ -693,7 +693,6 @@ dns:
     - one.one.one.one#♻️ 自动选择
     - tcp://dns.google#♻️ 自动选择
     - https://[2620:119:fc::2]/dns-query
-    - https://dns.twnic.tw/dns-query 
     - https://dns.cloudflare.com/dns-query
 
   nameserver-policy:
