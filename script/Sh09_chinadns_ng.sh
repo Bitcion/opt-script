@@ -367,6 +367,7 @@ server-name smartdns
 # 附加配置文件
 # conf-file [file]
 # conf-file /etc/storage/smartdns.more.conf
+conf-file /opt/anti-ad-for-smartdns.conf
 
 # dns服务器绑定ip和端口，默认dns服务器端口为53，支持绑定多个ip和端口
 # bind udp server
@@ -391,7 +392,7 @@ server-name smartdns
 #    bind-tcp [::]:53
 bind [::]:8051 -group china -no-cache
 bind-tcp [::]:8051 -group china
-bind [::]:8052 -group office
+bind [::]:8052 -group office -force-aaaa-soa -force-https-soa
 bind-tcp [::]:8052 -group office -force-aaaa-soa -force-https-soa
 
 # china 服务器
@@ -403,7 +404,7 @@ server-https https://dns.alidns.com/dns-query -group china
 # office 服务器
 server-tcp 1.1.1.1 -group office
 server-tls dns.google -group office
-server-https https://[2620:119:fc::2]/dns-query -group office
+server-tls 1.1.1.1 -group office
 #server-https https://kr-sel.doh.sb/dns-query -group office
 #server-https https://hk-hkg.doh.sb/dns-query -group office
 #server-https https://sg-sin.doh.sb/dns-query -group office
@@ -411,16 +412,16 @@ server-https https://[2620:119:fc::2]/dns-query -group office
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
-  tcp-idle-time 120
+# tcp-idle-time 120
 
 # 域名结果缓存个数
 # cache-size [number]
 #   0: for no cache
 #cache-size 512
-serve-expired yes
 # 域名预先获取功能
 # prefetch-domain [yes|no]
 prefetch-domain yes
+serve-expired yes
 
 # 假冒IP地址过滤
 # bogus-nxdomain [ip/subnet]
@@ -527,7 +528,6 @@ prefetch-domain yes
 # address /www.example.com/1.2.3.4, return ip 1.2.3.4 to client
 # address /www.example.com/-, ignore address, query from upstream, suffix 4, for ipv4, 6 for ipv6, none for all
 # address /www.example.com/#, return SOA to client, suffix 4, for ipv4, 6 for ipv6, none for all
-address /bing.com/204.79.197.200
 
 # 设置IPSET超时功能启用
 # ipset-timeout yes
