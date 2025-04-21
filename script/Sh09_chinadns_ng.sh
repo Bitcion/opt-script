@@ -402,9 +402,8 @@ server-https https://doh.pub/dns-query -group china
 server-https https://dns.alidns.com/dns-query -group china
 
 # office 服务器
-server-tcp 1.1.1.1 -group office
-server-tls dns.google -group office
-server-tls 1.1.1.1 -group office
+server-tls one.one.one.one -group office
+server-https https://dns.google/dns-query -group office
 #server-https https://kr-sel.doh.sb/dns-query -group office
 #server-https https://hk-hkg.doh.sb/dns-query -group office
 #server-https https://sg-sin.doh.sb/dns-query -group office
