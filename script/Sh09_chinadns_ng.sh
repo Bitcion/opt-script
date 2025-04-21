@@ -402,9 +402,9 @@ server-https https://doh.pub/dns-query -group china
 server-https https://dns.alidns.com/dns-query -group china
 
 # office 服务器
-server-tls one.one.one.one -group office
-server-https https://dns.google/dns-query -group office
-#server-https https://1.1.1.1/dns-query -group office
+server-tcp dns.google -group office
+server-tls 1.1.1.1 -group office
+server-tls://dns.opendns.com -group office
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
