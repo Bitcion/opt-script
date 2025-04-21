@@ -1,5 +1,5 @@
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
-f3b820bcaf47a4bc19a332c02348dc59  ./scriptsh.txt
+9a73f430d096d3cbb56d55ab7a64cd69  ./scriptsh.txt
 323875a693139c887e3cd3a1d188fe48  ./README.md
 243d62c6f80d2fc9f44083d1c60e3f73  ./nps.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
@@ -75,7 +75,7 @@ a95a758e034c6214f8a8a7a1eff15a02  ./script/Sh17_meow.sh
 673087f75ecfcdee56f905ce8369170b  ./script/Sh88_ddns_go.sh
 5e070377e8beed36d262caa7ea75dd43  ./script/Sh23_vpnproxy.sh
 f89890047e41b39cf38adda1ed6adc88  ./script/Sh86_go_tify.sh
-80ef85c3633b8e1d084190474ada77e3  ./script/init.sh
+9ea6287a00f29d6641857c449080b0f6  ./script/init.sh
 8ee9d8cf750090a6d645f97197381922  ./script/Sh43_cloudxns.sh
 df5ee7626bc632985c2472a9fdd9b844  ./script/Sh21_mproxy.sh
 8b25b044e6c46db21f56570d68a78605  ./script/Sh39_ipt2socks.sh
