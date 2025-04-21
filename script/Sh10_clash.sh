@@ -665,9 +665,11 @@ if [ ! -f "$app_21" ] || [ ! -s "$app_21" ] ; then
 dns:
   enable: true
   ipv6: true
+  cache-algorithm: arc
+  prefer-h3: true
   listen: 0.0.0.0:8054
   default-nameserver :
-    - 223.5.5.5
+    - 1.1.1.1
   enhanced-mode: redir-host
   # enhanced-mode: redir-host # 或 fake-ip
   # # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改
@@ -684,28 +686,32 @@ dns:
   #   - '*.lan'
   #   - localhost.ptlogin2.qq.com
 
-  nameserver:
-    - https://[2620:119:fc::2]/dns-query
-    - https://[2001:4860:4860::8888]/dns-query#h3=true
-    - https://[2001:4860:4860::8844]/dns-query#h3=true
-    # - tls://dns.rubyfish.cn:853
-    # - https://dns.rubyfish.cn/dns-query
-    # - https://dns.alidns.com/dns-query
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 
-  fallback:
-    # 与 nameserver 内的服务器列表同时发起请求，当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。
-    # - tls://1.0.0.1:853
-    # - tls://dns.google:853
-    # - tls://dns.google
-    # - https://dns.rubyfish.cn/dns-query
-    # - https://cloudflare-dns.com/dns-query
+  nameserver:
+    - one.one.one.one#♻️ 自动选择
+    - tcp://dns.google#♻️ 自动选择
+    - https://[2620:119:fc::2]/dns-query
+    - https://dns.twnic.tw/dns-query 
+    - https://dns.cloudflare.com/dns-query
+
+  nameserver-policy:
+    "geosite:cn": 
+      - 2409:803C:2000:2::27
+      - 2409:803c:2000:3::130
+      - https://doh.pub/dns-query  
+sniffer:
+  enable: true
+  override-destination: false
+  sniff:
+    tls: { ports: [853, 8443] }      
 
 tun:
   enable: true
   stack: system 
   auto-route: false
-  dns-hijack:
-    - 'any:53'
 
 EEE
 	chmod 755 "$app_21"
@@ -718,7 +724,7 @@ sniffer:
   enable: true
   override-destination: false
   sniff:
-    tls: { ports: [443, 8443] }
+    tls: { ports: [853] }
 
 EEE
 	chmod 755 "$app_21"
@@ -878,7 +884,7 @@ yq w -i $config_dns_yml dns.listen 0.0.0.0:8054
 rm_temp
 dns_start_dnsproxy='0' # 0:自动开启第三方 DNS 程序(dnsproxy) ;
 else
-logger -t "【clash】" "变更 clash dns 端口 listen 0.0.0.0:8053 跳过自动开启第三方 DNS 程序但是继续把DNS绑定到 8053 端口的程序"
+logger -t "【clash】" "变更 clash dns 端口 listen 0.0.0.0:8053 跳过自动开启第三方 DNS 程序但是继续把DNS绑定到 8054 端口的程序"
 yq w -i $config_dns_yml dns.listen 0.0.0.0:8054
 rm_temp
 dns_start_dnsproxy='1' # 1:跳过自动开启第三方 DNS 程序但是继续把DNS绑定到 8053 端口的程序
