@@ -703,15 +703,11 @@ dns:
       - tcp://0.0.0.0:8052  
       - xzb.257335.xyz:8052 
     "geosite:category-ads-all": 
-      - xzb.257335.xyz:8051
+      - tcp://0.0.0.0:8051
     "geosite:cn": 
       - 2409:803C:2000:2::27
       - 2409:803c:2000:3::130
       - https://doh.pub/dns-query    
-    "geosite:cn": 
-      - 2409:803C:2000:2::27
-      - 2409:803c:2000:3::130
-      - https://doh.pub/dns-query  
       
 sniffer:
   enable: true
