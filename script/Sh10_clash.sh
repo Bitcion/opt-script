@@ -664,7 +664,6 @@ if [ ! -f "$app_21" ] || [ ! -s "$app_21" ] ; then
 	cat > "$app_21" <<-\EEE
 dns:
   enable: true
-  ipv6: true
   cache-algorithm: arc
   prefer-h3: true
   listen: 0.0.0.0:8054
@@ -698,10 +697,23 @@ dns:
     - https://dns.cloudflare.com/dns-query
 
   nameserver-policy:
+    "rule-set:DLC规则": 
+      - tcp://0.0.0.0:8052  
+      - xzb.257335.xyz:8052 
+    "geosite:bing,openai,yahoo,netflix": 
+      - tcp://0.0.0.0:8052  
+      - xzb.257335.xyz:8052 
+    "geosite:category-ads-all": 
+      - xzb.257335.xyz:8051
+    "geosite:cn": 
+      - 2409:803C:2000:2::27
+      - 2409:803c:2000:3::130
+      - https://doh.pub/dns-query    
     "geosite:cn": 
       - 2409:803C:2000:2::27
       - 2409:803c:2000:3::130
       - https://doh.pub/dns-query  
+      
 sniffer:
   enable: true
   override-destination: false
@@ -724,7 +736,7 @@ sniffer:
   enable: true
   override-destination: false
   sniff:
-    tls: { ports: [853] }
+    tls: { ports: [853, 8443] }
 
 EEE
 	chmod 755 "$app_21"
@@ -884,7 +896,7 @@ yq w -i $config_dns_yml dns.listen 0.0.0.0:8054
 rm_temp
 dns_start_dnsproxy='0' # 0:自动开启第三方 DNS 程序(dnsproxy) ;
 else
-logger -t "【clash】" "变更 clash dns 端口 listen 0.0.0.0:8053 跳过自动开启第三方 DNS 程序但是继续把DNS绑定到 8054 端口的程序"
+logger -t "【clash】" "变更 clash dns 端口 listen 0.0.0.0:8054 跳过自动开启第三方 DNS 程序但是继续把DNS绑定到 8054 端口的程序"
 yq w -i $config_dns_yml dns.listen 0.0.0.0:8054
 rm_temp
 dns_start_dnsproxy='1' # 1:跳过自动开启第三方 DNS 程序但是继续把DNS绑定到 8053 端口的程序
