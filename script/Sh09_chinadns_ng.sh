@@ -404,10 +404,7 @@ server-https https://dns.alidns.com/dns-query -group china
 # office 服务器
 server-tls one.one.one.one -group office
 server-https https://dns.google/dns-query -group office
-#server-https https://kr-sel.doh.sb/dns-query -group office
-#server-https https://hk-hkg.doh.sb/dns-query -group office
-#server-https https://sg-sin.doh.sb/dns-query -group office
-#server-https https://jp-nrt.doh.sb/dns-query -group office
+#server-https https://1.1.1.1/dns-query -group office
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
