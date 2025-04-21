@@ -263,22 +263,22 @@ else
 	if [ "$AdGuardHome_dns" != "0" ] ; then
 		AdGuardHome_server='server=127.0.0.1#53'
 		yq w -i "$app_19" dns.port 53
-		logger -t "【AdGuardHome】" "修改本机 AdGuardHome 服务器的上游 DNS: 127.0.0.1:12353"
+		logger -t "【AdGuardHome】" "修改本机 AdGuardHome 服务器的上游 DNS: tls://1.1.1.1"
 		#yq w -i "$app_19" dns.upstream_dns "[]"
 		[ ! -z "$(yq r $app_19 dns.upstream_dns | grep 1.0.0.1)" ] && yq d -i "$app_19" "dns.upstream_dns(.==1.0.0.1)"
 		[ ! -z "$(yq r $app_19 dns.upstream_dns | grep 127.0.0.1:8053)" ] && yq d -i "$app_19" "dns.upstream_dns(.==127.0.0.1:8053)"
-		[ -z "$(yq r $app_19 dns.upstream_dns | grep 127.0.0.1:12353)" ] && yq w -i "$app_19" dns.upstream_dns[+] "127.0.0.1:12353"
+		[ -z "$(yq r $app_19 dns.upstream_dns | grep tls://1.1.1.1)" ] && yq w -i "$app_19" dns.upstream_dns[+] "tls://1.1.1.1"
 	else
 		port=$(grep "server=127.0.0.1#8053"  /etc/storage/dnsmasq/dnsmasq.conf | wc -l)
 		if [ "$port" != 0 ] ; then
 			logger -t "【AdGuardHome】" "修改本机 AdGuardHome 服务器的上游 DNS: 127.0.0.1:8053"
 			#yq w -i "$app_19" dns.upstream_dns "[]"
 			[ ! -z "$(yq r $app_19 dns.upstream_dns | grep 1.0.0.1)" ] && yq d -i "$app_19" "dns.upstream_dns(.==1.0.0.1)"
-			[ ! -z "$(yq r $app_19 dns.upstream_dns | grep 127.0.0.1:12353)" ] && yq d -i "$app_19" "dns.upstream_dns(.==127.0.0.1:12353)"
+			[ ! -z "$(yq r $app_19 dns.upstream_dns | grep tls://1.1.1.1)" ] && yq d -i "$app_19" "dns.upstream_dns(.==tls://1.1.1.1)"
 			[ -z "$(yq r $app_19 dns.upstream_dns | grep 127.0.0.1:8053)" ] && yq w -i "$app_19" dns.upstream_dns[+] "127.0.0.1:8053"
 		else
 			[ ! -z "$(yq r $app_19 dns.upstream_dns | grep 127.0.0.1:8053)" ] && yq d -i "$app_19" "dns.upstream_dns(.==127.0.0.1:8053)"
-			[ ! -z "$(yq r $app_19 dns.upstream_dns | grep 127.0.0.1:12353)" ] && yq d -i "$app_19" "dns.upstream_dns(.==127.0.0.1:12353)"
+			[ ! -z "$(yq r $app_19 dns.upstream_dns | grep tls://1.1.1.1)" ] && yq d -i "$app_19" "dns.upstream_dns(.==tls://1.1.1.1)"
 			[ "$(yq r $app_19 dns.upstream_dns)" == '[]' ] && yq w -i "$app_19" dns.upstream_dns[+] "1.0.0.1"
 		fi
 		yq w -i "$app_19" dns.port 5353
