@@ -4,13 +4,13 @@ export PATH='/etc/storage/bin:/tmp/script:/etc/storage/script:/opt/usr/sbin:/opt
 export LD_LIBRARY_PATH=/lib:/opt/lib
 init_ver=2
 #set -x
-#hiboyfile="https://bitbucket.org/hiboyhiboy/opt-file/raw/master"
-#hiboyscript="https://bitbucket.org/hiboyhiboy/opt-script/raw/master"
+hiboyfile="https://opt.cn2qq.com/opt-file"
+hiboyscript="https://bitcion.github.io/opt-script"
 #hiboyfile2="https://gcore.jsdelivr.net/gh/HiboyHiboy/opt-file"
 #hiboyscript2="https://gcore.jsdelivr.net/gh/HiboyHiboy/opt-script"
-hiboyfile2="https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file"
 #hiboyfile2="/www/opt-file"
 #hiboyscript2="https://raw.githubusercontent.com/hiboyhiboy/opt-script/master"
+hiboyfile2="https://raw.githubusercontent.com/hiboyhiboy/opt-file/master"
 hiboyscript2="/www/opt-script"
 # --user-agent
 user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'
