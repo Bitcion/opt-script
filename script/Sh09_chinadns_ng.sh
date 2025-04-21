@@ -404,7 +404,7 @@ server-https https://dns.alidns.com/dns-query -group china
 # office 服务器
 server-tcp dns.google -group office
 server-tls 1.1.1.1 -group office
-server-tls://dns.opendns.com -group office
+server-tls dns.opendns.com -group office
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
