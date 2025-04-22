@@ -11,7 +11,7 @@
 
 2、开启 ChinaDNS-NG 与SmartDNS
 
-3、SmartDNS的安全dns查询（默认8052）增加 -force-aaaa-soa -force-https-soa屏蔽ipv6结果反馈，例如：bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa
+3、编辑SmartDNS的配置参数，把安全dns查询（默认8052）增加 -force-aaaa-soa -force-https-soa屏蔽ipv6结果反馈，如：bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa
 
 
 
