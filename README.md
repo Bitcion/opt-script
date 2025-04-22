@@ -9,7 +9,7 @@
 
 1、开启clash dns的ipv6查询，不配置fallback，保证clash dns的  nameserver为无污染dns。然后开启clash的tun转发，具体设置可以参考：https://github.com/Bitcion/zaixiantuoguan/blob/master/clashDNS   （如果无特殊需求建议删除或自己设置  nameserver-policy部分）
 
-2、开启 ChinaDNS-NG 与SmartDNS， ChinaDNS-NG dns查询分流部分修改为-b :: -d gfw -c 0.0.0.0#8051,198.18.0.2,udp://0.0.0.0#8054 -t 198.18.0.2,udp://0.0.0.0#8054 .其中-T部分的两个ip都是指向clash dns查询
+2、开启 ChinaDNS-NG 与SmartDNS
 
 3、SmartDNS的安全dns查询（默认8052）增加 -force-aaaa-soa -force-https-soa屏蔽ipv6结果反馈，例如：bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa
 
@@ -20,5 +20,5 @@ ipv6使用提示：
   nameserver-policy:
        "geosite:bing,openai,yahoo,netflix": 
              - 0.0.0.0:8052
-这些网站的dns请求会在clash dns分流到SmartDNS的bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa 过滤ipv6 查询，实现只进行ipv4透明代理
+这些网站的dns请求会在clash dns分流到SmartDNS的bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa 过滤ipv6 查询，实现纯ipv4透明代理
 
