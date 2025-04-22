@@ -65,7 +65,7 @@ c0db8baf3ff5d383cf850e9ce3db9761  ./script/Sh03_jbls.sh
 13008e68414dc08ba44057abb09a4ded  ./script/Sh63_t_mall.sh
 5bf0910d2639a16ed8ea7591c682cdae  ./script/Sh49_qcloud.sh
 860fc85d6deb620d419a4601deba7629  ./script/Sh12_ad_m.sh
-54b6a3be108e1b673f0e0859ede4dc99  ./script/Sh09_chinadns_ng.sh
+f253c4f039a735e647f07615548e1dfb  ./script/Sh09_chinadns_ng.sh
 fc0c06b06b6d1526fcbf5bbca793049c  ./script/Sh61_lnmp.sh
 fef007d65a6106283fbfab7afd5c0c20  ./script/Sh99_ss_tproxy.sh
 3959da42c9da709a04e23110422b01b9  ./script/sh_emi.sh
