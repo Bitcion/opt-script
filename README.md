@@ -7,7 +7,7 @@
 
 改进目的是是与ChinaDNS-NG的8053监听端口不同，实现ipv4透明代理与ipv6共存。设置建议：
 
-1、开启clash dns的ipv6查询，不配置fallback，保证clash dns的  nameserver为无污染dns。然后开启clash的tun转发，具体设置可以参考：https://github.com/Bitcion/zaixiantuoguan/blob/master/clashDNS   （如果无特殊需求建议删除或自己设置  nameserver-policy部分）
+1、开启clash dns的ipv6查询，不配置fallback，保证clash dns的  nameserver为无污染dns。然后开启clash的tun转发，具体设置可以参考：https://github.com/Bitcion/zaixiantuoguan/blob/master/clashDNS   （如果无特殊需求建议删除或自己配置  nameserver-policy部分）
 
 2、开启 ChinaDNS-NG 与SmartDNS
 
