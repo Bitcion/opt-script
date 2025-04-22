@@ -23,5 +23,5 @@ ipv6使用提示：
 这些网站的dns请求会在clash dns分流到SmartDNS的bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa 过滤ipv6 查询，实现纯ipv4透明代理。
 另外删除掉    "rule-set:DLC规则": 
       - tcp://0.0.0.0:8052 
-      - xzb.257335.xyz:8052 这是我方便自己用的参数，若不熟悉clash的“- RULE-SET,DLC规则”配置直接删除
+      - 0.0.0.0:8052 这是我方便自己用的配置，若不熟悉clash的“- RULE-SET,DLC规则”配置直接删除
 
