@@ -698,12 +698,12 @@ dns:
   nameserver-policy:
     "rule-set:DLC规则": 
       - tcp://0.0.0.0:8052  
-      - xzb.257335.xyz:8052 
+      - 0.0.0.0:8052 
     "geosite:bing,openai,yahoo,netflix": 
       - tcp://0.0.0.0:8052  
-      - xzb.257335.xyz:8052 
+      - 0.0.0.0:8052 
     "geosite:category-ads-all": 
-      - xzb.257335.xyz:8051
+      - 0.0.0.0:8051
     "geosite:cn": 
       - 2409:803C:2000:2::27
       - 2409:803c:2000:3::130
