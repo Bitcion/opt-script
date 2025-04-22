@@ -1,7 +1,7 @@
 # opt-script
-本脚本是hiboy旧脚本的改进稳定版，在“自定义 opt-script 下载地址”改为：https://bitcion.github.io/opt-script/
+本脚本是hiboy旧脚本的改进IPv6优化，若无IPV6环境不推荐使用，在“自定义 opt-script 下载地址”改为：https://bitcion.github.io/opt-script/     最好搭配旧OPT环境：https://bitcion.github.io/opt-file 默认的https://opt.cn2qq.com/opt-file 也可兼容
 
-新版脚本因为改变了以前的工作方式，脚本之间的依赖性更强，容易出现功能设置与预设脚本不同就会出现运行故障。而这个脚本则是以前脚本的备份改进，建议搭配	3.4.3.9-099_24-02-1以及更旧固件版本使用
+建议搭配	3.4.3.9-099_24-02-1以及更旧固件版本使用，若使用新固件，chinadns-ng 会出现4个选项，如果遇到这种，先把选项切换到"启动 手动设置"复制参数，再切换到“启动 sstproyx自动设置”把其中的“0”参数删除，再复制进去，应用页面设置保存
 
 相对于原本脚本主要改动之处是强制把clash dns的监听端口改了“8054”
 
