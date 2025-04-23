@@ -395,6 +395,8 @@ bind-tcp [::]:8051 -group china
 bind [::]:8052 -group office  -no-cache -force-aaaa-soa 
 bind-tcp [::]:8052 -group office -force-aaaa-soa 
 
+#conf-file /opt/anti-ad-for-smartdns.conf
+
 # china 服务器
 server 218.201.96.130 -group china  
 server 2409:803C:2000:2::27 -group china
