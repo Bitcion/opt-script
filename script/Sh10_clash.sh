@@ -690,24 +690,23 @@ dns:
     - https://doh.pub/dns-query
 
   nameserver:
-    - tcp://dns.google#♻️ 自动选择
     - https://[2620:119:fc::2]/dns-query
     - tls://1.1.1.1
     - tls://dns.opendns.com
 
   nameserver-policy:
     "rule-set:DLC规则": 
-      - tcp://0.0.0.0:8052  
-      - 0.0.0.0:8052 
+      - tcp://0.0.0.0:8052 
+      - xzb.257335.xyz:8052
     "geosite:bing,openai,yahoo,netflix": 
-      - tcp://0.0.0.0:8052  
-      - 0.0.0.0:8052 
-    "geosite:category-ads-all": 
-      - 0.0.0.0:8051
-    "geosite:cn": 
+      - tcp://0.0.0.0:8052
+      - xzb.257335.xyz:8052
+    "geosite:gfw": 
+      - tcp://dns.google#♻️ 自动选择 
+      - 1.1.1.1#♻️ 自动选择       
+    "geosite:cn,category-ads-all": 
       - 2409:803C:2000:2::27
-      - 2409:803c:2000:3::130
-      - https://doh.pub/dns-query    
+      - 2409:803c:2000:3::130  
       
 sniffer:
   enable: true
