@@ -398,15 +398,21 @@ bind-tcp [::]:8052 -group office -force-aaaa-soa
 #conf-file /opt/anti-ad-for-smartdns.conf
 
 # china 服务器
-server 218.201.96.130 -group china  
-server 2409:803C:2000:2::27 -group china
-server-https https://doh.pub/dns-query -group china
 server-https https://dns.alidns.com/dns-query -group china
+server-https https://doh.pub/dns-query -group china
+#server 2409:803C:2000:2::27 -group china
+#server 2409:803c:2000:3::130 -group china
+#server 2409:803C:2000:4::131 -group china
+#server 2409:803c:2000:1::26 -group china
 
-# office 服务器
-server-tcp dns.google -group office
+server-https https://[2620:119:fc::2]/dns-query -group office
 server-tls 1.1.1.1 -group office
-server-tls dns.opendns.com -group office
+server-tls dns.opendns.com -group office 
+
+server-https https://dns.google/dns-query -group office -fallback
+server 1.1.1.1 -group office -fallback
+server-tcp dns.google -group office -fallback
+
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
