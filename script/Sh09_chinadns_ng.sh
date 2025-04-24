@@ -424,8 +424,8 @@ server-tcp dns.google -group office -fallback
 #cache-size 512
 # 域名预先获取功能
 # prefetch-domain [yes|no]
-prefetch-domain yes
-serve-expired yes
+  prefetch-domain yes
+  serve-expired yes
 
 # 假冒IP地址过滤
 # bogus-nxdomain [ip/subnet]
