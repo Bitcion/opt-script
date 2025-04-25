@@ -665,7 +665,6 @@ if [ ! -f "$app_21" ] || [ ! -s "$app_21" ] ; then
 dns:
   enable: true
   cache-algorithm: arc
-  prefer-h3: true
   listen: 0.0.0.0:8054
   default-nameserver :
     - 1.1.1.1
