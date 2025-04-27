@@ -7,7 +7,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 018512e46e297e442fa752d134e2f959  ./mtd_storage.sh
 243d62c6f80d2fc9f44083d1c60e3f73  ./nps.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
-d24477b179fe046ad99cc3e1eb6f57c8  ./scriptsh.txt
+89824d60aa6922b6b8edad8e671691e0  ./scriptsh.txt
 df7859ee43ec84dada96c512ea038681  ./README.md
 fc0c06b06b6d1526fcbf5bbca793049c  ./script/Sh61_lnmp.sh
 5e070377e8beed36d262caa7ea75dd43  ./script/Sh23_vpnproxy.sh
@@ -72,7 +72,7 @@ d53867bfa001fbb3639e3d24c24eb331  ./script/Sh54_file_manager.sh
 eff23051287152bd11d95f41e6e695c5  ./script/Sh59_trans_late.sh
 8b25b044e6c46db21f56570d68a78605  ./script/Sh39_ipt2socks.sh
 3cd5ddc614231dd3eb628e97c96ad604  ./script/sh_ss_tproxy.sh
-10db59e016577f99568fd2e987c46cd2  ./script/Sh10_clash.sh
+416b98aec33d540dbbbd6413e0b8e68c  ./script/Sh10_clash.sh
 da4c21d9d9c1e10ad1f244957de86bbe  ./script/Sh89_tailscale.sh
 b4ee4de4b8a236ffaa0d1761edfca27f  ./script/Sh01_mountopt.sh
 14faea90d9b70d41c7640fd022097afb  ./script/Sh24_ssserver.sh
