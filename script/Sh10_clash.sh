@@ -690,8 +690,8 @@ dns:
     - https://doh.pub/dns-query
 
   nameserver:
+    - https://dns64.dns.google/dns-query
     - https://[2620:119:fc::2]/dns-query
-    - tls://1.1.1.1
     - tls://dns.opendns.com
 
   nameserver-policy:
@@ -702,11 +702,11 @@ dns:
       - tcp://0.0.0.0:8052
       - xzb.257335.xyz:8052
     "geosite:gfw": 
-      - tcp://dns.google#♻️ 自动选择 
-      - 1.1.1.1#♻️ 自动选择       
-    "geosite:cn,category-ads-all": 
-      - 2409:803C:2000:2::27
-      - 2409:803c:2000:3::130  
+      - https://[2620:119:fc::2]/dns-query
+      - tls://dns.opendns.com
+      - tcp://dns.google#♻️ 自动选择
+      - 1.1.1.1#♻️ 自动选择
+      - https://dns64.dns.google/dns-query
       
 sniffer:
   enable: true
