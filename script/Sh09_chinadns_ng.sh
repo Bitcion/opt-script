@@ -126,8 +126,8 @@ if [ "$chinadns_ng_enable" = "1" ] ; then
 no-resolv #chinadns_ng
 server=127.0.0.1#$chinadns_ng_port #chinadns_ng
 dns-forward-max=1000 #chinadns_ng
-min-cache-ttl=1800 #chinadns_ng
-domain-needed #chinadns_ng
+#min-cache-ttl=1800 #chinadns_ng
+#domain-needed #chinadns_ng
 EOF
 			restart_on_dhcpd
 		fi
@@ -190,8 +190,8 @@ while [ "$chinadns_ng_enable" = "1" ]; do
 no-resolv #chinadns_ng
 server=127.0.0.1#$chinadns_ng_port #chinadns_ng
 dns-forward-max=1000 #chinadns_ng
-min-cache-ttl=1800 #chinadns_ng
-domain-needed #chinadns_ng
+#min-cache-ttl=1800 #chinadns_ng
+#domain-needed #chinadns_ng
 EOF
 		restart_on_dhcpd
 	fi
@@ -306,8 +306,8 @@ sed ":a;N;s/\n\n\n/\n\n/g;ba" -i  /etc/storage/dnsmasq/dnsmasq.conf
 no-resolv #chinadns_ng
 server=127.0.0.1#$chinadns_ng_port #chinadns_ng
 dns-forward-max=1000 #chinadns_ng
-min-cache-ttl=1800 #chinadns_ng
-domain-needed #chinadns_ng
+#min-cache-ttl=1800 #chinadns_ng
+#domain-needed #chinadns_ng
 EOF
 
 restart_on_dhcpd
