@@ -691,7 +691,6 @@ dns:
 
   nameserver:
     - https://dns64.dns.google/dns-query
-    - https://dns64.opendns.com/dns-query
     - https://[2620:119:fc::2]/dns-query
     - tls://dns.opendns.com
     
