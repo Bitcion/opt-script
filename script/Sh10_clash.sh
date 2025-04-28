@@ -687,7 +687,6 @@ dns:
 
   proxy-server-nameserver:
     - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
 
   nameserver:
     - https://dns64.dns.google/dns-query
