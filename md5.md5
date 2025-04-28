@@ -45,7 +45,7 @@ bee6a473898f197439955d4793dee76b  ./script/sh_upscript.sh
 478a1017d0d451c0866d210615b5cc41  ./script/Sh45_server_chan.sh
 c1b202d01de261f5ededb4dd9581ff4f  ./script/Sh19_chinadns.sh
 3959da42c9da709a04e23110422b01b9  ./script/sh_emi.sh
-8f13466e0b9cb640d795edaca9b00fe0  ./script/Sh09_chinadns_ng.sh
+f969af31c4fed570fae0faa8a743e9bb  ./script/Sh09_chinadns_ng.sh
 b8259343996daae583a7d7ce0f7a3e8d  ./script/sh_ezscript.sh
 182e382e4046703447b6d4df5b238ed4  ./script/Sh53_you_ku.sh
 0e935ab3f914ae8581279e60ba7ca847  ./script/Sh41_dnspod.sh
