@@ -1,0 +1,6 @@
+group ad
+group-dnl /opt/ad.txt
+group-upstream tcp://::#8051
+
+verdict-cache 65535
+verdict-cache-db /opt/app/chinadns_ng/none.txt
