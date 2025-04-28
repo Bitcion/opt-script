@@ -13,6 +13,8 @@
 
 3、编辑SmartDNS的配置参数，把安全dns查询（默认8052）增加 -force-aaaa-soa -force-https-soa屏蔽ipv6结果反馈，如：bind 0.0.0.0:8052 -group office -force-aaaa-soa -force-https-soa
 
+4、下载https://bitcion.github.io/opt-script/adv6.txt 与 https://bitcion.github.io/opt-script/ad.sh 到Opt文件夹。若不下载，建议手动删除 chinadns-ng 参数中的“ -C /opt/adv6.txt” ‘,/opt/cn.txt’ ‘,/opt/quic.txt’（不清理问题也不大）
+
 
 
 ipv6使用提示：
