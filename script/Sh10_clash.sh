@@ -668,7 +668,7 @@ dns:
   prefer-h3: true
   listen: 0.0.0.0:8054
   default-nameserver :
-    - 1.1.1.1
+    - 223.5.5.5
   enhanced-mode: redir-host
   # enhanced-mode: redir-host # 或 fake-ip
   # # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改
@@ -691,9 +691,10 @@ dns:
 
   nameserver:
     - https://dns64.dns.google/dns-query
+    - https://dns64.opendns.com/dns-query
     - https://[2620:119:fc::2]/dns-query
     - tls://dns.opendns.com
-
+    
   nameserver-policy:
     "rule-set:DLC规则": 
       - tcp://0.0.0.0:8052 
@@ -701,12 +702,6 @@ dns:
     "geosite:bing,openai,yahoo,netflix": 
       - tcp://0.0.0.0:8052
       - xzb.257335.xyz:8052
-    "geosite:gfw": 
-      - https://[2620:119:fc::2]/dns-query
-      - tls://dns.opendns.com
-      - tcp://dns.google#♻️ 自动选择
-      - 1.1.1.1#♻️ 自动选择
-      - https://dns64.dns.google/dns-query
       
 sniffer:
   enable: true
@@ -718,7 +713,8 @@ tun:
   enable: true
   stack: system 
   auto-route: false
-
+  mtu: 1500
+  
 EEE
 	chmod 755 "$app_21"
 fi
