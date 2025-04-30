@@ -400,6 +400,7 @@ bind-tcp [::]:8052 -group office -force-aaaa-soa -no-cache
 # china 服务器
 server 2409:803C:2000:4::131 -group china
 server 2409:803c:2000:1::26 -group china
+server 1.2.4.8 -group china
 
 server 2409:803C:2000:2::27 -group china -fallback
 server 2409:803c:2000:3::130 -group china -fallback
