@@ -668,7 +668,7 @@ dns:
   prefer-h3: true
   listen: 0.0.0.0:8054
   default-nameserver :
-    - 223.5.5.5
+    - 1.2.4.8
   enhanced-mode: redir-host
   # enhanced-mode: redir-host # 或 fake-ip
   # # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改
