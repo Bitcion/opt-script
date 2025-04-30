@@ -9,7 +9,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 a3749cca02e68ce9b81462aaeaed00ab  ./ad.sh
 243d62c6f80d2fc9f44083d1c60e3f73  ./nps.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
-6f074eb059eb0d8a127620b1dbd57acb  ./scriptsh.txt
+f56f34bf4d26137ce83f13f1c3eee10e  ./scriptsh.txt
 8f721a5772142cf77c67411c67b00333  ./README.md
 fc0c06b06b6d1526fcbf5bbca793049c  ./script/Sh61_lnmp.sh
 5e070377e8beed36d262caa7ea75dd43  ./script/Sh23_vpnproxy.sh
@@ -47,7 +47,7 @@ bee6a473898f197439955d4793dee76b  ./script/sh_upscript.sh
 478a1017d0d451c0866d210615b5cc41  ./script/Sh45_server_chan.sh
 c1b202d01de261f5ededb4dd9581ff4f  ./script/Sh19_chinadns.sh
 3959da42c9da709a04e23110422b01b9  ./script/sh_emi.sh
-bd9199030de13d23ba556f214fe52575  ./script/Sh09_chinadns_ng.sh
+cb420bff09f91e925eaa46faf7e547bc  ./script/Sh09_chinadns_ng.sh
 b8259343996daae583a7d7ce0f7a3e8d  ./script/sh_ezscript.sh
 182e382e4046703447b6d4df5b238ed4  ./script/Sh53_you_ku.sh
 0e935ab3f914ae8581279e60ba7ca847  ./script/Sh41_dnspod.sh
