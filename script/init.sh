@@ -4,7 +4,7 @@ export PATH='/etc/storage/bin:/tmp/script:/etc/storage/script:/opt/usr/sbin:/opt
 export LD_LIBRARY_PATH=/lib:/opt/lib
 init_ver=2
 #set -x
-hiboyfile2="/www/opt-file"
+hiboyfile2="https://bitcion.github.io/opt-file"
 #hiboyscript2="https://raw.githubusercontent.com/hiboyhiboy/opt-script/master"
 #hiboyfile2="https://raw.githubusercontent.com/hiboyhiboy/opt-file/master"
 hiboyscript2="/www/opt-script"
