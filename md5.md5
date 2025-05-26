@@ -1,6 +1,6 @@
 2542501183374a21b4863f99534fabe2  ./adv6.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
-032c2f7b2e0013c6da75b5e287cec247  ./scriptsh.txt
+ff3f5cba50253af34fd8240d2429669f  ./scriptsh.txt
 17e9982991445aed0e3098343e4288f8  ./sh_onmp8.sh
 a3749cca02e68ce9b81462aaeaed00ab  ./ad.sh
 8f721a5772142cf77c67411c67b00333  ./README.md
@@ -51,7 +51,7 @@ d0487c32aac83de8080cb3770212b4b2  ./script/sh_0_script.sh
 fb6b6605e783aef9c9301ece02007113  ./script/Sh28_guest_kit.sh
 4274243f8455d7bc44c16310a81463a7  ./script/Sh85_mad_dy.sh
 a2d0b90d1b7bff6cfd1c4d6bf88b624b  ./script/Sh22_tinyproxy.sh
-bdd9d3a86e30a900c041349cdce99285  ./script/init.sh
+1b9cf24d26ebcef822bb3c904326537f  ./script/init.sh
 a95a758e034c6214f8a8a7a1eff15a02  ./script/Sh17_meow.sh
 70812c480099292f42a9363a6f1cdf63  ./script/Sh46_display.sh
 7c96e3aaa51260e96c65c94cf0e747bd  ./script/Sh43_huaweidns.sh
