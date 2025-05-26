@@ -30,7 +30,7 @@ b8259343996daae583a7d7ce0f7a3e8d  ./script/sh_ezscript.sh
 10924cd2e14147f2eda162d14a4567c7  ./script/Sh40_dns_com_pod.sh
 f89890047e41b39cf38adda1ed6adc88  ./script/Sh86_go_tify.sh
 10a64ba727e393fd69225ac27f9120bd  ./script/Sh20_fakeincn.sh
-fef007d65a6106283fbfab7afd5c0c20  ./script/Sh99_ss_tproxy.sh
+c9aead975ac2f17961003b1d9b94a462  ./script/Sh99_ss_tproxy.sh
 bee6a473898f197439955d4793dee76b  ./script/sh_upscript.sh
 014dc6ec79a6333085e07ab36ec1b580  ./script/Sh18_v2ray.sh
 87e2c696841a8b89bb32486902a55759  ./script/Sh27_printer.sh
