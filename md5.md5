@@ -1,6 +1,6 @@
 2542501183374a21b4863f99534fabe2  ./adv6.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
-ff3f5cba50253af34fd8240d2429669f  ./scriptsh.txt
+e3115e0c8cfb1dcc42cab8e45f4bb7ea  ./scriptsh.txt
 17e9982991445aed0e3098343e4288f8  ./sh_onmp8.sh
 a3749cca02e68ce9b81462aaeaed00ab  ./ad.sh
 8f721a5772142cf77c67411c67b00333  ./README.md
@@ -84,7 +84,7 @@ ac839b74b2f6f312c607edcbe2c9d708  ./script/sh_opt_script_check.sh
 24398f9108ef3f7cb30a9a66d6bcaf16  ./script/Sh56_gofly_way.sh
 62c15574309d15642d38bad0e980a0fa  ./script/Sh90_ddns_to.sh
 6c750ea0a9622c77e41cd03f99360db1  ./script/Sh91_AdGuard_Home.sh
-071e7b840944a70855466249175cc6c0  ./script/Sh09_chinadns_ng.sh
+f84a09ae834389f9e3fb947e8bc46294  ./script/Sh09_chinadns_ng.sh
 8dbf44b77e9cd3e6e66aa85021faecfe  ./script/Sh14_kcp_tun.sh
 d61b43f115398c6ac385877183130937  ./www_sh/virtualhere
 fc42214d247a7b1ab3d4b8e09267b517  ./www_sh/COW
