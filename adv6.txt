@@ -5,7 +5,7 @@ group-upstream tcp://::#8051
 cache 65535
 cache-refresh 1
 cache-stale 259200
-cache-db /opt/app/chinadns_ng/cache.db
+cache-db /opt/app/chinadns_ng/cache.txt
 
 verdict-cache 65535
-verdict-cache-db /opt/app/chinadns_ng/verdict-cache.db
+verdict-cache-db /opt/app/chinadns_ng/none.txt
