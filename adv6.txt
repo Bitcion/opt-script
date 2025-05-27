@@ -6,3 +6,6 @@ cache 65535
 cache-refresh 1
 cache-stale 259200
 cache-db /opt/app/chinadns_ng/cache.db
+
+verdict-cache 65535
+verdict-cache-db /opt/app/chinadns_ng/verdict-cache.db
