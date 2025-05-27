@@ -27,7 +27,7 @@ fi
 chinadns_ng_usage=`nvram get app_103`
 [ -z "$chinadns_ng_usage" ] && chinadns_ng_usage=' -n -b 0.0.0.0 -c 223.5.5.5 -t 127.0.0.1#55353 --chnlist-first -m /opt/app/chinadns_ng/chnlist.txt -g /opt/app/chinadns_ng/gfwlist.txt ' && nvram set app_103="$chinadns_ng_usage"
 smartdns_usage=`nvram get app_107`
-[ -z "$smartdns_usage" ] && smartdns_usage=' -M -C /opt/adv6.txt -b :: -c ::#8051 -t ::#8054,198.18.0.2 -m /opt/app/chinadns_ng/chnlist.txt,/opt/cn.txt -g /opt/app/chinadns_ng/gfwlist.txt,/opt/quic.txt ' && nvram set app_107="$smartdns_usage"
+[ -z "$smartdns_usage" ] && smartdns_usage=' -M -b :: -c ::#8051 -t ::#8054,198.18.0.2 -m /opt/app/chinadns_ng/chnlist.txt,/opt/cn.txt -g /opt/app/chinadns_ng/gfwlist.txt,/opt/quic.txt -C /opt/adv6.txt ' && nvram set app_107="$smartdns_usage"
 
 chinadns_ng_port=`nvram get app_6`
 [ -z $chinadns_ng_port ] && chinadns_ng_port=8053 && nvram set app_6=8053
