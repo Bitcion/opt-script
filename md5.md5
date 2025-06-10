@@ -84,7 +84,7 @@ ac839b74b2f6f312c607edcbe2c9d708  ./script/sh_opt_script_check.sh
 24398f9108ef3f7cb30a9a66d6bcaf16  ./script/Sh56_gofly_way.sh
 62c15574309d15642d38bad0e980a0fa  ./script/Sh90_ddns_to.sh
 6c750ea0a9622c77e41cd03f99360db1  ./script/Sh91_AdGuard_Home.sh
-964df5fa8bd4ef59a6e67afd220f30b6  ./script/Sh09_chinadns_ng.sh
+21429495a975c4a77a41306dcc7bacf4  ./script/Sh09_chinadns_ng.sh
 8dbf44b77e9cd3e6e66aa85021faecfe  ./script/Sh14_kcp_tun.sh
 d61b43f115398c6ac385877183130937  ./www_sh/virtualhere
 fc42214d247a7b1ab3d4b8e09267b517  ./www_sh/COW
