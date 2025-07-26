@@ -461,11 +461,11 @@ if [ ! -d /tmp/AiDisk_00/cn2qq/opt-script ] || [ ! -d /tmp/AiDisk_00/cn2qq/opt-f
 [ ! -d /tmp/AiDisk_00/cn2qq/opt-file ] && logger -t "【opt】" "部署离线 opt-file 环境到 USB/cn2qq/opt-file"
 mkdir -p /tmp/AiDisk_00/cn2qq
 if [[ "$(unzip -h 2>&1 | wc -l)" -gt 2 ]] ; then
-	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
-	opt_download_file="https://github.com/hiboyhiboy/opt-file/archive/master.zip"
+	opt_download_script="https://github.com/Bitcion/opt-script/archive/refs/tags/master.zip"
+	opt_download_file="https://github.com/Bitcion/opt-file/archive/refs/tags/master.zip"
 else
 	opt_download_script="https://bitcion.github.io/opt-script/opt-script.tgz"
-	opt_download_file="https://opt.cn2qq.com/opt-file.tgz"
+	opt_download_file="https://github.com/Bitcion/opt-file/archive/refs/tags/master.tar.gz"
 fi
 
 [ -d /tmp/AiDisk_00/cn2qq/opt-script-master ] && { rm -rf /tmp/AiDisk_00/cn2qq/opt-script; ln -sf /tmp/AiDisk_00/cn2qq/opt-script-master /tmp/AiDisk_00/cn2qq/opt-script; }
