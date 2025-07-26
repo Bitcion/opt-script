@@ -5,7 +5,7 @@ dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
 243d62c6f80d2fc9f44083d1c60e3f73  ./nps.sh
 17e9982991445aed0e3098343e4288f8  ./sh_onmp8.sh
 be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
-60f8ec5b621166bc77b81977d3f55d2d  ./scriptsh.txt
+0d4e0b6046b5d0bb20cf5a78b0a08bad  ./scriptsh.txt
 8a060f65bd5e027a9be03fd90bbc1134  ./ad.sh
 6da5141efa5f067d3e1b61c37fa9704d  ./up.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
@@ -28,7 +28,7 @@ a2d0b90d1b7bff6cfd1c4d6bf88b624b  ./script/Sh22_tinyproxy.sh
 3cd5ddc614231dd3eb628e97c96ad604  ./script/sh_ss_tproxy.sh
 c9aead975ac2f17961003b1d9b94a462  ./script/Sh99_ss_tproxy.sh
 fb6b6605e783aef9c9301ece02007113  ./script/Sh28_guest_kit.sh
-0504d28eed830bdac7840f59ef090791  ./script/Sh01_mountopt.sh
+37cbd32834c494df25971be1bfc21a02  ./script/Sh01_mountopt.sh
 c0db8baf3ff5d383cf850e9ce3db9761  ./script/Sh03_jbls.sh
 182e382e4046703447b6d4df5b238ed4  ./script/Sh53_you_ku.sh
 8b25b044e6c46db21f56570d68a78605  ./script/Sh39_ipt2socks.sh
