@@ -101,10 +101,6 @@ fi
  
  opt_txt_file1="$hiboyfile/optg12.txt"
  opt_txt_file2="$hiboyfile2/optg12.txt"
-
- opt_txt_file2="/www/opt-file/optg12.txt"
- opttmpfile2="/www/opt-file/opttmpg12.tgz"
- optupanfile2="/www/opt-file/optupang12.tgz"
 }
 
 opt_force
