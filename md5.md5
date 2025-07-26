@@ -5,7 +5,7 @@ dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
 243d62c6f80d2fc9f44083d1c60e3f73  ./nps.sh
 17e9982991445aed0e3098343e4288f8  ./sh_onmp8.sh
 be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
-4e43811bd1a81baea2fb1af793530480  ./scriptsh.txt
+df41904f04dfc239cbe06dc85dd6dd86  ./scriptsh.txt
 8a060f65bd5e027a9be03fd90bbc1134  ./ad.sh
 6da5141efa5f067d3e1b61c37fa9704d  ./up.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
@@ -42,7 +42,7 @@ d28333b2e511d25e6992b4208d1767f5  ./script/Sh51_xun_lei.sh
 10924cd2e14147f2eda162d14a4567c7  ./script/Sh40_dns_com_pod.sh
 7e041301c34c5e46493054f2f13ad9ff  ./script/Sh27_speedup.sh
 eff23051287152bd11d95f41e6e695c5  ./script/Sh59_trans_late.sh
-42f8cb15ef6e7280a4d1b8686ed5ef10  ./script/Sh10_clash.sh
+638129c56fc73fa4b5c24f1bbd59ec8a  ./script/Sh10_clash.sh
 44d31a184da85782c81e687dbd333ca4  ./script/Sh62_shellina_box.sh
 2ecca209d862925e8e5c66575648de32  ./script/Sh30_np_s.sh
 673087f75ecfcdee56f905ce8369170b  ./script/Sh88_ddns_go.sh
