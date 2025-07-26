@@ -5,7 +5,7 @@ dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
 243d62c6f80d2fc9f44083d1c60e3f73  ./nps.sh
 17e9982991445aed0e3098343e4288f8  ./sh_onmp8.sh
 be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
-c7ef8b9de33077d227a77622d1e33136  ./scriptsh.txt
+af77685e6b0a0dd2a0a7dfa2226767d7  ./scriptsh.txt
 8a060f65bd5e027a9be03fd90bbc1134  ./ad.sh
 6da5141efa5f067d3e1b61c37fa9704d  ./up.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
@@ -52,7 +52,7 @@ df5ee7626bc632985c2472a9fdd9b844  ./script/Sh21_mproxy.sh
 ac839b74b2f6f312c607edcbe2c9d708  ./script/sh_opt_script_check.sh
 8807eb542e09d0636f6c114c8df4ba2c  ./script/Sh34_wifi_dog.sh
 2af26d75b70672f5e3dfa1131f1f843d  ./script/Sh04_mento_hust.sh
-1b9cf24d26ebcef822bb3c904326537f  ./script/init.sh
+c6c18009539681c3ae0575a62640322e  ./script/init.sh
 bee6a473898f197439955d4793dee76b  ./script/sh_upscript.sh
 b8259343996daae583a7d7ce0f7a3e8d  ./script/sh_ezscript.sh
 c406e9c12dd0e2c8afb99471b16b403a  ./script/Sh05_cry_fs.sh
