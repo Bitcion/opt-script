@@ -118,7 +118,7 @@ else
 	if [ "$opt_download_enable" != "0" ] ; then
 		opt_download_enable="0" && nvram set opt_download_enable="$opt_download_enable"
 	fi
-	opt_force_file="https://opt.cn2qq.com/opt-file" && nvram set opt_force_file="$opt_force_file"
+	opt_force_file="https://bitcion.github.io/opt-file" && nvram set opt_force_file="$opt_force_file"
 	opt_force_script="https://bitcion.github.io/opt-script" && nvram set opt_force_script="$opt_force_script"
 	logger -t "【script】" "下载地址失效 https://opt.cn2qq.com"
 	logger -t "【script】" "变更使用免费CDN https://gcore.jsdelivr.net/gh/HiboyHiboy/opt-file"
