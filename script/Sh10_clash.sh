@@ -258,7 +258,7 @@ if [ "$app_78" == "premium" ] || [ "$app_78" == "premium_1" ] ; then
 	[ ! -s "$SVC_PATH" ] && logger -t "【clash】" "下载 premium (闭源版) 主程序: https://github.com/Dreamacro/clash/releases/tag/premium" && [ "$app_78" != "premium_1" ] && nvram set app_78="premium_1" && app_78="premium_1"
 	wgetcurl_file "$SVC_PATH" "$hiboyfile/clash-premium" "$hiboyfile2/clash-premium"
 else
-	[ ! -s "$SVC_PATH" ] && logger -t "【clash】" "下载 Clash.Meta 主程序: https://github.com/Clash-Mini/Clash.Meta" && [ "$app_78" != "meta_1" ] && nvram set app_78="meta_1" && app_78="meta_1"
+	[ ! -s "$SVC_PATH" ] && logger -t "【clash】" "下载 Clash.Meta 主程序: https://github.com/Clash-Mini/mihomo" && [ "$app_78" != "meta_1" ] && nvram set app_78="meta_1" && app_78="meta_1"
 	wgetcurl_file "$SVC_PATH" "$hiboyfile/clash-meta" "$hiboyfile2/clash-meta"
 fi
 done
@@ -964,7 +964,8 @@ cat $config_dns_yml >> $config_yml
 #merge_dns_ip
 yq w -i $config_yml external-controller $clash_ui
 rm_temp
-yq w -i $config_yml external-ui "/opt/app/clash/clash_webs/"
+ln -sf /opt/app/clash/clash_webs /opt/app/clash/config/clash_webs
+yq w -i $config_yml external-ui "/opt/app/clash/config/clash_webs/"
 rm_temp
 # 转换新参数兼容 1.0 或更高版本
 [ ! -z "$(cat $config_yml | grep "Proxy:" )" ] && sed -e 's@Proxy:@proxies:@g' -i $config_yml && logger -t "【clash】" "转换新参数: Proxy --> proxies"
