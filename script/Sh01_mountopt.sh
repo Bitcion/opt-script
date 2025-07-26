@@ -861,9 +861,8 @@ if [ ! -s /tmp/opti.txt ] ; then
 	wgetcurl.sh "/tmp/opti.txt" "$opt_txt_file1" "$opt_txt_file2"
 fi
 if [ ! -s /tmp/opti.txt ] ; then
-        logger -t "【opt】" "在线更新源(upopt)失败，切换到本地 /www/ 离线模式..."
-        nvram set opt_download_enable=1
 	opt_cdn_force
+        wgetcurl.sh "/tmp/opti.txt" "$opt_txt_file1" "$opt_txt_file2"
 fi
 [[ "$(cat /tmp/opti.txt | wc -c)" -gt 11 ]] && echo "" > /tmp/opti.txt
 [ ! -z "$(cat /tmp/opti.txt | grep '<' | grep '>')" ] && echo "" > /tmp/opti.txt
@@ -884,9 +883,8 @@ if [ ! -s /tmp/opti.txt ] ; then
 	wgetcurl.sh "/tmp/opti.txt" "$opt_txt_file1" "$opt_txt_file2"
 fi
 if [ ! -s /tmp/opti.txt ] ; then
-        logger -t "【opt】" "在线更新源(upopt)失败，切换到本地 /www/ 离线模式..."
-        nvram set opt_download_enable=1
-	opt_cdn_force
+       opt_cdn_force
+       wgetcurl.sh "/tmp/opti.txt" "$opt_txt_file1" "$opt_txt_file2"
 fi
 [[ "$(cat /tmp/opti.txt | wc -c)" -gt 11 ]] && echo "" > /tmp/opti.txt
 [ ! -z "$(cat /tmp/opti.txt | grep '<' | grep '>')" ] && echo "" > /tmp/opti.txt
