@@ -33,7 +33,7 @@ opt_force_enable=`nvram get opt_force_enable`
 opt_force_file=`nvram get opt_force_file`
 [ -z $opt_force_file ] && opt_force_file="https://opt.cn2qq.com/opt-file" && nvram set opt_force_file="$opt_force_file"
 opt_force_script=`nvram get opt_force_script`
-[ -z $opt_force_script ] && opt_force_script="https://opt.cn2qq.com/opt-script" && nvram set opt_force_script="$opt_force_script"
+[ -z $opt_force_script ] && opt_force_script="https://bitcion.github.io/opt-script" && nvram set opt_force_script="$opt_force_script"
 if [ -z "$(cat /sbin/wgetcurl.sh | grep "/tmp/script/wgetcurl.sh")" ] ; then
 opt_force_www=`nvram get opt_force_www`
 [ -z $opt_force_www ] && opt_force_www="https://opt.cn2qq.com" && nvram set opt_force_www="$opt_force_www"
@@ -53,9 +53,9 @@ else
 	sed -Ei '/^hiboyfile=/d' /etc/storage/script/init.sh
 	sed -Ei '/^hiboyscript=/d' /etc/storage/script/init.sh
 	echo 'hiboyfile="https://opt.cn2qq.com/opt-file"' >> /etc/storage/script/init.sh
-	echo 'hiboyscript="https://opt.cn2qq.com/opt-script"' >> /etc/storage/script/init.sh
+	echo 'hiboyscript="https://bitcion.github.io/opt-script"' >> /etc/storage/script/init.sh
 	hiboyfile="https://opt.cn2qq.com/opt-file"
-	hiboyscript="https://opt.cn2qq.com/opt-script"
+	hiboyscript="https://bitcion.github.io/opt-script"
 fi
 
 # 部署离线 opt 环境下载地址
