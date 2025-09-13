@@ -152,7 +152,7 @@ if [ "$A_restart" != "$B_restart" ] ; then
 		logger -t "【clash】" "停止 clash 服务器订阅"
 	else
 		if [ "$app_120" == "1" ] ; then
-			cru.sh a clash_link_update "24 */6 * * * $scriptfilepath wget_yml &" &
+			cru.sh a clash_link_update "24 3 * * * $scriptfilepath wget_yml &" &
 			logger -t "【clash】" "启动 clash 服务器订阅，添加计划任务 (Crontab)，每6小时更新"
 		else
 			cru.sh d clash_link_update
