@@ -2,6 +2,10 @@ group ad
 group-dnl /opt/ad.txt
 group-upstream tcp://::#8051
 
+group ipv4
+group-dnl /opt/ipv4.txt
+group-upstream tcp://::#8052
+
 cache 65535
 cache-refresh 1
 cache-stale 259200
