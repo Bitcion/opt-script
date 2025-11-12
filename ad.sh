@@ -21,7 +21,6 @@ download_and_process() {
 }
 # 第一部分：下载和处理各种文件
 download_and_process "https://bitcion.github.io/zaixiantuoguan/cn.txt" "/opt/cn.txt" "cat"
-download_and_process "https://bitcion.github.io/zaixiantuoguan/quic.txt" "/opt/quic.txt" "cat"
 download_and_process "https://anti-ad.net/domains.txt" "/opt/ad.txt" "cat"
 download_and_process "https://bitcion.github.io/opt-script/ad.sh" "/opt/ad.sh" "cat"
 download_and_process "https://bitcion.github.io/opt-script/adv6.txt" "/opt/adv6.txt" "cat"
