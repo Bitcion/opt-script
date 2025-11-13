@@ -1,7 +1,3 @@
-group ad
-group-dnl /opt/ad.txt
-group-upstream tcp://::#8051
-
 cache 65535
 cache-refresh 1
 cache-stale 259200
