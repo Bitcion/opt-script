@@ -690,12 +690,18 @@ dns:
 
   nameserver:
     - https://dns64.dns.google/dns-query
-    - https://[2620:119:fc::2]/dns-query
+    - https://dns.google/dns-query
+    - https://doh.opendns.com/dns-query
     - tls://dns.opendns.com
-    
+    - tls://dns.google
+    - tls://one.one.one.one
+
   nameserver-policy:
-    "geosite:bing,openai,yahoo,netflix": 
-      - tcp://0.0.0.0:8052
+    "RULE-SET:DLC规则":
+      - tcp://0.0.0.0:8052 
+      - xzb.257335.xyz:8052
+    "geosite:bing,openai,netflix,google-gemini,spotify,yahoo": 
+      - tcp://0.0.0.0:8052 
       - xzb.257335.xyz:8052
       
 sniffer:
