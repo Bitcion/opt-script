@@ -72,7 +72,7 @@ da4c21d9d9c1e10ad1f244957de86bbe  ./script/Sh89_tailscale.sh
 4274243f8455d7bc44c16310a81463a7  ./script/Sh85_mad_dy.sh
 b8259343996daae583a7d7ce0f7a3e8d  ./script/sh_ezscript.sh
 21429495a975c4a77a41306dcc7bacf4  ./script/Sh09_chinadns_ng.sh
-c9aead975ac2f17961003b1d9b94a462  ./script/Sh99_ss_tproxy.sh
+a5cac6a9de061736a56bf61c4519c33a  ./script/Sh99_ss_tproxy.sh
 70812c480099292f42a9363a6f1cdf63  ./script/Sh46_display.sh
 c0db8baf3ff5d383cf850e9ce3db9761  ./script/Sh03_jbls.sh
 32d569e7d080624b0a9dbb94361541a4  ./script/Sh13_kool_proxy.sh
