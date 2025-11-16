@@ -409,7 +409,18 @@ pre_start() {
 }
 post_start() {
     echo "ss-tproxy 启动后执行脚本"
-    nvram set cloudflare_status=123 && /tmp/script/_cloudflare     
+
+    local_ad_path="/opt/ad.sh"
+    remote_ad_url_1="https://bitcion.github.io/opt-script/ad.sh"
+    remote_ad_url_2="https://raw.githubusercontent.com/hiboyhiboy/opt-script/master/ad.sh"
+    wgetcurl_file "$local_ad_path" "$remote_ad_url_1" "$remote_ad_url_2"
+    if [ -s "$local_ad_path" ]; then
+        chmod +x "$local_ad_path"
+        sh "$local_ad_path"
+    logger -t "【自定义脚本】" "ad.sh 执行完成。"
+    else
+        logger -t "【自定义脚本】" "ad.sh 未执行 (确保已插入EX4存储设备)。"
+    fi	
     
 }
 pre_stop() {
