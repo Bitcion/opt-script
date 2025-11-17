@@ -27,7 +27,7 @@ fi
 chinadns_ng_usage=`nvram get app_103`
 [ -z "$chinadns_ng_usage" ] && chinadns_ng_usage=' -n -b 0.0.0.0 -c 223.5.5.5 -t 127.0.0.1#55353 --chnlist-first -m /opt/app/chinadns_ng/chnlist.txt -g /opt/app/chinadns_ng/gfwlist.txt ' && nvram set app_103="$chinadns_ng_usage"
 smartdns_usage=`nvram get app_107`
-[ -z "$smartdns_usage" ] && smartdns_usage=' -M -b :: -c tcp://::#8051,223.5.5.5 -t ::#8054,198.18.0.2 -m /opt/app/chinadns_ng/chnlist.txt,/opt/cn.txt,/opt/ad.txt -g /opt/app/chinadns_ng/gfwlist.txt,/opt/ipv4.txt -C /opt/adv6.txt ' && nvram set app_107="$smartdns_usage"
+[ -z "$smartdns_usage" ] && smartdns_usage=' -M -b :: -c ::#8051,udp://223.5.5.5 -t ::#8054,198.18.0.2 -m /opt/app/chinadns_ng/chnlist.txt,/opt/cn.txt,/opt/ad.txt -g /opt/app/chinadns_ng/gfwlist.txt,/opt/ipv4.txt -C /opt/adv6.txt ' && nvram set app_107="$smartdns_usage"
 
 chinadns_ng_port=`nvram get app_6`
 [ -z $chinadns_ng_port ] && chinadns_ng_port=8053 && nvram set app_6=8053
@@ -399,13 +399,13 @@ bind-tcp [::]:8052 -group office -force-aaaa-soa -no-cache
 
 # china 服务器
 server 2409:803C:2000:4::131 -group china
-server 2409:803c:2000:1::26 -group china
+#server 2409:803c:2000:1::26 -group china
 server 1.2.4.8 -group china
 
-server 2409:803C:2000:2::27 -group china -fallback
-server 2409:803c:2000:3::130 -group china -fallback
-server-https https://dns.alidns.com/dns-query -group china -fallback
-server-https https://doh.pub/dns-query -group china -fallback
+#server 2409:803C:2000:2::27 -group china -fallback
+#server 2409:803c:2000:3::130 -group china -fallback
+#server-https https://dns.alidns.com/dns-query -group china -fallback
+#server-https https://doh.pub/dns-query -group china -fallback
 
 # office 服务器
 server-https https://[2620:119:fc::2]/dns-query -group office
