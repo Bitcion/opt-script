@@ -136,9 +136,22 @@ logger -t "【cloudflare动态域名】" "守护进程启动"
 cat >> "/tmp/script/_opt_script_check" <<-OSC
 [ -z "\`pidof Sh44_cloudflare.sh\`" ] && nvram set cloudflare_status=00 && logger -t "【cloudflare】" "重新启动" && eval "$scriptfilepath &" && sed -Ei '/【cloudflare】|^$/d' /tmp/script/_opt_script_check # 【cloudflare】
 OSC
-while true; do
-sleep 43
-sleep $cloudflare_interval
+while true; do  
+# 检查运行时间和更新状态  
+uptime_sec=$(cat /proc/uptime | awk '{print int($1)}')  
+update_success=$(cat /tmp/cloudflare_update_success 2>/dev/null)  
+  
+# 开机 10 分钟内且未成功更新,使用快速检测(30秒)  
+if [ $uptime_sec -lt 600 ] && [ "$update_success" != "1" ]; then  
+    sleep 60  
+# 已成功更新,使用低频检测(24小时)  
+elif [ "$update_success" = "1" ]; then  
+    sleep 86400  
+# 其他情况使用默认间隔  
+else  
+    sleep 43  
+    sleep $cloudflare_interval  
+fi
 [ ! -s "`which curl`" ] && cloudflare_restart
 #nvramshow=`nvram showall | grep '=' | grep cloudflare | awk '{print gensub(/'"'"'/,"'"'"'\"'"'"'\"'"'"'","g",$0);}'| awk '{print gensub(/=/,"='\''",1,$0)"'\'';";}'` && eval $nvramshow
 cloudflare_enable=`nvram get cloudflare_enable`
@@ -430,6 +443,7 @@ arDdnsCheck() {
 		if [ $? -eq 0 ]; then
 			echo "postRS: $postRS"
 			logger -t "【cloudflare动态域名】" "更新动态DNS记录成功！"
+			echo "1" > /tmp/cloudflare_update_success
 			return 0
 		else
 			echo $postRS
