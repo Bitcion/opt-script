@@ -74,5 +74,5 @@ Sh03_jbls=c0db8baf3ff5d383cf850e9ce3db9761
 Sh02_kms=19fe956b26162825345119ff5fd6d46c
 Sh01_mountopt=2ea1ba6540704b7cf293003b6cb869fa
 sh_upscript=bee6a473898f197439955d4793dee76b
-scriptt=2023-08-31
+scriptt=2024-05-31
 nvram set pdcn_uuid_enable=0 # 关闭固件使用情况统计
