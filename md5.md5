@@ -1,10 +1,9 @@
 ed193e1c8ae4bf310f7211e7133d9d59  ./adv6.txt
 be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 9ada1ad2fb98c6e9a890f8e29df2087f  ./sh_onmp.sh
-8b9fa11234db7ea158460528d509c918  ./ad.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
 9d03aab249759e61a07659a766abd234  ./README.md
-6d63db690c1a21163dd7ea485874099d  ./scriptsh.txt
+54b11ab3c2fe80a8377731d8624b1c62  ./scriptsh.txt
 018512e46e297e442fa752d134e2f959  ./mtd_storage.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
@@ -36,6 +35,7 @@ c6c18009539681c3ae0575a62640322e  ./script/init.sh
 0e4b69d42fcb0b7e202ee2c61206bbb0  ./script/Sh25_softether.sh
 e620f50cdb081ac377e30f0e0ac31553  ./script/Sh57_virtual_here.sh
 3cd5ddc614231dd3eb628e97c96ad604  ./script/sh_ss_tproxy.sh
+8b9fa11234db7ea158460528d509c918  ./script/ad.sh
 31b442ad7fbf46dfb28b5c3625e2c88e  ./script/Sh45_wx_send.sh
 2ea1ba6540704b7cf293003b6cb869fa  ./script/Sh01_mountopt.sh
 2264ec507aa215711ddb320452e9b607  ./script/Sh44_cloudflare.sh
