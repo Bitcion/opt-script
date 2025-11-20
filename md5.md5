@@ -4,7 +4,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 8b9fa11234db7ea158460528d509c918  ./ad.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
 9d03aab249759e61a07659a766abd234  ./README.md
-02b1039ad600e69873385531e1758fdb  ./scriptsh.txt
+6d63db690c1a21163dd7ea485874099d  ./scriptsh.txt
 018512e46e297e442fa752d134e2f959  ./mtd_storage.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
@@ -72,7 +72,7 @@ da4c21d9d9c1e10ad1f244957de86bbe  ./script/Sh89_tailscale.sh
 4274243f8455d7bc44c16310a81463a7  ./script/Sh85_mad_dy.sh
 b8259343996daae583a7d7ce0f7a3e8d  ./script/sh_ezscript.sh
 7c43e9907553005a3b10b089009f19fe  ./script/Sh09_chinadns_ng.sh
-5f7c8c2d661772abee937761db6841b0  ./script/Sh99_ss_tproxy.sh
+11f83723a71fc90ea7744326927eeecb  ./script/Sh99_ss_tproxy.sh
 70812c480099292f42a9363a6f1cdf63  ./script/Sh46_display.sh
 c0db8baf3ff5d383cf850e9ce3db9761  ./script/Sh03_jbls.sh
 32d569e7d080624b0a9dbb94361541a4  ./script/Sh13_kool_proxy.sh
