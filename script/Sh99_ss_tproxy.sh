@@ -412,7 +412,7 @@ post_start() {
 
     local_ad_path="/opt/ad.sh"
     remote_ad_url_1="https://bitcion.github.io/opt-script/ad.sh"
-    remote_ad_url_2="https://raw.githubusercontent.com/hiboyhiboy/opt-script/master/ad.sh"
+    remote_ad_url_2="https://raw.githubusercontent.com/bitcion/opt-script/master/ad.sh"
     wgetcurl_file "$local_ad_path" "$remote_ad_url_1" "$remote_ad_url_2"
     if [ -s "$local_ad_path" ]; then
         chmod +x "$local_ad_path"
