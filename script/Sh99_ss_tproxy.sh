@@ -410,6 +410,7 @@ pre_start() {
 post_start() {
     echo "ss-tproxy 启动后执行脚本"
 	  sh /etc/storage/script/ad.sh
+	  nvram set cloudflare_status=123 && /tmp/script/_cloudflare 
     
 }
 pre_stop() {
