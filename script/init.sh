@@ -6,10 +6,10 @@ init_ver=2
 #set -x
 hiboyfile="https://bitcion.github.io/opt-file"
 hiboyscript="https://bitcion.github.io/opt-script"
-hiboyfile2="/www/opt-file"
+hiboyfile2="https://raw.githubusercontent.com/bitcion/opt-file/master"
 #hiboyscript2="https://raw.githubusercontent.com/hiboyhiboy/opt-script/master"
 #hiboyfile2="https://raw.githubusercontent.com/hiboyhiboy/opt-file/master"
-hiboyscript2="/www/opt-script"
+hiboyscript2="https://raw.githubusercontent.com/bitcion/opt-script/master"
 # --user-agent
 user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'
 ACTION=$1
