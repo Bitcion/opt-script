@@ -304,6 +304,23 @@ fi
 fi
 fi
 
+if [ "$clash_follow" = "1" ] ; then  
+    smartdns_enable=`nvram get app_106`  
+    [ -z $smartdns_enable ] && smartdns_enable=0  
+      
+    if [ "$smartdns_enable" == "0" ] ; then  
+        logger -t "【clash】" "由于开启 clash 透明代理需要 DNS 防污染,自动开启 SmartDNS"  
+        nvram set app_106="1"  
+        smartdns_enable="1"  
+    fi  
+      
+    # 异步启动 DNS 服务  
+    /etc/storage/script/Sh09_chinadns_ng.sh start &  
+      
+    # 立即更新状态变量  
+    chinadns_ng_enable=1  
+fi  
+
 update_yml
 
 cd "$(dirname "$SVC_PATH")"
