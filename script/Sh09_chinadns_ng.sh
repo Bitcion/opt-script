@@ -264,19 +264,10 @@ eval "/opt/bin/dns2tcp -L0.0.0.0#55353 -R8.8.8.8#53 $cmd_log" &
 fi
 # 配置参数 '/opt/bin/chinadns_ng -l 8053  -n -b 0.0.0.0 -c 223.5.5.5 -t 127.0.0.1#55353 -g /opt/app/chinadns_ng/gfwlist.txt  '
 usage=" -l $chinadns_ng_port "
-# 读取 Clash 透明代理状态  
-clash_follow=`nvram get app_92`  
-[ -z $clash_follow ] && clash_follow=0  
-  
-if [ "$smartdns_enable" == "1" ] ; then  
-    # 只要启用了 SmartDNS,就使用 SmartDNS 启动选项  
-    # 不再区分 IPv4 或 IPv6 透明代理模式  
-    usage="$usage $smartdns_usage "  
-    logger -t "【chinadns_ng】" "使用 SmartDNS 启动选项(Clash DNS 8054 + SmartDNS 8051/8052)"  
-else  
-    # 未启用 SmartDNS,使用 ChinaDNS-NG 默认选项  
-    usage="$usage $chinadns_ng_usage "  
-    logger -t "【chinadns_ng】" "使用 ChinaDNS-NG 默认启动选项(dns2tcp)" 
+if [ "$smartdns_enable" == "1" ] ; then
+usage="$usage $smartdns_usage "
+else
+usage="$usage $chinadns_ng_usage "
 fi
 update_app
 chinadns_ng_v=`chinadns_ng -V | awk -F ' ' '{print $2;}'`
