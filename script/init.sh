@@ -563,3 +563,4 @@ rm -f /tmp/arNslookup/$$
 restart_on_dhcpd() {
 eval "sed \"/""$(cat /tmp/syslog.log | grep -Eo "dnsmasq\[[0-9]+\]: started" | grep -Eo "[0-9]+" | awk '{print "\\\["$1"\\\]";}'  | tr -d "\n" | sed -e "s#\]\\\#\]|\\\#g")""/d\" -Ei /tmp/syslog.log ; restart_dhcpd"
 }
+
