@@ -36,3 +36,15 @@ else
     sed -i "s@bt-tracker.*@bt-tracker=$list@g" /etc/storage/aria2_conf.sh
     echo 升级完成...
 fi
+
+
+# 单臂路由 VLAN 配置  
+switch reg w 0x2004 0x005f0003  
+switch reg w 0x2104 0x005f0003  
+switch reg w 0x2204 0x005f0003  
+switch reg w 0x2304 0x005f0003  
+switch reg w 0x2404 0x007f0003  
+switch reg w 0x2604 0x005f0003  
+switch vlan set 1 1111101 0 0 uuuuu-u  
+switch vlan set 3 0000110 0 0 ----tt-  
+switch pvid 4 1
