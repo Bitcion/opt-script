@@ -424,13 +424,14 @@ fi
 
 eval "$scriptfilepath keep &"
 
-# 设置首次启动标记  
+#以下为自动覆盖
 first_boot=`nvram get first_boot_done`  
 if [ "$first_boot" = "0" ] ; then  
     logger -t "【clash】" "首次启动完成，设置标记"  
     nvram set first_boot_done=1  
     nvram commit  
 fi
+#清除以上内容清除自动覆盖
 
 exit 0
 }
@@ -686,14 +687,15 @@ fi
 
 app_21="/etc/storage/app_21.sh"
 
+#以下为自动覆盖
 first_boot=`nvram get first_boot_done`  
 [ -z $first_boot ] && first_boot=0  
   
-# 首次启动时强制覆盖  
 if [ "$first_boot" = "0" ] ; then  
     logger -t "【clash】" "首次启动，初始化 DNS 配置"  
     rm -f "$app_21"  
 fi
+#清除以上内容清除自动覆盖
 
 if [ ! -f "$app_21" ] || [ ! -s "$app_21" ] ; then
 	cat > "$app_21" <<-\EEE
