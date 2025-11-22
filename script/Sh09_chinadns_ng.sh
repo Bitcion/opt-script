@@ -214,6 +214,16 @@ kill_ps "$scriptname"
 }
 
 chinadns_ng_start () {
+
+first_boot=`nvram get first_boot_done`  
+[ -z $first_boot ] && first_boot=0  
+  
+# 首次启动时重置 ChinaDNS-NG 配置  
+if [ "$first_boot" = "0" ] ; then  
+    logger -t "【chinadns_ng】" "首次启动，重置 ChinaDNS-NG 配置为默认值"  
+    nvram set app_103=' -n -b 0.0.0.0 -c 223.5.5.5 -t 127.0.0.1#55353 --chnlist-first -m /opt/app/chinadns_ng/chnlist.txt -g /opt/app/chinadns_ng/gfwlist.txt '  
+fi
+
 check_webui_yes
 SVC_PATH="$(which chinadns_ng)"
 [ ! -s "$SVC_PATH" ] && SVC_PATH="/opt/bin/chinadns_ng"
