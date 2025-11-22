@@ -27,3 +27,20 @@ ipv6使用提示：
       - tcp://0.0.0.0:8052 
       - 0.0.0.0:8052 这是我方便自己用的配置，若不熟悉clash的“- RULE-SET,DLC规则”功能，删除保存
 
+
+
+首次启动配置覆盖功能 
+功能说明：
+添加了首次启动检测机制，在固件首次安装或 NVRAM 重置后，自动使用脚本预设覆盖 Clash DNS、SmartDNS 和 ChinaDNS-NG 的配置文件。日常运行时保持原有的"配置文件存在则不覆盖"逻辑。
+
+若不需要，清除以下增量部分：
+
+1. script/Sh10_clash.sh
+位置：第 679 行之后、第 680 行之前插入代码块 Sh10_clash.sh:678-680
+2. script/Sh09_chinadns_ng.sh
+位置：第 361 行之后、第 362 行之前插入代码块 Sh09_chinadns_ng.sh:360-362
+3. script/Sh09_chinadns_ng.sh
+位置：第 216 行之后、第 217 行之前插入代码块 Sh09_chinadns_ng.sh:215-217
+4. script/Sh10_clash.sh
+位置：第 424 行之后、第 426 行之前插入代码块 Sh10_clash.sh:423-426
+
