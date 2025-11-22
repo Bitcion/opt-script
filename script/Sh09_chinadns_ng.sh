@@ -221,7 +221,7 @@ first_boot=`nvram get first_boot_done`
   
 if [ "$first_boot" = "0" ] ; then  
     logger -t "【chinadns_ng】" "首次启动，重置 ChinaDNS-NG 配置为默认值"  
-    nvram set app_103=' -n -b 0.0.0.0 -c 223.5.5.5 -t 127.0.0.1#55353 --chnlist-first -m /opt/app/chinadns_ng/chnlist.txt -g /opt/app/chinadns_ng/gfwlist.txt '  
+    nvram set app_103=' -M -b :: -c ::#8051,udp://223.5.5.5 -t ::#8054,198.18.0.2 -m /opt/app/chinadns_ng/chnlist.txt,/opt/cn.txt,/opt/ad.txt -g /opt/app/chinadns_ng/gfwlist.txt,/opt/ipv4.txt -C /opt/adv6.txt '  
 fi
 #清除以上内容清除自动覆盖
 
