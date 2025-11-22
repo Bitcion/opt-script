@@ -401,6 +401,17 @@ fi
 
 initconfig () {
 	if [ ! -f "/etc/storage/app_26.sh" ] || [ ! -s "/etc/storage/app_26.sh" ] ; then
+
+#以下为自动覆盖
+first_boot=`nvram get first_boot_done`  
+[ -z $first_boot ] && first_boot=0  
+  
+if [ "$first_boot" = "0" ] ; then  
+    logger -t "【ss_tproxy】" "首次启动，初始化 ss-tproxy 钩子配置"  
+    rm -f "/etc/storage/app_26.sh"  
+fi
+#清除以上内容清除自动覆盖
+
 cat > "/etc/storage/app_26.sh" <<-\VVR
 #!/bin/bash
 pre_start() {
