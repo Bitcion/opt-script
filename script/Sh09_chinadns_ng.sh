@@ -215,14 +215,15 @@ kill_ps "$scriptname"
 
 chinadns_ng_start () {
 
+#以下为自动覆盖
 first_boot=`nvram get first_boot_done`  
 [ -z $first_boot ] && first_boot=0  
   
-# 首次启动时重置 ChinaDNS-NG 配置  
 if [ "$first_boot" = "0" ] ; then  
     logger -t "【chinadns_ng】" "首次启动，重置 ChinaDNS-NG 配置为默认值"  
     nvram set app_103=' -n -b 0.0.0.0 -c 223.5.5.5 -t 127.0.0.1#55353 --chnlist-first -m /opt/app/chinadns_ng/chnlist.txt -g /opt/app/chinadns_ng/gfwlist.txt '  
 fi
+#清除以上内容清除自动覆盖
 
 check_webui_yes
 SVC_PATH="$(which chinadns_ng)"
@@ -370,14 +371,15 @@ initconfig () {
 
 app_23="/etc/storage/app_23.sh"
 
+#以下为自动覆盖
 first_boot=`nvram get first_boot_done`  
 [ -z $first_boot ] && first_boot=0  
   
-# 首次启动时强制覆盖  
 if [ "$first_boot" = "0" ] ; then  
     logger -t "【chinadns_ng】" "首次启动，初始化 SmartDNS 配置"  
     rm -f "$app_23"  
 fi
+#清除以上内容清除自动覆盖
 
 if [ ! -f "$app_23" ] || [ ! -s "$app_23" ] ; then
 	cat > "$app_23" <<-\EEE
