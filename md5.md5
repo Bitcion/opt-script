@@ -3,7 +3,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 9ada1ad2fb98c6e9a890f8e29df2087f  ./sh_onmp.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
 793d9cd9d5ef6cfa230b7ec7beb99623  ./README.md
-d20c49521eab97f032aa61b506ad4d2f  ./scriptsh.txt
+f4ab385589d0c0872b4a040d72317bed  ./scriptsh.txt
 018512e46e297e442fa752d134e2f959  ./mtd_storage.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
@@ -63,7 +63,7 @@ fb6b6605e783aef9c9301ece02007113  ./script/Sh28_guest_kit.sh
 d0487c32aac83de8080cb3770212b4b2  ./script/sh_0_script.sh
 d90fcf5fe55febe0bd5f83d0ed578acd  ./script/Sh08_hysteria.sh
 ac839b74b2f6f312c607edcbe2c9d708  ./script/sh_opt_script_check.sh
-bee6a473898f197439955d4793dee76b  ./script/sh_upscript.sh
+7c4206fad4c00b38a5e0fe468a9cd2a1  ./script/sh_upscript.sh
 014dc6ec79a6333085e07ab36ec1b580  ./script/Sh18_v2ray.sh
 f89890047e41b39cf38adda1ed6adc88  ./script/Sh86_go_tify.sh
 62c15574309d15642d38bad0e980a0fa  ./script/Sh90_ddns_to.sh
