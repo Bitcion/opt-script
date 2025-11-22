@@ -899,8 +899,8 @@ else
 yq w -i $config_dns_yml dns.ipv6 true
 fi
 if [ "$chinadns_enable" != "0" ] || [ "$clash_follow" == 0 ] ; then
-logger -t "【clash】" "变更 clash dns 端口 listen 0.0.0.0:8054 自动开启第三方 DNS 程序"
-yq w -i $config_dns_yml dns.listen 0.0.0.0:8054
+logger -t "【clash】" "变更 clash dns 端口 listen 0.0.0.0:8053 自动开启第三方 DNS 程序"
+yq w -i $config_dns_yml dns.listen 0.0.0.0:8053
 rm_temp
 dns_start_dnsproxy='0' # 0:自动开启第三方 DNS 程序(dnsproxy) ;
 else
