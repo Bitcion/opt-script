@@ -35,12 +35,13 @@ ipv6使用提示：
 
 若不需要，清除以下增量部分：
 
-1. script/Sh10_clash.sh
-位置：第 679 行之后、第 680 行之前
-2. script/Sh09_chinadns_ng.sh
-位置：第 361 行之后、第 362 行之前
-3. script/Sh09_chinadns_ng.sh
-位置：第 216 行之后、第 217 行之前
-4. script/Sh10_clash.sh
-位置：第 424 行之后、第 426 行之前
+文件 1: script/Sh10_clash.sh 
+删除位置 1： 第 679 行之后、第 680 行之前的插入内容 Sh10_clash.sh:678-679
+
+删除位置 2： 第 424 行之后、第 426 行之前的插入内容 Sh10_clash.sh:423-425
+
+文件 2: script/Sh09_chinadns_ng.sh 
+删除位置 1： 第 361 行之后、第 362 行之前的插入内容 Sh09_chinadns_ng.sh:360-361
+
+删除位置 2： 第 216 行之后、第 217 行之前的插入内容 Sh09_chinadns_ng.sh:215-216
 
