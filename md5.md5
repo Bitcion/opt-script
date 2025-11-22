@@ -3,7 +3,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 9ada1ad2fb98c6e9a890f8e29df2087f  ./sh_onmp.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
 793d9cd9d5ef6cfa230b7ec7beb99623  ./README.md
-93a5cf1b824e70c172f0be5b4ce4d8a4  ./scriptsh.txt
+aee48703b04566ee6909462df969c956  ./scriptsh.txt
 018512e46e297e442fa752d134e2f959  ./mtd_storage.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
@@ -16,7 +16,7 @@ cba05b0be2acac44665999b8f255682b  ./script/Sh05_go_cryptfs.sh
 300661fdbe09c959c61f7239bda8024e  ./script/Sh15_ss.sh
 c406e9c12dd0e2c8afb99471b16b403a  ./script/Sh05_cry_fs.sh
 8807eb542e09d0636f6c114c8df4ba2c  ./script/Sh34_wifi_dog.sh
-c7e29c8db08b79b28d6ca588ec82ee80  ./script/Sh10_clash.sh
+254fc606aa1b3204339a1a41a139a051  ./script/Sh10_clash.sh
 2ecca209d862925e8e5c66575648de32  ./script/Sh30_np_s.sh
 a2d0b90d1b7bff6cfd1c4d6bf88b624b  ./script/Sh22_tinyproxy.sh
 fc0c06b06b6d1526fcbf5bbca793049c  ./script/Sh61_lnmp.sh
