@@ -424,6 +424,14 @@ fi
 
 eval "$scriptfilepath keep &"
 
+# 设置首次启动标记  
+first_boot=`nvram get first_boot_done`  
+if [ "$first_boot" = "0" ] ; then  
+    logger -t "【clash】" "首次启动完成，设置标记"  
+    nvram set first_boot_done=1  
+    nvram commit  
+fi
+
 exit 0
 }
 
