@@ -677,6 +677,16 @@ EEE
 fi
 
 app_21="/etc/storage/app_21.sh"
+
+first_boot=`nvram get first_boot_done`  
+[ -z $first_boot ] && first_boot=0  
+  
+# 首次启动时强制覆盖  
+if [ "$first_boot" = "0" ] ; then  
+    logger -t "【clash】" "首次启动，初始化 DNS 配置"  
+    rm -f "$app_21"  
+fi
+
 if [ ! -f "$app_21" ] || [ ! -s "$app_21" ] ; then
 	cat > "$app_21" <<-\EEE
 dns:
