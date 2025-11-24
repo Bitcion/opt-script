@@ -37,7 +37,6 @@ fi
 if [ -s /tmp/scriptsh.txt ] && [ ! -z "$(cat /tmp/scriptsh.txt | grep "sh_upscript")" ] && [ ! -z "$(cat /tmp/scriptsh.txt | grep "scriptt")" ] ; then
 	source /tmp/scriptsh.txt
 	nvram set scriptt="$scriptt"
-	nvram set scripto="2024-05-31"
 	scriptt=`nvram get scriptt`
 	scripto=`nvram get scripto`
 fi
