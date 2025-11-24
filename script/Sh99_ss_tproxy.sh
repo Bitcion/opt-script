@@ -409,6 +409,8 @@ first_boot=`nvram get first_boot_done`
 if [ "$first_boot" = "0" ] ; then  
     logger -t "【ss_tproxy】" "首次启动，初始化 ss-tproxy 钩子配置"  
     rm -f "/etc/storage/app_26.sh"  
+nvram set first_boot_done=1  
+nvram commit	
 fi
 #清除以上内容清除自动覆盖
 
