@@ -424,15 +424,6 @@ fi
 
 eval "$scriptfilepath keep &"
 
-#以下为自动覆盖
-first_boot=`nvram get first_boot_done`  
-if [ "$first_boot" = "0" ] ; then  
-    logger -t "【clash】" "首次启动完成，设置标记"  
-    nvram set first_boot_done=1  
-    nvram commit  
-fi
-#清除以上内容清除自动覆盖
-
 exit 0
 }
 
@@ -694,6 +685,8 @@ first_boot=`nvram get first_boot_done`
 if [ "$first_boot" = "0" ] ; then  
     logger -t "【clash】" "首次启动，初始化 DNS 配置"  
     rm -f "$app_21"  
+	  nvram set first_boot_done=1  # 立即设置标记  
+    nvram commit  
 fi
 #清除以上内容清除自动覆盖
 
