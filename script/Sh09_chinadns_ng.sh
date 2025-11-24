@@ -361,18 +361,6 @@ initconfig () {
 
 app_23="/etc/storage/app_23.sh"
 
-#以下为自动覆盖
-first_boot=`nvram get first_boot_done`  
-[ -z $first_boot ] && first_boot=0  
-  
-if [ "$first_boot" = "0" ] ; then  
-    logger -t "【chinadns_ng】" "首次启动，初始化 SmartDNS 配置"  
-    rm -f "$app_23"  
-nvram set first_boot_done=1  
-nvram commit
-fi
-#清除以上内容清除自动覆盖
-
 if [ ! -f "$app_23" ] || [ ! -s "$app_23" ] ; then
 	cat > "$app_23" <<-\EEE
 # DNS服务器名称, defaut is host name
