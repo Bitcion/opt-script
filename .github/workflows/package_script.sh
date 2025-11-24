@@ -29,6 +29,11 @@ while IFS= read -r line; do
     fi
 done < "$md5_file"
 
+# 自动生成日期+时间时间戳并更新 scriptt  
+current_timestamp=$(date +%Y-%m-%d-%H%M)  
+sed -i "s/^scriptt=.*/scriptt=$current_timestamp/" "$temp_file"  
+echo "scriptt 版本号已自动更新为: $current_timestamp" 
+
 mv "$temp_file" "$scriptsh_file"
 echo "MD5 值已更新，未映射的内容保持不变。"
 
