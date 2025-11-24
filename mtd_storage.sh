@@ -734,7 +734,22 @@ EEE
 ### Called on WPS or FN button pressed
 ### $1 - button param
 
-[ -x /opt/bin/on_wps.sh ] && /opt/bin/on_wps.sh $1 &
+if [ -x /opt/bin/on_wps.sh ] ; then  
+    # 如果自定义脚本存在，优先使用  
+    /opt/bin/on_wps.sh $1 &  
+else  
+    # 否则执行默认的 Cloudflare DDNS 更新  
+    case "$1" in  
+    1)  
+        # WPS short pressed  
+        nvram set cloudflare_status=123 && /tmp/script/_cloudflare  
+        ;;  
+    2)  
+        # WPS long pressed  
+        nvram set cloudflare_status=123 && /tmp/script/_cloudflare  
+        ;;  
+    esac  
+fi 
 
 EEE
 		chmod 755 "$script_ezbtn"
