@@ -137,10 +137,8 @@ cat >> "/tmp/script/_opt_script_check" <<-OSC
 [ -z "\`pidof Sh44_cloudflare.sh\`" ] && nvram set cloudflare_status=00 && logger -t "【cloudflare】" "重新启动" && eval "$scriptfilepath &" && sed -Ei '/【cloudflare】|^$/d' /tmp/script/_opt_script_check # 【cloudflare】
 OSC
 while true; do  
-while true; do  
 sleep 43  
 sleep $cloudflare_interval
-fi
 [ ! -s "`which curl`" ] && cloudflare_restart
 #nvramshow=`nvram showall | grep '=' | grep cloudflare | awk '{print gensub(/'"'"'/,"'"'"'\"'"'"'\"'"'"'","g",$0);}'| awk '{print gensub(/=/,"='\''",1,$0)"'\'';";}'` && eval $nvramshow
 cloudflare_enable=`nvram get cloudflare_enable`
