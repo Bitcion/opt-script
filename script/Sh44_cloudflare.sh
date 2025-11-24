@@ -138,7 +138,27 @@ cat >> "/tmp/script/_opt_script_check" <<-OSC
 OSC
 while true; do  
 sleep 43  
-sleep $cloudflare_interval
+  
+# 动态间隔逻辑 - 检查IPv6配置  
+cloudflare_domian6=`nvram get cloudflare_domian6`  
+cloudflare_host6=`nvram get cloudflare_host6`  
+if [ "$cloudflare_domian6"x != "x" ] && [ "$cloudflare_host6"x != "x" ] ; then  
+    # 尝试获取IPv6地址  
+    ipv6_addr=$(ifconfig $(nvram get wan0_ifname_t) | awk '/Global/{print $3}' | awk -F/ '{print $1}')  
+      
+    if [ -z "$ipv6_addr" ]; then  
+        # IPv6获取失败,60秒后重试  
+        logger -t "【cloudflare动态域名】" "IPv6地址获取失败,60秒后重试"  
+        sleep 60  
+    else  
+        # IPv6获取成功,使用正常周期  
+        sleep $cloudflare_interval  
+    fi  
+else  
+    # 没有配置IPv6,使用正常周期  
+    sleep $cloudflare_interval  
+fi  
+ 
 [ ! -s "`which curl`" ] && cloudflare_restart
 #nvramshow=`nvram showall | grep '=' | grep cloudflare | awk '{print gensub(/'"'"'/,"'"'"'\"'"'"'\"'"'"'","g",$0);}'| awk '{print gensub(/=/,"='\''",1,$0)"'\'';";}'` && eval $nvramshow
 cloudflare_enable=`nvram get cloudflare_enable`
