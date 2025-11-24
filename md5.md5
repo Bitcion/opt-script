@@ -37,7 +37,7 @@ e620f50cdb081ac377e30f0e0ac31553  ./script/Sh57_virtual_here.sh
 3cd5ddc614231dd3eb628e97c96ad604  ./script/sh_ss_tproxy.sh
 c5aab0862b2b6812a8da3e1aca78b3b8  ./script/ad.sh
 31b442ad7fbf46dfb28b5c3625e2c88e  ./script/Sh45_wx_send.sh
-ab089eba2c6919f14af7ccf676603cad  ./script/Sh01_mountopt.sh
+5de29222481373ede301c33b12a80769  ./script/Sh01_mountopt.sh
 91da7e43abb96253e0a65344022b5c44  ./script/Sh44_cloudflare.sh
 44d31a184da85782c81e687dbd333ca4  ./script/Sh62_shellina_box.sh
 372ffb31987cbcb6b1e4a9f25587eca8  ./script/Sh87_cad_dy.sh
