@@ -729,10 +729,10 @@ dns:
   nameserver-policy:
     "RULE-SET:DLC规则":
       - tcp://0.0.0.0:8052 
-      - 0.0.0.0:8052
+      - xzb.257335.xyz:8052
     "geosite:bing,openai,netflix,google-gemini,spotify,yahoo": 
       - tcp://0.0.0.0:8052 
-      - 0.0.0.0:8052
+      - xzb.257335.xyz:8052
       
 sniffer:
   enable: true
