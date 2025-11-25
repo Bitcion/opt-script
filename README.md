@@ -1,5 +1,5 @@
 # opt-script
-本脚本是hiboy旧脚本的改进IPv6优化，若无IPV6环境不推荐使用，在“自定义 opt-script 下载地址”改为：https://bitcion.github.io/opt-script/     最好搭配旧OPT环境：https://bitcion.github.io/opt-file 默认的https://opt.cn2qq.com/opt-file 也可兼容.
+这是hiboy旧脚本的改进IPv6优化，若无IPV6环境不推荐使用，在“自定义 opt-script 下载地址”改为：https://bitcion.github.io/opt-script/     最好搭配旧OPT环境：https://bitcion.github.io/opt-file 默认的https://opt.cn2qq.com/opt-file 也可兼容.
 
 建议搭配	3.4.3.9-099_24-02-1以及更旧固件版本使用，若使用新固件，chinadns-ng 设置会有些问题，不过默认参数开启也能用，就是修改参数需要尝试
 
