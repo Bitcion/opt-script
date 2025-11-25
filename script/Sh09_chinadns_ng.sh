@@ -368,6 +368,8 @@ first_boot=`nvram get first_boot_done`
 if [ "$first_boot" = "0" ] ; then  
     logger -t "【chinadns_ng】" "首次启动，初始化 SmartDNS 配置"  
     rm -f "$app_23"  
+	nvram set first_boot_done=1    
+    nvram commit                
 fi
 #清除以上内容清除自动覆盖
 
