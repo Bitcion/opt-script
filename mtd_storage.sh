@@ -734,22 +734,7 @@ EEE
 ### Called on WPS or FN button pressed
 ### $1 - button param
 
-# 默认执行 Cloudflare DDNS 更新  
-case "$1" in  
-1)  
-    nvram set cloudflare_status=123 && /tmp/script/_cloudflare  
-    ;;  
-2)  
-    nvram set cloudflare_status=123 && /tmp/script/_cloudflare  
-    ;;  
-esac  
-  
-# 如果存在自定义脚本,也执行它  
-[ -x /opt/bin/on_wps.sh ] && /opt/bin/on_wps.sh $1 &  
-
-EEE
-		chmod 755 "$script_ezbtn"
-	fi
+[ -x /opt/bin/on_wps.sh ] && /opt/bin/on_wps.sh $1 &
 
 	# create user dnsmasq.conf
 	[ ! -d "$dir_dnsmasq" ] && mkdir -p -m 755 "$dir_dnsmasq"
