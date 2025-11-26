@@ -1,0 +1,83 @@
+环境准备 
+1. 下载ACME.sh源码 
+# 下载v2ray-padavan-doh项目（包含acme.sh）  
+wget https://codeload.github.com/felix-fly/v2ray-padavan-doh/zip/refs/heads/master -O v2ray-padavan-doh.zip  
+  
+# 解压并提取acme文件夹  
+unzip v2ray-padavan-doh.zip  
+cd v2ray-padavan-doh-master  
+# 找到acme.sh相关文件并复制到/opt目录  
+cp -r acme/* /opt/acme/
+2. 设置执行权限 
+mkdir -p /opt/acme  
+chmod 777 /opt/acme/acme.sh
+证书申请配置 
+1. 设置Cloudflare API环境变量 
+export CF_Token="your_cloudflare_token"  
+export CF_Account_ID="your_account_id"  
+export CF_Zone_ID="your_zone_id"
+2. 申请ECC证书 
+/opt/acme/acme.sh --issue --dns dns_cf -d yourdomain.com --ecc --keylength ec-256
+3. 安装证书到路由器HTTPS目录 
+/opt/acme/acme.sh --installcert -d yourdomain.com --ecc \  
+    --keypath /etc/storage/https/server.key \  
+    --fullchainpath /etc/storage/https/server.pem \  
+    --reloadcmd "/etc/storage/acme_deploy.sh"
+兼容性问题解决方案 
+1. 创建包装脚本解决OpenSSL兼容性 
+cat > /etc/storage/acme_wrapper.sh << 'EOF'  
+#!/bin/bash  
+export CURL="/usr/bin/curl"  
+/opt/acme/acme.sh "$@"  
+EOF  
+chmod +x /etc/storage/acme_wrapper.sh
+2. 创建证书部署脚本 
+cat > /etc/storage/acme_deploy.sh << 'EOF'  
+#!/bin/bash  
+logger -t "【acme.sh】" "证书更新完成，重启 httpd 服务"  
+sleep 2  
+killall httpd  
+killall -9 httpd  
+logger -t "【acme.sh】" "httpd 服务已重启"  
+EOF  
+chmod +x /etc/storage/acme_deploy.sh
+3. 解决libcurl依赖问题 
+如果遇到libcurl.so.4缺失问题：
+
+# 重新安装opt环境  
+/etc/storage/script/Sh01_mountopt.sh opt_mini_wget  
+  
+# 或手动创建软链接  
+ln -sf /opt/lib/libcurl.so.4.7.0 /opt/lib/libcurl.so.4
+自动续期配置 
+1. 添加定时任务 
+echo "0 2 * * * /etc/storage/acme_wrapper.sh --cron --home '/media/AiDisk_a1/opt/home/admin/.acme.sh' > /tmp/acme.log 2>&1" >> /etc/storage/crontabs_script.sh
+2. 保存配置到MTD 
+/sbin/mtd_storage.sh save
+验证测试 
+1. 手动触发续期检查 
+/etc/storage/acme_wrapper.sh --cron --home "/media/AiDisk_a1/opt/home/admin/.acme.sh"
+2. 验证证书有效性 
+/usr/bin/openssl x509 -in /etc/storage/https/server.pem -text -noout
+3. 检查证书文件 
+ls -la /etc/storage/https/  
+# 应该看到 server.key 和 server.pem 文件
+启用HTTPS服务 
+1. 配置路由器HTTPS 
+nvram set https_enable=1  
+nvram set http_lanport=443
+2. 重启httpd服务 
+/etc/storage/acme_deploy.sh
+3. 最终保存 
+/sbin/mtd_storage.sh save
+关键注意事项 
+MTD持久化: 所有重要配置都需要通过/sbin/mtd_storage.sh save保存到闪存
+OpenSSL兼容性: 使用系统/usr/bin/openssl而非/opt/bin/openssl避免版本冲突
+库文件依赖: 确保libcurl版本与OpenSSL兼容，必要时重新安装opt环境
+IPv6支持: 如需IPv6访问，添加防火墙规则允许443端口
+自动续期: 定时任务通过MTD实现持久化，重启后自动恢复
+故障排除 
+证书验证失败: 使用/usr/bin/openssl而非/opt/bin/openssl
+curl连接失败: 检查libcurl.so.4是否存在，重新安装opt环境
+续期不工作: 验证acme_wrapper.sh脚本和定时任务配置
+配置丢失: 确保所有修改都通过MTD保存
