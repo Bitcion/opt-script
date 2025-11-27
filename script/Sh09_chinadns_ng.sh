@@ -424,7 +424,7 @@ server 1.2.4.8 -group china
 # office 服务器
 server-https https://[2620:119:fc::2]/dns-query -group office
 server-tls 2620:119:35::35 -group office 
-server-tls 2620:119:35::35 -group office 
+server-tls 2620:119:53::53 -group office 
 server-https https://dns.cloudflare.com/dns-query -group office 
 
 server-tls 1.1.1.1 -group office -fallback
