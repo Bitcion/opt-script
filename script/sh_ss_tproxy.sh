@@ -2346,7 +2346,7 @@ start_iptables_redirect_mode() {
 start_iptables() {
 	resolve_svraddr
 	is_true "$ipv4" && start_iptables_pre_rules "iptables"
-	is_true "$ipv6" && start_iptables_pre_rules "ip6tables"
+	is_true "$ipv6" && [ "$ss_ip46" != "2" ] && start_iptables_pre_rules "ip6tables"
 
 	if is_true "$tproxy"; then
 		is_true "$ipv4" && start_iptables_tproxy_mode "iptables"
