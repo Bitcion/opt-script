@@ -23,6 +23,7 @@ download_and_process() {
 download_and_process "https://bitcion.github.io/zaixiantuoguan/cn.txt" "/opt/cn.txt" "cat"
 download_and_process "https://bitcion.github.io/zaixiantuoguan/ipv4.txt" "/opt/ipv4.txt" "cat"
 download_and_process "https://bitcion.github.io/zaixiantuoguan/ipcidr.txt" "/opt/ipcidr.txt" "cat"
+download_and_process "https://bitcion.github.io/zaixiantuoguan/cnIP.txt" "/opt/cnIP.txt" "cat"
 download_and_process "https://anti-ad.net/domains.txt" "/opt/ad.txt" "cat"
 download_and_process "https://anti-ad.net/anti-ad-for-smartdns.conf" "/opt/anti-ad-for-smartdns.conf" "sed '/^[^#]/s/\/#/\/#4/g'"
 # 第二部分：更新aria2的BT追踪器列表
