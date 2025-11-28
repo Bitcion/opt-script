@@ -22,7 +22,7 @@ clash_ui=`nvram get app_94`
 if [ -z $clash_ui ] || [ ! -z "$(echo "$clash_ui" | grep "0.0.0.0")" ] || [ -z "$(echo $clash_ui | grep ":")" ] ; then
 	SEED=`tr -cd 0-9 </dev/urandom | head -c 8`
 	RND_NUM=`echo $SEED 19090 49090|awk '{srand($1);printf "%d",rand()*10000%($3-$2)+$2}'`
-	clash_ui="$lan_ipaddr:$RND_NUM" && nvram set app_94="$clash_ui"
+	clash_ui="[::]:9090" && nvram set app_94="$clash_ui"
 fi
 app_default_config=`nvram get app_115`
 [ -z $app_default_config ] && app_default_config=0 && nvram set app_115=0
