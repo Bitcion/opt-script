@@ -723,16 +723,7 @@ update_gfwlist_file() {
 	ss_sub5=`nvram get ss_sub5`
 	if [ ! -z "$ss_sub5" ] ; then
 		logger -t "【update_gfwlist】" "正在获取 GFW 自定义域名 列表...."
-    if [ ! -z "$(echo "$ss_sub5" | grep "^/www/")" ] ; then  
-        if [ -f "$ss_sub5" ] ; then  
-            logger -t "【update_gfwlist】" "使用本地文件: $ss_sub5"  
-            cat "$ss_sub5" > $tmp_down_file  
-        else  
-            logger -t "【update_gfwlist】" "本地文件不存在: $ss_sub5"  
-        fi  
-    else  
         wgetcurl_checkmd5 $tmp_down_file $ss_sub5 $ss_sub5 Y  
-    fi  
 		if [ -s $tmp_down_file ] && [ ! -z "$(cat $tmp_down_file | grep -Eo [^A-Za-z0-9+/=]+ | tr -d "\n")" ] ; then
 		echo ""  >> $tmp_down_file
 		cat $tmp_down_file | sort -u | sed 's/^[[:space:]]*//g; /^$/d; /#/d' | sed 's/ipset=\/\.//g; s/\/gfwlist//g; /^server/d' | sort -u | grep -v '^$' >> $tmp_gfwlist
@@ -786,16 +777,7 @@ update_gfwlist_file() {
 	ss_sub6=`nvram get ss_sub6`
 	if [ ! -z "$ss_sub6" ] ; then
 		logger -t "【update_gfwlist】" "正在获取 GFW IP 列表...."
-    if [ ! -z "$(echo "$ss_sub5" | grep "^/www/")" ] ; then  
-        if [ -f "$ss_sub5" ] ; then  
-            logger -t "【update_gfwlist】" "使用本地文件: $ss_sub5"  
-            cat "$ss_sub5" > $tmp_down_file  
-        else  
-            logger -t "【update_gfwlist】" "本地文件不存在: $ss_sub5"  
-        fi  
-    else  
         wgetcurl_checkmd5 $tmp_down_file $ss_sub5 $ss_sub5 Y  
-    fi  
 		if [ -s $tmp_down_file ] && [ ! -z "$(cat $tmp_down_file | grep -Eo [^A-Za-z0-9+/=]+ | tr -d "\n")" ] ; then
 		echo ""  >> $tmp_down_file
 		cat $tmp_down_file | grep -v '^#' | sort -u | grep -v '^$' | grep -E -o '([0-9]+\.){3}[0-9/]+' > /opt/app/ss_tproxy/rule/gfwlist_ip.txt
