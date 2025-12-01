@@ -777,7 +777,7 @@ update_gfwlist_file() {
 	ss_sub6=`nvram get ss_sub6`
 	if [ ! -z "$ss_sub6" ] ; then
 		logger -t "【update_gfwlist】" "正在获取 GFW IP 列表...."
-        wgetcurl_checkmd5 $tmp_down_file $ss_sub5 $ss_sub5 Y  
+        wgetcurl_checkmd5 $tmp_down_file $ss_sub6 $ss_sub6 Y  
 		if [ -s $tmp_down_file ] && [ ! -z "$(cat $tmp_down_file | grep -Eo [^A-Za-z0-9+/=]+ | tr -d "\n")" ] ; then
 		echo ""  >> $tmp_down_file
 		cat $tmp_down_file | grep -v '^#' | sort -u | grep -v '^$' | grep -E -o '([0-9]+\.){3}[0-9/]+' > /opt/app/ss_tproxy/rule/gfwlist_ip.txt
