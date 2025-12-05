@@ -300,9 +300,12 @@ if [ "$(echo "$RECORD_ID" | grep -o "[0-9a-z]\{32,\}"| wc -l)" -gt "1" ] ; then
 	echo $recordIP
 	return 0
 fi
-	if [ "$IPv6" = "1" ]; then
-	echo $recordIP
-	return 0
+if [ "$IPv6" = "1" ]; then  
+    if [ -z "$recordIP" ] || [ "$recordIP" = "0" ]; then  
+        return 1  # 返回失败，触发备用查询  
+    fi  
+    echo $recordIP  
+    return 0
 	else
 	case "$recordIP" in 
 	[1-9]*)
