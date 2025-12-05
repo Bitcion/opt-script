@@ -4,7 +4,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 32c0b66dab6fc46dabd1378661c1d0ab  ./v2ray.sh
 e72c7b3c84c1d8be9263ded24c7e795e  ./Padavan固件ACME.sh HTTPS证书配置完整流程
 804e7f986794de77a69acc18d7fb04a1  ./README.md
-ce48e32c249779c875f03a45ccc5eec7  ./scriptsh.txt
+08fbf803d27b130b0818cfbff4abf289  ./scriptsh.txt
 ef580ca7047dfcbfaf5baca1fa695c01  ./mtd_storage.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
@@ -39,7 +39,7 @@ f1b526e51e81625cf10b83e236d2c91c  ./script/sh_ss_tproxy.sh
 5f9987ba57403a36e7ad52446873ce19  ./script/ad.sh
 31b442ad7fbf46dfb28b5c3625e2c88e  ./script/Sh45_wx_send.sh
 5de29222481373ede301c33b12a80769  ./script/Sh01_mountopt.sh
-092bc63ae694abea9f1524dce155ee85  ./script/Sh44_cloudflare.sh
+c87337782181be0a185352f38643d75f  ./script/Sh44_cloudflare.sh
 44d31a184da85782c81e687dbd333ca4  ./script/Sh62_shellina_box.sh
 372ffb31987cbcb6b1e4a9f25587eca8  ./script/Sh87_cad_dy.sh
 860fc85d6deb620d419a4601deba7629  ./script/Sh12_ad_m.sh
