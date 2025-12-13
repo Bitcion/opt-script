@@ -445,7 +445,7 @@ ss_tproxy_mode_x=`nvram get app_110`
 [ "$clash_mode_x" = "0" ] && sstp_set mode='global'
 [ "$clash_mode_x" = "3" ] && sstp_set mode='chnlist'
 [ "$ss_ip46" = "0" ] && { sstp_set ipv4='true' ; sstp_set ipv6='false' ; }
-[ "$ss_ip46" = "1" ] && { sstp_set ipv4='false' ; sstp_set ipv6='true' ; }
+[ "$ss_ip46" = "1" ] && { sstp_set ipv4='true' ; sstp_set ipv6='false' ; }
 [ "$ss_ip46" = "2" ] && { sstp_set ipv4='true' ; sstp_set ipv6='true' ; }
 [ "$ss_ip46" = "0" ] && sstp_set tproxy='false' # true:TPROXY+TPROXY; false:REDIRECT+TPROXY
 [ "$ss_ip46" != "0" ] && sstp_set tproxy='true'
