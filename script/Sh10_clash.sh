@@ -723,8 +723,6 @@ dns:
     - https://dns.google/dns-query
     - https://doh.opendns.com/dns-query
     - tls://dns.opendns.com
-    - tls://dns.google
-    - tls://one.one.one.one
 
   nameserver-policy:
     "RULE-SET:DLC规则":
