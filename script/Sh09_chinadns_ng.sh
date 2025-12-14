@@ -420,14 +420,12 @@ server 1.2.4.8 -group china
 #server-https https://doh.pub/dns-query -group china -fallback
 
 # office 服务器
-server-https https://[2620:119:fc::2]/dns-query -group office
-server-tls 2620:119:35::35 -group office 
-server-tls 2620:119:53::53 -group office 
-server-https https://dns.cloudflare.com/dns-query -group office 
+server-https https://doh.opendns.com/dns-query -group office
+server-tls dns.opendns.com -group office 
+server-https https://dns64.dns.google/dns-query -group office 
+server-https https://dns.google/dns-query -group office 
 
-server-tls 1.1.1.1 -group office -fallback
-server-tcp dns.google -group office -fallback
-
+server-tls one.one.one.one -group office -fallback
 
 # TCP链接空闲超时时间
 # tcp-idle-time [second]
