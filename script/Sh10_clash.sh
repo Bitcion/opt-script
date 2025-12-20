@@ -708,7 +708,7 @@ dns:
   # hosts:
   #   '*.clash.dev': 127.0.0.1
   #   'alpha.clash.dev': '::1'
-  use-hosts: true # 查询 hosts
+  use-hosts: false # 查询 hosts
   # 配置不使用fake-ip的域名
   fake-ip-filter:
     - '+.*'
