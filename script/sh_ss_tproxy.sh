@@ -1260,53 +1260,6 @@ create sstp_mac_fw hash:mac hashsize 64
 create sstp_mac_gfw hash:mac hashsize 64
 create sstp_mac_chn hash:mac hashsize 64" | while read sstp_name; do ipset -! $sstp_name ; done 
 
-	# Telegram IP 规则
-	echo "G,8.8.8.8
-G,8.8.4.4
-G,208.67.222.222
-G,208.67.220.220
-G,91.108.4.0/22
-G,91.108.8.0/22
-G,91.108.12.0/22
-G,91.108.16.0/22
-G,91.108.20.0/22
-G,91.108.36.0/23
-G,91.108.38.0/23
-G,91.108.56.0/22
-G,149.154.160.0/20
-G,149.154.161.0/24
-G,149.154.162.0/23
-G,149.154.164.0/22
-G,149.154.168.0/21
-G,149.154.172.0/22
-G,149.154.160.0/20
-G,149.154.160.1/32
-G,149.154.160.2/31
-G,149.154.160.4/30
-G,149.154.160.8/29
-G,149.154.160.16/28
-G,149.154.160.32/27
-G,149.154.160.64/26
-G,149.154.160.128/25
-G,149.154.164.0/22
-G,91.105.192.0/23
-G,91.108.4.0/22
-G,91.108.20.0/22
-G,91.108.56.0/24
-G,109.239.140.0/24
-G,67.198.55.0/24
-G,91.108.56.172
-G,149.154.175.50
-G,185.76.151.0/24
-" | grep -E "^G" | cut -c3- | while read ip_addr; do echo "-A $dst4_dns_fw_type $ip_addr"; done | ipset -! restore &>/dev/null
-	echo "~G,2001:b28:f23d::/48
-~G,2001:b28:f23f::/48
-~G,2001:67c:4e8::/48
-~G,2001:b28:f23c::/48
-~G,2a0a:f280::/32
-" | grep -E "^~G" | cut -c4- | while read ip_addr; do echo "-A $dst6_dns_fw_type $ip_addr"; done | ipset -! restore &>/dev/null
-
-
 	# wanlist dst IP 规则
 	if is_true "$ipv4"; then
 	cat $file_wanlist_ext | grep -E "^b" | cut -c3- | while read ip_addr; do echo "-A $dst4_bp_type $ip_addr"; done | ipset -! restore &>/dev/null
