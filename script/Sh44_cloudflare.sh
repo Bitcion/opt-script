@@ -148,8 +148,8 @@ if [ "$cloudflare_domian6"x != "x" ] && [ "$cloudflare_host6"x != "x" ] ; then
       
     if [ -z "$ipv6_addr" ]; then  
         # IPv6获取失败,60秒后重试  
-        logger -t "【cloudflare动态域名】" "IPv6地址获取失败,60秒后重试"  
-        sleep 60  
+        logger -t "【cloudflare动态域名】" "IPv6地址获取失败,180秒后重试"  
+        sleep 300  
     else  
         # IPv6获取成功,使用正常周期  
         sleep $cloudflare_interval  
