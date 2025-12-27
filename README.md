@@ -93,5 +93,5 @@ tun:
 
 ## Notes
 
-若chinadns-ng 不是开关模式，而是选项模式，自定义 opt-file 下载地址改为https://bitcion.github.io/opt-file 后，更新web界面（也可直接Advanced_Extensions_chinadns_ngasp替换）
+若chinadns-ng 不是开关模式，而是选项模式，自定义 opt-file 下载地址改为https://bitcion.github.io/opt-file 后，更新web界面
 
