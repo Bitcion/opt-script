@@ -89,10 +89,9 @@ tun:
 - 推荐固件：3.4.3.9-099_24-02-1 及更旧版本
 - 新固件可能需要手动调整 chinadns-ng 参数
 - 无 IPv6 环境不推荐使用
-
 ---
 
 ## Notes
 
-若chinadns-ng 不是开关模式，而是选项模式，自定义 opt-file 下载地址改为https://bitcion.github.io/opt-file后，更新web界面（也可直接Advanced_Extensions_chinadns_ngasp替换）
+若chinadns-ng 不是开关模式，而是选项模式，自定义 opt-file 下载地址改为https://bitcion.github.io/opt-file 后，更新web界面（也可直接Advanced_Extensions_chinadns_ngasp替换）
 
