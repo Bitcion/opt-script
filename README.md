@@ -1,5 +1,4 @@
-# opt-script
-opt-script - Clash 透明代理增强脚本  
+# opt-script - Clash 透明代理增强脚本
 
 专为 Clash 透明代理优化的脚本集合，重点改进 IPv6 环境下的 DNS 配置和用户体验。
 🆕 新特性亮点  
@@ -18,47 +17,23 @@ Clash DNS 端口自动优化
 1. 下载地址配置  
 在路由器"自定义 opt-script 下载地址"中设置：
 https://bitcion.github.io/opt-script/  
-2. ChinaDNS-NG 参数自定义  
-默认参数： Sh09_chinadns_ng.sh:30
--M -b :: -c ::#8051,udp://223.5.5.5 -t ::#8054,198.18.0.2 -m /opt/app/chinadns_ng/chnlist.txt,/opt/cn.txt,/opt/ad.txt -g /opt/app/chinadns_ng/gfwlist.txt,/opt/ipv4.txt
-自定义选项：
--c ::#8051,udp://2409:803c:2000:1::26 - 替换为你的 IPv6 DNS 服务器
--t ::#8054,udp://198.18.0.1 - 调整可信 DNS 服务器
-添加/删除域名列表文件路径
-3. SmartDNS Bind 配置  
-默认配置： Sh09_chinadns_ng.sh:407-410
-bind [::]:8051 -group china  
-bind-tcp [::]:8051 -group china -no-cache  
-bind [::]:8052 -group office -force-aaaa-soa   
-bind-tcp [::]:8052 -group office -force-aaaa-soa -no-cache
-自定义选项：
-8051 端口：中国域名 DNS（可添加国内 DNS 服务器）
-8052 端口：国外域名 DNS（-force-aaaa-soa 过滤 IPv6）
-4. Clash DNS 完整配置  
-基础模板： Sh10_clash.sh:694-746
-dns:  
-  enable: true  
-  listen: 0.0.0.0:8054  
-  enhanced-mode: redir-host  
-  ipv6: true  
-    
-  nameserver:  
-    - https://dns64.dns.google/dns-query  
-    - https://dns.google/dns-query  
-    - https://doh.opendns.com/dns-query  
-    - tls://dns.opendns.com  
-    - tls://dns.google  
-    - tls://one.one.one.one  
-      
-  nameserver-policy:  
-    "RULE-SET:DLC规则,DNS4":  
-      - tcp://0.0.0.0:8052   
-    "geosite:bing,category-ai-!cn,netflix,spotify,yahoo":   
-      - tcp://0.0.0.0:8052
-高级自定义：
-添加更多 DoH/DoT 服务器
-调整 nameserver-policy 实现网站分流
-配置 fake-ip-filter 过滤特定域名
+2. ISP DNS 性能优化  
+运营商 DNS 自定义：
+# 将默认的 223.5.5.5 替换为你的运营商 DNS  
+-c ::#8051,udp://2409:803c:2000:1::26
+TUN 接口选择：
+198.18.0.1 - TUN 外部接口（推荐，避免转发问题）
+198.18.0.2 - TUN 内部接口（默认）
+3. 节点域名解析保护  
+proxy-server-nameserver 配置：
+proxy-server-nameserver:  
+  - https://dns.alidns.com/dns-query  # 防止节点域名泄露给运营商
+此配置为代理节点提供专用 DNS 解析，使用 DoH 避免域名泄露。
+4. 服务分流策略  
+强制 IPv4 代理：
+nameserver-policy:  
+  "geosite:bing,category-ai-!cn,netflix,spotify,yahoo":   
+    - tcp://0.0.0.0:8052  # 通过 SmartDNS 过滤 IPv6，实现纯 IPv4 代理
 5. 流量嗅探和 TUN 配置  
 sniffer:  
   enable: true  
