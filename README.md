@@ -94,5 +94,5 @@ tun:
 
 ## Notes
 
-脚本主要文件位于 `script/Sh10_clash.sh`，负责 Clash 的启动和配置管理。域名列表文件通过 `script/ad.sh` 自动下载 [5-cite-8](#5-cite-8) ，无需手动配置。首次启动检测机制通过检查 `first_boot_done` NVRAM 变量实现 [5-cite-9](#5-cite-9) 。如需完整功能，建议搭配 `https://bitcion.github.io/opt-file` 旧 OPT 环境使用。
+若chinadns-ng 不是开关模式，而是选项模式，自定义 opt-file 下载地址改为https://bitcion.github.io/opt-file后，更新web界面（也可直接Advanced_Extensions_chinadns_ngasp替换）
 
