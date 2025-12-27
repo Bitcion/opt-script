@@ -83,13 +83,6 @@ tun:
   mtu: 1500
 ```
 
-### 6. Web 面板选择
-
-支持多种管理面板，可在配置中选择：
-- Clash Dashboard（默认） [5-cite-4](#5-cite-4) 
-- Yacd-meta [5-cite-5](#5-cite-5) 
-- Razord-meta [5-cite-6](#5-cite-6) 
-- MetaCubeXD [5-cite-7](#5-cite-7) 
 
 ## 📋 兼容性说明
 
@@ -103,82 +96,3 @@ tun:
 
 脚本主要文件位于 `script/Sh10_clash.sh`，负责 Clash 的启动和配置管理。域名列表文件通过 `script/ad.sh` 自动下载 [5-cite-8](#5-cite-8) ，无需手动配置。首次启动检测机制通过检查 `first_boot_done` NVRAM 变量实现 [5-cite-9](#5-cite-9) 。如需完整功能，建议搭配 `https://bitcion.github.io/opt-file` 旧 OPT 环境使用。
 
-Wiki pages you might want to explore:
-- [Network Architecture and Data Flow (Bitcion/opt-script)](/wiki/Bitcion/opt-script#9.2)
-- [Transparent Proxy Framework (Sh99_ss_tproxy.sh) (Bitcion/opt-script)](/wiki/Bitcion/opt-script#3.6)
-
-Wiki pages you might want to explore:
-- [Transparent Proxy Framework (Sh99_ss_tproxy.sh) (Bitcion/opt-script)](/wiki/Bitcion/opt-script#3.6)
-
-### Citations
-
-**File:** script/Sh10_clash.sh (L257-263)
-```shellscript
-if [ "$app_78" == "premium" ] || [ "$app_78" == "premium_1" ] ; then
-	[ ! -s "$SVC_PATH" ] && logger -t "【clash】" "下载 premium (闭源版) 主程序: https://github.com/Dreamacro/clash/releases/tag/premium" && [ "$app_78" != "premium_1" ] && nvram set app_78="premium_1" && app_78="premium_1"
-	wgetcurl_file "$SVC_PATH" "$hiboyfile/clash-premium" "$hiboyfile2/clash-premium"
-else
-	[ ! -s "$SVC_PATH" ] && logger -t "【clash】" "下载 Clash.Meta 主程序: https://github.com/Clash-Mini/mihomo" && [ "$app_78" != "meta_1" ] && nvram set app_78="meta_1" && app_78="meta_1"
-	wgetcurl_file "$SVC_PATH" "$hiboyfile/clash-meta" "$hiboyfile2/clash-meta"
-fi
-```
-
-**File:** script/Sh10_clash.sh (L401-403)
-```shellscript
-		logger -t "【clash】" " 下载 clash 面板 : https://github.com/Dreamacro/clash-dashboard/tree/gh-pages"
-		wgetcurl_checkmd5 /opt/app/clash/clash_webs.tgz "$hiboyfile/clash_webs2.tgz" "$hiboyfile2/clash_webs2.tgz" N
-		[ "$app_79" != "clash_1" ] && nvram set app_79="clash_1" && app_79="clash_1"
-```
-
-**File:** script/Sh10_clash.sh (L405-409)
-```shellscript
-	if [ "$app_79" == "yacd" ] || [ "$app_79" == "yacd_1" ] ; then
-		logger -t "【clash】" "下载 yacd 面板 : https://github.com/MetaCubeX/Yacd-meta/tree/gh-pages"
-		wgetcurl_checkmd5 /opt/app/clash/clash_webs.tgz "$hiboyfile/clash_webs.tgz" "$hiboyfile2/clash_webs.tgz" N
-		[ "$app_79" != "yacd_1" ] && nvram set app_79="yacd_1" && app_79="yacd_1"
-	fi
-```
-
-**File:** script/Sh10_clash.sh (L410-414)
-```shellscript
-	if [ "$app_79" == "meta" ] || [ "$app_79" == "meta_1" ] ; then
-		logger -t "【clash】" "下载 Meta 面板 : https://github.com/MetaCubeX/Razord-meta/tree/gh-pages"
-		wgetcurl_checkmd5 /opt/app/clash/clash_webs.tgz "$hiboyfile/clash_webs3.tgz" "$hiboyfile2/clash_webs3.tgz" N
-		[ "$app_79" != "meta_1" ] && nvram set app_79="meta_1" && app_79="meta_1"
-	fi
-```
-
-**File:** script/Sh10_clash.sh (L415-419)
-```shellscript
-	if [ "$app_79" == "xd" ] || [ "$app_79" == "xd_1" ] ; then
-		logger -t "【clash】" "下载 xd 面板 : https://github.com/metacubex/metacubexd/tree/gh-pages"
-		wgetcurl_checkmd5 /opt/app/clash/clash_webs.tgz "$hiboyfile/clash_webs4.tgz" "$hiboyfile2/clash_webs4.tgz" N
-		[ "$app_79" != "xd_1" ] && nvram set app_79="xd_1" && app_79="xd_1"
-	fi
-```
-
-**File:** script/Sh10_clash.sh (L699-699)
-```shellscript
-  listen: 0.0.0.0:8054
-```
-
-**File:** script/Sh99_ss_tproxy.sh (L405-415)
-```shellscript
-#以下为自动覆盖
-first_boot=`nvram get first_boot_done`  
-[ -z $first_boot ] && first_boot=0  
-  
-if [ "$first_boot" = "0" ] ; then  
-    logger -t "【ss_tproxy】" "首次启动，初始化 ss-tproxy 钩子配置"  
-    rm -f "/etc/storage/app_26.sh"  
-    nvram set first_boot_done=1  
-    nvram commit	
-fi
-#清除以上内容清除自动覆盖
-```
-
-**File:** script/Sh99_ss_tproxy.sh (L451-452)
-```shellscript
-ipv4='true'     # true:启用ipv4透明代理; false:关闭ipv4透明代理
-ipv6='false'    # true:启用ipv6透明代理; false:关闭ipv6透明代理
-```
