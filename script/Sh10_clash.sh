@@ -719,10 +719,11 @@ dns:
     - https://dns.alidns.com/dns-query
 
   nameserver:
-    - https://dns64.dns.google/dns-query
     - https://dns.google/dns-query
     - https://doh.opendns.com/dns-query
     - tls://dns.opendns.com
+    - tls://dns.google
+    - tls://one.one.one.one
 
   nameserver-policy:
     "RULE-SET:DLC规则":
