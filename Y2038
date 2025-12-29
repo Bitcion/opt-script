@@ -1,0 +1,65 @@
+#mtd_storage.sh
+
+#1318到1348
+func_flock()  
+{  
+    st=$1  
+    st2=$(expr "$st" + 5)  
+    # 使用字符串时间格式，避免Y2038问题  
+    date "+%Y%m%d%H%M%S" > $sfl  
+    (  
+        sleep 1  
+        flock 333  
+        expr_time  
+        [ $ctime -lt 0 ] && return 1  
+        expr_time  
+        [ $ctime -gt 0 ] && sleep $st  
+        while [ $ctime -lt $st2 ]; do   
+            sleep 1  
+            expr_time  
+            if [ $ctime -ge $st ] ; then  
+                # 标记完成，使用相同的时间格式  
+                date "+%Y%m%d%H%M%S" > $sfl  
+                [ -f "$slk" ] && return 1  
+                touch "$slk"  
+                logger -t "【mtd_storage.sh】" "保存 /etc/storage/ 内容到闪存！请勿关机"  
+                /sbin/mtd_storage.sh save_2  
+                rm -f $slk  
+                logger -t "【mtd_storage.sh】" "保存 /etc/storage/ 内容到闪存！执行完成"  
+                return 0  
+            fi  
+        done  
+    ) 333>/var/lock/storage_flock.lock  
+}
+
+#（1354到1361  sfl="/tmp/.storage_flock_locked"之下，case "$1" in之上）
+
+expr_time()  
+{  
+    atime=$(cat $sfl)  
+    btime=$(date "+%Y%m%d%H%M%S")  
+      
+    # 验证时间字符串格式  
+    if [ ${#atime} -ne 14 ] || [ ${#btime} -ne 14 ]; then  
+        logger -t "【mtd_storage.sh】" "时间字符串格式错误"  
+        ctime=0  
+        return  
+    fi  
+      
+    # 将时间字符串转换为秒数进行计算  
+    atime_sec=$(date -d "${atime:0:4}-${atime:4:2}-${atime:6:2} ${atime:8:2}:${atime:10:2}:${atime:12:2}" +%s 2>/dev/null)  
+    btime_sec=$(date -d "${btime:0:4}-${btime:4:2}-${btime:6:2} ${btime:8:2}:${btime:10:2}:${btime:12:2}" +%s 2>/dev/null)  
+      
+    if [ -n "$atime_sec" ] && [ -n "$btime_sec" ] && [ "$atime_sec" -gt 0 ] && [ "$btime_sec" -gt 0 ]; then  
+        ctime=$(expr "$btime_sec" - "$atime_sec")  
+        # 检查时间差的合理性  
+        if [ $ctime -lt 0 ] || [ $ctime -gt 3600 ]; then  
+            logger -t "【mtd_storage.sh】" "时间差异常: $ctime，重置为0"  
+            ctime=0  
+        fi  
+    else  
+        logger -t "【mtd_storage.sh】" "时间转换失败，使用默认值"  
+        ctime=0  
+    fi  
+}
+
