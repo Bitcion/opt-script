@@ -421,8 +421,7 @@ server 1.2.4.8 -group china
 
 # office 服务器
 server-https https://doh.opendns.com/dns-query -group office
-server-tls dns.opendns.com -group office 
-server-https https://dns64.dns.google/dns-query -group office 
+server-tls dns.opendns.com -group office  
 server-https https://dns.google/dns-query -group office 
 
 server-tls one.one.one.one -group office -fallback
