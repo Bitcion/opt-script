@@ -743,7 +743,7 @@ tun:
   enable: true
   stack: system 
   auto-route: false
-  mtu: 1500
+  mtu: 1452
   
 EEE
 	chmod 755 "$app_21"
