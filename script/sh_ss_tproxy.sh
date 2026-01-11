@@ -2040,6 +2040,7 @@ start_iptables_tproxy_mode() {
 
 	$1 -t mangle -A SSTP_WAN_FW -m set --match-set $sstp_dst_dns_fw_setname dst -j SSTP_WAN_DNS
 	$1 -t mangle -A SSTP_WAN_DNS -p tcp -m multiport --dports 1:65535 --syn -j MARK --set-mark $ipts_rt_mark
+	$1 -t mangle -A SSTP_WAN_FW -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1400
 	is_enabled_udp && $1 -t mangle -A SSTP_WAN_DNS -p udp -m multiport --dports 1:65535 -m conntrack --ctstate NEW -j MARK --set-mark $ipts_rt_mark
 
 	$1 -t mangle -A SSTP_RULE -j CONNMARK --save-mark
