@@ -1774,7 +1774,7 @@ _flush_iptables() {
 flush_iptables() {
 	is_true "$ipv4" && _flush_iptables "iptables"
 	is_true "$ipv6" && _flush_iptables "ip6tables"
-	[ ! -z "$(ip6tables -vnL INPUT --line-numbers | grep -Ei "udp *dpt:53 *reject")" ] && ip6tables -D INPUT -p udp --dport 53 -j REJECT
+    # [ ! -z "$(ip6tables -vnL INPUT --line-numbers | grep -Ei "udp *dpt:53 *reject")" ] && ip6tables -D INPUT -p udp --dport 53 -j REJECT
 }
 
 _show_iptables() {
@@ -2361,7 +2361,7 @@ start_iptables() {
 	wifidognx=""
 	wifidogn_manglex=""
 	is_true "$ipv6" && start_iptables_post_rules "ip6tables"
-	is_true "$ipv4" && { is_false "$ipv6" && [ -z "$(ip6tables -vnL INPUT --line-numbers | grep -Ei "udp *dpt:53 *reject")" ] && ip6tables -I INPUT -p udp --dport 53 -j REJECT ; }
+	# is_true "$ipv4" && { is_false "$ipv6" && [ -z "$(ip6tables -vnL INPUT --line-numbers | grep -Ei "udp *dpt:53 *reject")" ] && ip6tables -I INPUT -p udp --dport 53 -j REJECT ; }
 	logger -t "【sh_ss_tproxy.sh】" "完成加载 iptables 转发规则...."
 }
 
