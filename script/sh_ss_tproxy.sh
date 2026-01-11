@@ -1898,13 +1898,13 @@ start_iptables_pre_rules() {
 }
 
 start_iptables_post_rules() {
-    $1 -t mangle -I PREROUTING -p icmp -j ACCEPT  
-    $1 -t mangle -I PREROUTING -p icmpv6 -j ACCEPT
 	$1 -t mangle -I PREROUTING  $wifidogn_manglex -j SSTP_PREROUTING
 	$1 -t mangle -A OUTPUT      -j SSTP_OUTPUT
 	$1 -t nat    -I PREROUTING  $wifidognx -j SSTP_PREROUTING
 	$1 -t nat    -I OUTPUT      $wifidognx_output -j SSTP_OUTPUT
 	$1 -t nat    -I POSTROUTING -j SSTP_POSTROUTING
+	$1 -t mangle -I PREROUTING -p icmp -j ACCEPT  
+    $1 -t mangle -I PREROUTING -p icmpv6 -j ACCEPT
 }
 
 start_iptables_tproxy_mode() {
