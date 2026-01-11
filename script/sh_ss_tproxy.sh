@@ -1887,6 +1887,8 @@ start_iptables_pre_rules() {
 	$1 -t nat    -N SSTP_PREROUTING
 	$1 -t nat    -N SSTP_OUTPUT
 	$1 -t nat    -N SSTP_POSTROUTING
+    $1 -t mangle -I PREROUTING -p icmp -j ACCEPT  
+    $1 -t mangle -I PREROUTING -p icmpv6 -j ACCEPT
 
 	if is_need_iproute; then
 		is_ipv4_ipts $1 && iproute2_family="-4" || iproute2_family="-6"
