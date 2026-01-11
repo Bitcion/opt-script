@@ -1680,7 +1680,6 @@ stop_proxy_proc() {
 enable_ipforward() {
 	is_true "$ipv4" && set_sysctl_option 'net.ipv4.ip_forward' 1
 	is_true "$ipv6" && set_sysctl_option 'net.ipv6.conf.all.forwarding' 1
-	is_true "$ipv6" && set_sysctl_option 'net.ipv6.icmp.ratelimit' 0 
 }
 
 disable_icmpredir() {
