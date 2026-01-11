@@ -5,7 +5,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 d231c9854e89719a9abd10e5ab81908e  ./Y2038
 e72c7b3c84c1d8be9263ded24c7e795e  ./Padavan固件ACME.sh HTTPS证书配置完整流程
 dd31fb051174796c71c2424f202296da  ./README.md
-12c3b8e4c4fdc30993abe7c6cc1f2d3c  ./scriptsh.txt
+e88e25fcaed06905eac1bbb53ec0ae94  ./scriptsh.txt
 ef580ca7047dfcbfaf5baca1fa695c01  ./mtd_storage.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
@@ -36,7 +36,7 @@ eff23051287152bd11d95f41e6e695c5  ./script/Sh59_trans_late.sh
 8dbf44b77e9cd3e6e66aa85021faecfe  ./script/Sh14_kcp_tun.sh
 0e4b69d42fcb0b7e202ee2c61206bbb0  ./script/Sh25_softether.sh
 e620f50cdb081ac377e30f0e0ac31553  ./script/Sh57_virtual_here.sh
-d406cf4bea62911e91a6adf723295d09  ./script/sh_ss_tproxy.sh
+5e20024a41e2a01cbc86ecf51c8a41a4  ./script/sh_ss_tproxy.sh
 5f9987ba57403a36e7ad52446873ce19  ./script/ad.sh
 31b442ad7fbf46dfb28b5c3625e2c88e  ./script/Sh45_wx_send.sh
 5de29222481373ede301c33b12a80769  ./script/Sh01_mountopt.sh
