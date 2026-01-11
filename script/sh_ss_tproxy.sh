@@ -1717,6 +1717,8 @@ delete_iproute2() {
 }
 
 _flush_iptables() {
+    $1 -t mangle -D PREROUTING -p icmp -j ACCEPT &>/dev/null  
+    $1 -t mangle -D PREROUTING -p icmpv6 -j ACCEPT &>/dev/null 
 	$1 -t mangle -D PREROUTING  -j SSTP_PREROUTING  &>/dev/null
 	$1 -t mangle -D OUTPUT      -j SSTP_OUTPUT      &>/dev/null
 	$1 -t nat    -D PREROUTING  -j SSTP_PREROUTING  &>/dev/null
@@ -1887,8 +1889,6 @@ start_iptables_pre_rules() {
 	$1 -t nat    -N SSTP_PREROUTING
 	$1 -t nat    -N SSTP_OUTPUT
 	$1 -t nat    -N SSTP_POSTROUTING
-    $1 -t mangle -I PREROUTING -p icmp -j ACCEPT  
-    $1 -t mangle -I PREROUTING -p icmpv6 -j ACCEPT
 
 	if is_need_iproute; then
 		is_ipv4_ipts $1 && iproute2_family="-4" || iproute2_family="-6"
@@ -1898,6 +1898,8 @@ start_iptables_pre_rules() {
 }
 
 start_iptables_post_rules() {
+    $1 -t mangle -I PREROUTING -p icmp -j ACCEPT  
+    $1 -t mangle -I PREROUTING -p icmpv6 -j ACCEPT
 	$1 -t mangle -I PREROUTING  $wifidogn_manglex -j SSTP_PREROUTING
 	$1 -t mangle -A OUTPUT      -j SSTP_OUTPUT
 	$1 -t nat    -I PREROUTING  $wifidognx -j SSTP_PREROUTING
