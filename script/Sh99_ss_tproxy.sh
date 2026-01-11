@@ -422,6 +422,7 @@ pre_start() {
 }
 post_start() {
     echo "ss-tproxy 启动后执行脚本"
+	  sysctl -w net.ipv6.icmp.ratelimit=0
 	  sh /etc/storage/script/ad.sh
     
 }
