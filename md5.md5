@@ -5,7 +5,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 d231c9854e89719a9abd10e5ab81908e  ./Y2038
 e72c7b3c84c1d8be9263ded24c7e795e  ./Padavan固件ACME.sh HTTPS证书配置完整流程
 dd31fb051174796c71c2424f202296da  ./README.md
-66f7966785e0cd0d0dced8b0193ec8b9  ./scriptsh.txt
+627bd2731e2ef95c9512bced6c342585  ./scriptsh.txt
 ef580ca7047dfcbfaf5baca1fa695c01  ./mtd_storage.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
@@ -73,7 +73,7 @@ f89890047e41b39cf38adda1ed6adc88  ./script/Sh86_go_tify.sh
 da4c21d9d9c1e10ad1f244957de86bbe  ./script/Sh89_tailscale.sh
 4274243f8455d7bc44c16310a81463a7  ./script/Sh85_mad_dy.sh
 b8259343996daae583a7d7ce0f7a3e8d  ./script/sh_ezscript.sh
-6ecfd57db0b2b4cef7ebdf1c6d220de9  ./script/Sh09_chinadns_ng.sh
+313ef8751ba58f482eeb96b507a99253  ./script/Sh09_chinadns_ng.sh
 bb7d508a1595412c26dadf7de447d1b9  ./script/Sh99_ss_tproxy.sh
 70812c480099292f42a9363a6f1cdf63  ./script/Sh46_display.sh
 c0db8baf3ff5d383cf850e9ce3db9761  ./script/Sh03_jbls.sh
