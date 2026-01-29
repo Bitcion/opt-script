@@ -543,6 +543,7 @@ server-tls dns.google -group office
 # address /www.example.com/1.2.3.4, return ip 1.2.3.4 to client
 # address /www.example.com/-, ignore address, query from upstream, suffix 4, for ipv4, 6 for ipv6, none for all
 # address /www.example.com/#, return SOA to client, suffix 4, for ipv4, 6 for ipv6, none for all
+address /bing.com/#
 
 # 设置IPSET超时功能启用
 # ipset-timeout yes
