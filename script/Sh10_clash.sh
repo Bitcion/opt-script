@@ -716,12 +716,12 @@ dns:
   #   - localhost.ptlogin2.qq.com
 
   proxy-server-nameserver:
-    - https://dns.alidns.com/dns-query
+    - https://dns.alidns.com/dns-query#ecs=47.74.196.40/32&ecs-override=true
 
   nameserver:
-    - https://dns.google/dns-query
     - https://doh.opendns.com/dns-query
-    - tls://dns.opendns.com
+    - https://dns.257335.xyz/dns-query
+    - https://dns64.dns.google/dns-query
     - tls://dns.google
     - tls://one.one.one.one
 
@@ -743,7 +743,7 @@ tun:
   enable: true
   stack: system 
   auto-route: false
-  mtu: 1452
+  mtu: 1492
   
 EEE
 	chmod 755 "$app_21"
