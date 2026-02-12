@@ -5,7 +5,7 @@ be38a93d5a5758b68974c6bd8499bd6a  ./go.sh
 d231c9854e89719a9abd10e5ab81908e  ./Y2038
 e72c7b3c84c1d8be9263ded24c7e795e  ./Padavan固件ACME.sh HTTPS证书配置完整流程
 dd31fb051174796c71c2424f202296da  ./README.md
-332bd8f9483ae49a745e32b9834b46ed  ./scriptsh.txt
+199676a25e0a6d774d667c5a18343e81  ./scriptsh.txt
 ef580ca7047dfcbfaf5baca1fa695c01  ./mtd_storage.sh
 d64835ebb58b844230869321fe4ac7a5  ./app_ver_n.txt
 dfd9152d8ef695d488d7bc35376aeeaa  ./www_shsh.txt
@@ -18,7 +18,7 @@ cba05b0be2acac44665999b8f255682b  ./script/Sh05_go_cryptfs.sh
 1c12270747db3c97ddb968ef34d17b92  ./script/Sh15_ss.sh
 c406e9c12dd0e2c8afb99471b16b403a  ./script/Sh05_cry_fs.sh
 8807eb542e09d0636f6c114c8df4ba2c  ./script/Sh34_wifi_dog.sh
-1babae5a5c384dd233737c8b1435c968  ./script/Sh10_clash.sh
+ff398424ca599d06f1192bf18f26e911  ./script/Sh10_clash.sh
 2ecca209d862925e8e5c66575648de32  ./script/Sh30_np_s.sh
 a2d0b90d1b7bff6cfd1c4d6bf88b624b  ./script/Sh22_tinyproxy.sh
 fc0c06b06b6d1526fcbf5bbca793049c  ./script/Sh61_lnmp.sh
